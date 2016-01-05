@@ -231,4 +231,11 @@
       degree_id = #{degreeId,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="selectByNumber" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where number = #{number,jdbcType=CHAR}
+  </select>
 </mapper>

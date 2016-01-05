@@ -14,4 +14,12 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    /**
+     * 根据教工号查询
+     *
+     * @param number
+     * @return
+     */
+    User selectByNumber(String number);
 }
