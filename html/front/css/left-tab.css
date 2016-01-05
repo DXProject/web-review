@@ -1,0 +1,99 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	outline:none!important;
+}
+.container{
+	width: 961px !important;
+}
+.main{
+	width: 961px;
+	float: left;
+}
+
+.content{
+	width: 830px;
+	display: block;
+	float: left;
+	border: 1px solid #ccc;
+	padding: 10px;
+	z-index: 100;
+	position: relative;
+}
+.left-tab{
+	margin-top: 50px;
+	float: left;
+	position: relative;
+	z-index: 1000;
+}
+.left-tab ul{
+	list-style: none;
+}
+.left-tab li{
+	width: 130px;
+	height: 30px;
+	box-shadow: 1px 1px 1px #ccc;
+	background: #ccc;
+	text-align: center;
+	font-size: 16px;
+	margin-bottom: 10px;
+	line-height: 30px;
+
+}
+.left-tab .apply{
+	background: #16aeed;
+	color: #fff;
+}
+.left-tab .apply a{
+	width:120px;
+	display: block;
+	float: left;
+	color: #fff !important;
+	background: url(../images/left-tab-icon.png) no-repeat right;
+}
+.left-tab .apply span{
+	width: 11px;
+	height: 38px;
+	display: block;
+	float: right;
+	margin-top: -8px;
+	margin-right: -11px;
+	background: url(../images/left-tab-r.png);
+}
+.left-tab .active{
+	width: 140px;
+	margin-left: -10px;
+	background: #16aeed;
+}
+.left-tab .active a{
+	color:#fff !important;
+}
+.left-tab li a{
+	color: #666 !important;
+}
+.left-tab li:hover{
+	background: #16aeed;
+}
+.left-tab li:hover a{
+	color: #fff !important;
+	text-decoration: none;
+}
+
+.userstate{
+	width: 120px;
+	float: left;
+	margin-top: 20px;
+	background: #16aeed;
+	float: right;
+	color: #fff;
+	text-align: right;
+	padding-right: 10px;
+}
+.userstate span{
+	cursor: pointer;
+}
+.cancel{
+	text-decoration: underline;
+	display: block;
+	color: #fff;
+}

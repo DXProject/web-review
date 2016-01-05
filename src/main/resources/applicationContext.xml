@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="applicationContext-dao.xml"/>
+
+    <context:annotation-config/>
+    <context:property-placeholder location="classpath:applicationResources.properties,classpath:jdbc.properties"
+                                  system-properties-mode="OVERRIDE"/>
+    <context:component-scan base-package="com.review.www.dao"/>
+    <context:component-scan base-package="com.review.www.service"/>
+
+    <aop:aspectj-autoproxy/>
+
+    <aop:config>
+        <aop:pointcut id="serviceMethods" expression="execution(* com.review.www.service.impl.*.*(..))"/>
+        <!-- 缓存-->
+        <aop:pointcut id="cacheMethods"
+                      expression="execution(* com.review.www.service..*.*(..)) and
+                @annotation(com.jopool.jweb.cache.annotation.Cacheable)"/>
+        <aop:pointcut id="flushMethods"
+                      expression="execution(* com.review.www.service..*.*(..)) and
+                @annotation(com.jopool.jweb.cache.annotation.CacheFlush)"/>
+
+        <!-- 事务 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+
+        <!--缓存-->
+        <aop:aspect id="cacheAspect" ref="methodCacheAspect">
+            <aop:around method="executeMethod" pointcut-ref="cacheMethods"/>
+        </aop:aspect>
+        <aop:aspect id="cacheFlushAspect" ref="methodCacheAspect">
+            <aop:after method="flushMethodCache" pointcut-ref="flushMethods"/>
+        </aop:aspect>
+    </aop:config>
+
+
+    <bean id="cacheBean" class="com.review.www.cache.CacheProviderFactoryBean" destroy-method="destroy"/>
+    <bean id="methodCacheAspect" class="com.jopool.jweb.cache.aop.MethodCacheAspect" init-method="initialize"
+          destroy-method="destroy">
+        <property name="cache" ref="cacheBean"></property>
+    </bean>
+
+    <bean class="com.jopool.jweb.spring.SelfBeanPostProcessor"/>
+
+</beans>

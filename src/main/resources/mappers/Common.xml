@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="COMMON">
+    <!--
+        select * from table_name where condition limit startPos,pageSize;
+        注意：startPos是从0开始
+    -->
+    <sql id="PAGING_COMMON">
+        <if test="pageParam.lastTime != null and pageParam.lastTime > 0">
+            <if test="pageParam.mode != null and pageParam.mode == 'lt'">
+                and ${pageParam.customTimeColumn} &lt; #{pageParam.lastTimeDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="pageParam.mode != null and pageParam.mode == 'gt'">
+                and ${pageParam.customTimeColumn} &gt; #{pageParam.lastTimeDate,jdbcType=TIMESTAMP}
+            </if>
+        </if>
+        order by ${pageParam.customTimeColumn} desc
+        <if test="pageParam.lastTime != null and pageParam.lastTime >= 0">
+            limit 10
+        </if>
+    </sql>
+    <sql id="ORDER">
+        <if test="orderBySql != null">
+            order by
+            <![CDATA[
+                  ${orderBySql}
+               	]]>
+        </if>
+    </sql>
+</mapper>
