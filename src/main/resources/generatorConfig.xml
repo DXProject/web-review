@@ -40,21 +40,21 @@
             <!--<property name="enableSubPackages" value="true"/>-->
         </javaClientGenerator>
         <!-- 要生成哪些表，可加domainObjectName="Group"-->
-        <table tableName="user" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="announcement" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="assessmentResults" enableCountByExample="false" enableUpdateByExample="false"
+        <!--<table tableName="user" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="announcement" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="assessmentResults" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="classOne" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="classTwo" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="classThree" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="classThree" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <table tableName="comment" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="degree" enableCountByExample="false" enableUpdateByExample="false"
+        <!--<table tableName="degree" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="department" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
@@ -73,6 +73,6 @@
         <table tableName="subjectCategory" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="title" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
     </context>
 </generatorConfiguration>

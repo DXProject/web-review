@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @RestController
 @RequestMapping("/demo")
-public class HelloController extends WebBaseController {
+public class IndexController extends WebBaseController {
 
     @RequestMapping("index.htm")
     public ModelAndView demo() {

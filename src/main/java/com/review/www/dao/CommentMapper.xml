@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.review.www.entity.Comment" >
     <id column="id" property="id" jdbcType="CHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="class" property="class" jdbcType="VARCHAR" />
     <result column="score" property="score" jdbcType="VARCHAR" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
     <result column="is_pass" property="isPass" jdbcType="VARCHAR" />
@@ -20,7 +19,7 @@
     <result column="expert_id" property="expertId" jdbcType="CHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, content, class, score, sort, is_pass, comment_time, creation_time, creator, backup_one, 
+    id, content, score, sort, is_pass, comment_time, creation_time, creator, backup_one, 
     backup_two, backup_three, backup_four, backup_five, project_id, expert_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -34,18 +33,18 @@
     where id = #{id,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.Comment" >
-    insert into comment (id, content, class, 
-      score, sort, is_pass, 
-      comment_time, creation_time, creator, 
-      backup_one, backup_two, backup_three, 
-      backup_four, backup_five, project_id, 
-      expert_id)
-    values (#{id,jdbcType=CHAR}, #{content,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR}, 
-      #{score,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{isPass,jdbcType=VARCHAR}, 
-      #{commentTime,jdbcType=VARCHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
-      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}, 
-      #{backupFour,jdbcType=VARCHAR}, #{backupFive,jdbcType=VARCHAR}, #{projectId,jdbcType=CHAR}, 
-      #{expertId,jdbcType=CHAR})
+    insert into comment (id, content, score, 
+      sort, is_pass, comment_time, 
+      creation_time, creator, backup_one, 
+      backup_two, backup_three, backup_four, 
+      backup_five, project_id, expert_id
+      )
+    values (#{id,jdbcType=CHAR}, #{content,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{isPass,jdbcType=VARCHAR}, #{commentTime,jdbcType=VARCHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{backupOne,jdbcType=VARCHAR}, 
+      #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}, #{backupFour,jdbcType=VARCHAR}, 
+      #{backupFive,jdbcType=VARCHAR}, #{projectId,jdbcType=CHAR}, #{expertId,jdbcType=CHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.Comment" >
     insert into comment
@@ -55,9 +54,6 @@
       </if>
       <if test="content != null" >
         content,
-      </if>
-      <if test="class != null" >
-        class,
       </if>
       <if test="score != null" >
         score,
@@ -106,9 +102,6 @@
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
       </if>
-      <if test="class != null" >
-        #{class,jdbcType=VARCHAR},
-      </if>
       <if test="score != null" >
         #{score,jdbcType=VARCHAR},
       </if>
@@ -156,9 +149,6 @@
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
       </if>
-      <if test="class != null" >
-        class = #{class,jdbcType=VARCHAR},
-      </if>
       <if test="score != null" >
         score = #{score,jdbcType=VARCHAR},
       </if>
@@ -204,7 +194,6 @@
   <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Comment" >
     update comment
     set content = #{content,jdbcType=VARCHAR},
-      class = #{class,jdbcType=VARCHAR},
       score = #{score,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
       is_pass = #{isPass,jdbcType=VARCHAR},

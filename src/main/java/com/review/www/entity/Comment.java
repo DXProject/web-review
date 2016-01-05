@@ -7,8 +7,6 @@ public class Comment {
 
     private String content;
 
-    private String class;
-
     private String score;
 
     private Integer sort;
@@ -49,14 +47,6 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
-    }
-
-    public String getClass() {
-        return class;
-    }
-
-    public void setClass(String class) {
-        this.class = class == null ? null : class.trim();
     }
 
     public String getScore() {
