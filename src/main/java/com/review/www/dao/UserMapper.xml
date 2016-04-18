@@ -238,4 +238,9 @@
     from user
     where number = #{number,jdbcType=CHAR}
   </select>
+  <select id="selectByNumberAndType" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM user WHERE number = #{number,jdbcType=VARCHAR} AND type = #{type,jdbcType=BIT}
+  </select>
 </mapper>

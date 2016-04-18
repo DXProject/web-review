@@ -1,8 +1,13 @@
 package com.review.www.controller;
 
+import com.jopool.jweb.utils.PasswordHash;
 import com.jopool.jweb.utils.StringUtils;
 import com.review.www.constants.Constants;
+import com.review.www.entity.User;
+import com.review.www.enums.UserType;
+import com.review.www.enums.UserTypeEnum;
 import com.review.www.service.UserService;
+import com.review.www.vo.SessionUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -34,39 +39,38 @@ public class IndexController extends WebBaseController {
     }
 
     @RequestMapping("doLogin.htm")
-    public String doLogin(HttpServletRequest request, String phoneOrNumber, String password, RedirectAttributesModelMap model) {
-        log.debug("name:{},password:{}", phoneOrNumber, password);
-        if (StringUtils.isEmpty(phoneOrNumber) || StringUtils.isEmpty(password)) {
-            addErrorAction(model, "请输入手机号或密码");
+    public String doLogin(HttpServletRequest request, String number, String password, RedirectAttributesModelMap model) {
+        log.debug("name:{},password:{}", number, password);
+        if (StringUtils.isEmpty(number) || StringUtils.isEmpty(password)) {
+            addErrorAction(model, "请输入教工号或密码");
             return "redirect:login.htm";
         }
-//        Passport passport = passportService.getByPhoneAndType(phoneOrNumber, PassportType.TRAVEL_AGENCY);
-//        if (null == passport || passport.getIsDeleted()) {
-//            passport = passportService.getByPhoneAndType(phoneOrNumber, PassportType.ADMIN);
-//            if (null == passport || passport.getIsDeleted()) {
-//                passport = passportService.getByPhoneAndType(phoneOrNumber, PassportType.MONITOR);
-//            }
-//            if (null == passport) {
-//                addErrorAction(model, "手机号或密码错误");
-//                return "redirect:login.htm";
-//            }
-//        }
-//        if (!StringUtils.isEmpty(passport.getPassword()) && !PasswordHash.validatePassword(password, passport.getPassword())) {
-//            addErrorAction(model, "手机号或密码错误");
-//            return "redirect:login.htm";
-//        } else {
-//            String userId = passportService.getUserId(passport);
-//            if (StringUtils.isEmpty(userId)) {
-//                addErrorAction(model, "手机号或密码错误");
-//                return "redirect:login.htm";
-//            }
-//            SessionUser user = new SessionUser();
-//            user.setPassportId(passport.getId());
-//            user.setType(passport.getType());
-//            user.setName(passport.getName());
-//            user.setUserId(userId);
-//            request.getSession().setAttribute(Constants.SESSION_KEY_LOGIN_USER, user);
-//        }
+        User user = userService.getByNumberAndType(number, UserType.APPLICANT);
+        if (null == user) {
+            user = userService.getByNumberAndType(number, UserType.ADMIN);
+            if (null == user) {
+                user = userService.getByNumberAndType(number, UserType.SECONDARY_COLLEGE);
+            }
+            if (null == user) {
+                addErrorAction(model, "教工号或密码错误");
+                return "redirect:login.htm";
+            }
+        }
+        if (!StringUtils.isEmpty(user.getPassword()) && !PasswordHash.validatePassword(password, user.getPassword())) {
+            addErrorAction(model, "手机号或密码错误");
+            return "redirect:login.htm";
+        } else {
+            String userId = userService.getUserId(user);
+            if (StringUtils.isEmpty(userId)) {
+                addErrorAction(model, "手机号或密码错误");
+                return "redirect:login.htm";
+            }
+            SessionUser userSession = new SessionUser();
+            userSession.setType(user.getType());
+            userSession.setName(user.getName());
+            userSession.setUserId(userId);
+            request.getSession().setAttribute(Constants.SESSION_KEY_LOGIN_USER, user);
+        }
         return "redirect:index.htm";
     }
 

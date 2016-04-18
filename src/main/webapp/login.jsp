@@ -20,7 +20,7 @@
     <form name="loginForm" id="loginForm" action="doLogin.htm" method="post">
         <div class="loginbox">
             <ul>
-                <li><input name="phoneOrNumber" type="text" class="loginuser validate[required]" placeholder="用户名"/></li>
+                <li><input name="number" type="text" class="loginuser validate[required]" placeholder="用户名"/></li>
                 <li><input name="password" type="password" class="loginpwd validate[required]" placeholder="密码"/></li>
                 <li>
                     <input type="submit" class="loginbtn" value="登录"/>

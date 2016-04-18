@@ -1,20 +1,14 @@
 package com.review.www.vo;
 
+import com.jopool.jweb.entity.BaseSessionUser;
+
 /**
  * Created by zhangtianfeng on 15/12/24.
  */
 public class SessionUser {
-    private String passportId;
     private String userId;
+    private int    type;
     private String name;
-
-    public String getPassportId() {
-        return passportId;
-    }
-
-    public void setPassportId(String passportId) {
-        this.passportId = passportId;
-    }
 
     public String getUserId() {
         return userId;
@@ -22,6 +16,14 @@ public class SessionUser {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getName() {

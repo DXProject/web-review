@@ -11,6 +11,7 @@ import com.review.www.constants.Constants;
 import com.review.www.dao.UserMapper;
 import com.review.www.entity.User;
 import com.review.www.enums.ModeEnum;
+import com.review.www.enums.UserTypeEnum;
 import com.review.www.helper.ApplicationConfigHelper;
 import com.review.www.request.LoginReq;
 import com.review.www.response.LoginResp;
@@ -55,6 +56,25 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
         user.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
         userMapper.insert(user);
         return new Result(Code.SUCCESS);
+    }
+
+    @Override
+    public User getByNumberAndType(String number, int type) {
+        return userMapper.selectByNumberAndType(number,type);
+    }
+
+    @Override
+    public String getUserId(User user) {
+        //根据不同类型获取userId
+        String userId = null;
+        if (UserTypeEnum.ADMIN.getValue() == user.getType()) {
+            userId = user.getId();
+        } else if (UserTypeEnum.APPLICANT.getValue()  == user.getType()) {
+            userId = user.getId();
+        } else if (UserTypeEnum.SECONDARY_COLLEGE.getValue()  == user.getType()) {
+            userId = user.getId();
+        }
+        return userId;
     }
 
     @Override
