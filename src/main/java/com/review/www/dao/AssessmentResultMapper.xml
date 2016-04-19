@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.review.www.dao.AssessmentResultMapper" >
+  <resultMap id="BaseResultMap" type="com.review.www.entity.AssessmentResult" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="comment_id" property="commentId" jdbcType="CHAR" />
+    <result column="review_program_rules_id" property="reviewProgramRulesId" jdbcType="CHAR" />
+    <result column="score" property="score" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="CHAR" />
+    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="backup_one" property="backupOne" jdbcType="VARCHAR" />
+    <result column="backup_two" property="backupTwo" jdbcType="VARCHAR" />
+    <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, comment_id, review_program_rules_id, score, remark, creator, creation_time, backup_one, 
+    backup_two, backup_three
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from assessment_result
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from assessment_result
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.review.www.entity.AssessmentResult" >
+    insert into assessment_result (id, comment_id, review_program_rules_id, 
+      score, remark, creator, 
+      creation_time, backup_one, backup_two, 
+      backup_three)
+    values (#{id,jdbcType=CHAR}, #{commentId,jdbcType=CHAR}, #{reviewProgramRulesId,jdbcType=CHAR}, 
+      #{score,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{creator,jdbcType=CHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
+      #{backupThree,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.review.www.entity.AssessmentResult" >
+    insert into assessment_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="reviewProgramRulesId != null" >
+        review_program_rules_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="backupOne != null" >
+        backup_one,
+      </if>
+      <if test="backupTwo != null" >
+        backup_two,
+      </if>
+      <if test="backupThree != null" >
+        backup_three,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="commentId != null" >
+        #{commentId,jdbcType=CHAR},
+      </if>
+      <if test="reviewProgramRulesId != null" >
+        #{reviewProgramRulesId,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backupOne != null" >
+        #{backupOne,jdbcType=VARCHAR},
+      </if>
+      <if test="backupTwo != null" >
+        #{backupTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="backupThree != null" >
+        #{backupThree,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.AssessmentResult" >
+    update assessment_result
+    <set >
+      <if test="commentId != null" >
+        comment_id = #{commentId,jdbcType=CHAR},
+      </if>
+      <if test="reviewProgramRulesId != null" >
+        review_program_rules_id = #{reviewProgramRulesId,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backupOne != null" >
+        backup_one = #{backupOne,jdbcType=VARCHAR},
+      </if>
+      <if test="backupTwo != null" >
+        backup_two = #{backupTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="backupThree != null" >
+        backup_three = #{backupThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.AssessmentResult" >
+    update assessment_result
+    set comment_id = #{commentId,jdbcType=CHAR},
+      review_program_rules_id = #{reviewProgramRulesId,jdbcType=CHAR},
+      score = #{score,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=CHAR},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      backup_one = #{backupOne,jdbcType=VARCHAR},
+      backup_two = #{backupTwo,jdbcType=VARCHAR},
+      backup_three = #{backupThree,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

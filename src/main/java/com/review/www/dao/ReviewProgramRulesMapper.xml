@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.review.www.dao.ReviewProgramRulesMapper" >
+  <resultMap id="BaseResultMap" type="com.review.www.entity.ReviewProgramRules" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="review_program_id" property="reviewProgramId" jdbcType="CHAR" />
+    <result column="rules_id" property="rulesId" jdbcType="CHAR" />
+    <result column="percentage" property="percentage" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="CHAR" />
+    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, review_program_id, rules_id, percentage, creator, creation_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from review_program_rules
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from review_program_rules
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.review.www.entity.ReviewProgramRules" >
+    insert into review_program_rules (id, review_program_id, rules_id, 
+      percentage, creator, creation_time
+      )
+    values (#{id,jdbcType=CHAR}, #{reviewProgramId,jdbcType=CHAR}, #{rulesId,jdbcType=CHAR}, 
+      #{percentage,jdbcType=VARCHAR}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.review.www.entity.ReviewProgramRules" >
+    insert into review_program_rules
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="reviewProgramId != null" >
+        review_program_id,
+      </if>
+      <if test="rulesId != null" >
+        rules_id,
+      </if>
+      <if test="percentage != null" >
+        percentage,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="reviewProgramId != null" >
+        #{reviewProgramId,jdbcType=CHAR},
+      </if>
+      <if test="rulesId != null" >
+        #{rulesId,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null" >
+        #{percentage,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.ReviewProgramRules" >
+    update review_program_rules
+    <set >
+      <if test="reviewProgramId != null" >
+        review_program_id = #{reviewProgramId,jdbcType=CHAR},
+      </if>
+      <if test="rulesId != null" >
+        rules_id = #{rulesId,jdbcType=CHAR},
+      </if>
+      <if test="percentage != null" >
+        percentage = #{percentage,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.ReviewProgramRules" >
+    update review_program_rules
+    set review_program_id = #{reviewProgramId,jdbcType=CHAR},
+      rules_id = #{rulesId,jdbcType=CHAR},
+      percentage = #{percentage,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=CHAR},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

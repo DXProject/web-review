@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.review.www.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.review.www.entity.User" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="department_id" property="departmentId" jdbcType="CHAR" />
+    <result column="degree_id" property="degreeId" jdbcType="CHAR" />
+    <result column="title_id" property="titleId" jdbcType="CHAR" />
+    <result column="eduction_id" property="eductionId" jdbcType="CHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="creator" property="creator" jdbcType="CHAR" />
+    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="backup_one" property="backupOne" jdbcType="VARCHAR" />
+    <result column="backup_two" property="backupTwo" jdbcType="VARCHAR" />
+    <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, department_id, degree_id, title_id, eduction_id, number, avatar, name, sex, type, 
+    password, phone, email, birthday, is_deleted, creator, creation_time, backup_one, 
+    backup_two, backup_three
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.review.www.entity.User" >
+    insert into user (id, department_id, degree_id, 
+      title_id, eduction_id, number, 
+      avatar, name, sex, type, 
+      password, phone, email, 
+      birthday, is_deleted, creator, 
+      creation_time, backup_one, backup_two, 
+      backup_three)
+    values (#{id,jdbcType=CHAR}, #{departmentId,jdbcType=CHAR}, #{degreeId,jdbcType=CHAR}, 
+      #{titleId,jdbcType=CHAR}, #{eductionId,jdbcType=CHAR}, #{number,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{type,jdbcType=TINYINT}, 
+      #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
+      #{backupThree,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.review.www.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="degreeId != null" >
+        degree_id,
+      </if>
+      <if test="titleId != null" >
+        title_id,
+      </if>
+      <if test="eductionId != null" >
+        eduction_id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="backupOne != null" >
+        backup_one,
+      </if>
+      <if test="backupTwo != null" >
+        backup_two,
+      </if>
+      <if test="backupThree != null" >
+        backup_three,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=CHAR},
+      </if>
+      <if test="degreeId != null" >
+        #{degreeId,jdbcType=CHAR},
+      </if>
+      <if test="titleId != null" >
+        #{titleId,jdbcType=CHAR},
+      </if>
+      <if test="eductionId != null" >
+        #{eductionId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backupOne != null" >
+        #{backupOne,jdbcType=VARCHAR},
+      </if>
+      <if test="backupTwo != null" >
+        #{backupTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="backupThree != null" >
+        #{backupThree,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.User" >
+    update user
+    <set >
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=CHAR},
+      </if>
+      <if test="degreeId != null" >
+        degree_id = #{degreeId,jdbcType=CHAR},
+      </if>
+      <if test="titleId != null" >
+        title_id = #{titleId,jdbcType=CHAR},
+      </if>
+      <if test="eductionId != null" >
+        eduction_id = #{eductionId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backupOne != null" >
+        backup_one = #{backupOne,jdbcType=VARCHAR},
+      </if>
+      <if test="backupTwo != null" >
+        backup_two = #{backupTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="backupThree != null" >
+        backup_three = #{backupThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.User" >
+    update user
+    set department_id = #{departmentId,jdbcType=CHAR},
+      degree_id = #{degreeId,jdbcType=CHAR},
+      title_id = #{titleId,jdbcType=CHAR},
+      eduction_id = #{eductionId,jdbcType=CHAR},
+      number = #{number,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      type = #{type,jdbcType=TINYINT},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      creator = #{creator,jdbcType=CHAR},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      backup_one = #{backupOne,jdbcType=VARCHAR},
+      backup_two = #{backupTwo,jdbcType=VARCHAR},
+      backup_three = #{backupThree,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

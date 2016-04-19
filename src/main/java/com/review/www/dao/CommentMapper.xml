@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.review.www.dao.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.review.www.entity.Comment" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="expert_id" property="expertId" jdbcType="CHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="class" property="class" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="VARCHAR" />
+    <result column="is_pass" property="isPass" jdbcType="VARCHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="CHAR" />
+    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="backup_one" property="backupOne" jdbcType="VARCHAR" />
+    <result column="backup_two" property="backupTwo" jdbcType="VARCHAR" />
+    <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, expert_id, content, class, score, sort, is_pass, comment_time, creator, 
+    creation_time, backup_one, backup_two, backup_three
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from comment
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.review.www.entity.Comment" >
+    insert into comment (id, project_id, expert_id, 
+      content, class, score, 
+      sort, is_pass, comment_time, 
+      creator, creation_time, backup_one, 
+      backup_two, backup_three)
+    values (#{id,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{expertId,jdbcType=CHAR}, 
+      #{content,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=VARCHAR}, #{isPass,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP}, 
+      #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, 
+      #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.review.www.entity.Comment" >
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="expertId != null" >
+        expert_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="class != null" >
+        class,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="isPass != null" >
+        is_pass,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="creationTime != null" >
+        creation_time,
+      </if>
+      <if test="backupOne != null" >
+        backup_one,
+      </if>
+      <if test="backupTwo != null" >
+        backup_two,
+      </if>
+      <if test="backupThree != null" >
+        backup_three,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="expertId != null" >
+        #{expertId,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null" >
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="isPass != null" >
+        #{isPass,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backupOne != null" >
+        #{backupOne,jdbcType=VARCHAR},
+      </if>
+      <if test="backupTwo != null" >
+        #{backupTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="backupThree != null" >
+        #{backupThree,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.Comment" >
+    update comment
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="expertId != null" >
+        expert_id = #{expertId,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null" >
+        class = #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="isPass != null" >
+        is_pass = #{isPass,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=CHAR},
+      </if>
+      <if test="creationTime != null" >
+        creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="backupOne != null" >
+        backup_one = #{backupOne,jdbcType=VARCHAR},
+      </if>
+      <if test="backupTwo != null" >
+        backup_two = #{backupTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="backupThree != null" >
+        backup_three = #{backupThree,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Comment" >
+    update comment
+    set project_id = #{projectId,jdbcType=CHAR},
+      expert_id = #{expertId,jdbcType=CHAR},
+      content = #{content,jdbcType=VARCHAR},
+      class = #{class,jdbcType=VARCHAR},
+      score = #{score,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      is_pass = #{isPass,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=CHAR},
+      creation_time = #{creationTime,jdbcType=TIMESTAMP},
+      backup_one = #{backupOne,jdbcType=VARCHAR},
+      backup_two = #{backupTwo,jdbcType=VARCHAR},
+      backup_three = #{backupThree,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
