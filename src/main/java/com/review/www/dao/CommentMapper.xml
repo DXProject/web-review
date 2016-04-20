@@ -6,7 +6,7 @@
     <result column="project_id" property="projectId" jdbcType="CHAR" />
     <result column="expert_id" property="expertId" jdbcType="CHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="class" property="class" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
     <result column="score" property="score" jdbcType="VARCHAR" />
     <result column="sort" property="sort" jdbcType="VARCHAR" />
     <result column="is_pass" property="isPass" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, project_id, expert_id, content, class, score, sort, is_pass, comment_time, creator, 
+    id, project_id, expert_id, content, grade, score, sort, is_pass, comment_time, creator, 
     creation_time, backup_one, backup_two, backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -33,12 +33,12 @@
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.Comment" >
     insert into comment (id, project_id, expert_id, 
-      content, class, score, 
+      content, grade, score, 
       sort, is_pass, comment_time, 
       creator, creation_time, backup_one, 
       backup_two, backup_three)
     values (#{id,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{expertId,jdbcType=CHAR}, 
-      #{content,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, 
       #{sort,jdbcType=VARCHAR}, #{isPass,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP}, 
       #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, 
       #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR})
@@ -58,8 +58,8 @@
       <if test="content != null" >
         content,
       </if>
-      <if test="class != null" >
-        class,
+      <if test="grade != null" >
+        grade,
       </if>
       <if test="score != null" >
         score,
@@ -102,8 +102,8 @@
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
       </if>
-      <if test="class != null" >
-        #{class,jdbcType=VARCHAR},
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
       </if>
       <if test="score != null" >
         #{score,jdbcType=VARCHAR},
@@ -146,8 +146,8 @@
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
       </if>
-      <if test="class != null" >
-        class = #{class,jdbcType=VARCHAR},
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
       </if>
       <if test="score != null" >
         score = #{score,jdbcType=VARCHAR},
@@ -184,7 +184,7 @@
     set project_id = #{projectId,jdbcType=CHAR},
       expert_id = #{expertId,jdbcType=CHAR},
       content = #{content,jdbcType=VARCHAR},
-      class = #{class,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
       score = #{score,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=VARCHAR},
       is_pass = #{isPass,jdbcType=VARCHAR},
