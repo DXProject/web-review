@@ -11,14 +11,6 @@ import com.review.www.request.LoginReq;
 public interface UserService {
 
     /**
-     * login
-     *
-     * @param req
-     * @return
-     */
-    Result login(LoginReq req);
-
-    /**
      * 注册
      *
      * @param user
@@ -35,9 +27,9 @@ public interface UserService {
     User getByNumberAndType(String number, int type);
 
     /**
-     * get userId
-     * @param user
+     * get by id
+     * @param userId
      * @return
      */
-    String getUserId(User user);
+    User getById(String userId);
 }

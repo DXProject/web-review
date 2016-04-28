@@ -35,7 +35,7 @@
         </div>
     </form>
 </div>
-<div class="loginbm">© 2015-2016 MrZhang 版权所有</div>
+<div class="loginbm">© 2015-2016 智游配 版权所有</div>
 </body>
 </html>
 <script type="text/javascript" src="js/jquery/jquery.1.11.2.min.js"></script>

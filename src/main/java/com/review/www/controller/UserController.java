@@ -6,6 +6,7 @@ import com.review.www.request.LoginReq;
 import com.review.www.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 
@@ -19,23 +20,24 @@ public class UserController extends WebBaseController {
     private UserService userService;
 
     /**
-     * 用户登录
-     *
-     * @param req
-     * @return
-     */
-    @RequestMapping("doLogin.htm")
-    private Result login(LoginReq req){
-        validateParam(req.getNumber(), req.getPassword());
-        return userService.login(req);
-    }
-
-    /**
      * register
      */
     @RequestMapping("doAddUser.htm")
     private Result doAddUser(User user){
         validateParam(user.getNumber());
         return userService.addUser(user);
+    }
+
+    /**
+     * 我的账户信息
+     *
+     * @return
+     */
+    @RequestMapping("myAccountInfo.htm")
+    public ModelAndView myAccountInfo() {
+        ModelAndView mv = getSessionUserMV("user/myAccountInfo");
+        User user = userService.getById(getSessionUser().getUserId());
+        mv.addObject("user", user);
+        return mv;
     }
 }

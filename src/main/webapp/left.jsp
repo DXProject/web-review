@@ -8,125 +8,19 @@
 </head>
 <body>
 <div class="lefttop">
-    <a href="#" target="_parent">智游配</a>
+    <a href="#" target="_parent">评审系统</a>
 </div>
 <dl class="leftmenu">
 
     <c:choose>
-        <c:when test="${user.type == PASSPORTTYPE_TRAVEL_AGENCY}">
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>线路管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="tours/toursInfo.htm">新增线路</a><i></i></li>
-                    <li class="active"><a target="rightFrame" href="tours/toursList.htm">所有线路</a><i></i></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>订单管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="">所有订单</a></li>
-                    <li><a target="rightFrame" href="">所有组团</a></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>推广管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="spread/spreadList.htm">推广线路</a></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>合同管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="contract/contractList.htm">系统合同</a></li>
-                    <li><a target="rightFrame" href="contract/travelAgencyContractList.htm">我的合同</a></li>
-                </ul>
-            </dd>
-
+        <c:when test="${user.type == USERTYPE_ADMIN}">
             <dd>
                 <div class="title">
                     <span><img src="images/leftico01.png"/></span>账户管理
                 </div>
                 <ul class="menuson">
-                    <li><a target="rightFrame" href="">我的信息</a></li>
-                    <li><a target="rightFrame" href="">我的账户</a></li>
-                </ul>
-            </dd>
-        </c:when>
-
-        <c:when test="${user.type == PASSPORTTYPE_ADMIN}">
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>用户管理
-                </div>
-                <ul class="menuson">
-                        <%--<li class="active"><a target="rightFrame" href="passport/passportList.htm?type=${PASSPORTTYPE_ALL}">所有用户</a><i></i></li>--%>
-                    <li class="active"><a target="rightFrame"
-                           href="passport/passportList.htm?type=${PASSPORTTYPE_TRAVEL_AGENCY}">旅行社</a><i></i></li>
-                    <li><a target="rightFrame"
-                           href="passport/passportList.htm?type=${PASSPORTTYPE_TOURIST}">游客</a><i></i></li>
-                    <li><a target="rightFrame" href="passport/passportList.htm?type=${PASSPORTTYPE_GUIDE}">导游</a><i></i>
-                    </li>
-                    <li><a target="rightFrame" href="passport/passportList.htm?type=${PASSPORTTYPE_AGENT}">中介</a><i></i>
-                    </li>
-                    <li><a target="rightFrame"
-                           href="passport/passportList.htm?type=${PASSPORTTYPE_MONITOR}">监管</a><i></i></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>线路管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="tours/toursList.htm">所有线路</a><i></i></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>推广管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="spread/spreadList.htm">推广线路</a></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>智游配
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="tours/customToursList.htm">智游配线路列表</a></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>订单管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="">所有订单</a></li>
-                    <li><a target="rightFrame" href="">所有组团</a></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>合同管理
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="contract/contractList.htm">所有合同</a><i></i></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title">
-                    <span><img src="images/leftico01.png"/></span>首页广告
-                </div>
-                <ul class="menuson">
-                    <li><a target="rightFrame" href="ad/advertismentList.htm">广告位管理</a><i></i></li>
+                    <li class="active"><a target="rightFrame" href="user/myAccountInfo.htm">我的信息</a></li>
+                    <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
                 </ul>
             </dd>
         </c:when>

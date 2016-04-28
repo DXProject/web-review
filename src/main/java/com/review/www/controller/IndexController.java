@@ -57,19 +57,19 @@ public class IndexController extends WebBaseController {
             }
         }
         if (!StringUtils.isEmpty(user.getPassword()) && !PasswordHash.validatePassword(password, user.getPassword())) {
-            addErrorAction(model, "手机号或密码错误");
+            addErrorAction(model, "教工号或密码错误");
             return "redirect:login.htm";
         } else {
-            String userId = userService.getUserId(user);
+            String userId = user.getId();
             if (StringUtils.isEmpty(userId)) {
-                addErrorAction(model, "手机号或密码错误");
+                addErrorAction(model, "教工号或密码错误");
                 return "redirect:login.htm";
             }
             SessionUser userSession = new SessionUser();
             userSession.setType(user.getType());
             userSession.setName(user.getName());
             userSession.setUserId(userId);
-            request.getSession().setAttribute(Constants.SESSION_KEY_LOGIN_USER, user);
+            request.getSession().setAttribute(Constants.SESSION_KEY_LOGIN_USER, userSession);
         }
         return "redirect:index.htm";
     }
