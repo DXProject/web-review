@@ -50,6 +50,17 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
     }
 
     @Override
+    public Result changePassword(String number, String password, Byte type) {
+        User userExist = selfService.getByNumberAndType(number, type);
+        if (null == userExist) {
+            return new Result(Code.ERROR, CodeMessage.PASSPORT_NOT_EXIST);
+        }
+        userExist.setPassword(PasswordHash.createHash(password, UUIDUtils.createId()));
+        userMapper.updateByPrimaryKeySelective(userExist);
+        return new Result(Code.SUCCESS);
+    }
+
+    @Override
     public void setSelfBean(UserService object) {
         this.selfService = object;
     }

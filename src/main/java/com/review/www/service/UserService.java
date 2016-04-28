@@ -32,4 +32,12 @@ public interface UserService {
      * @return
      */
     User getById(String userId);
+
+    /**
+     * change password
+     * @param number
+     * @param newPwd
+     * @param type
+     */
+    Result changePassword(String number, String newPwd, Byte type);
 }
