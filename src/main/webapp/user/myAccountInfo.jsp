@@ -33,7 +33,7 @@
         <li><label>姓名</label><input name="name" type="text" class="short-input"
                                     value="${user.name}"/></li>
 
-            <li><label>&nbsp;</label><input type="button" class="btn saveAdminBtn" value="确认保存"/></li>
+            <li><label>&nbsp;</label><input type="button" class="btn saveBtn" value="确认保存"/></li>
     </ul>
 </div>
 <%@include file="../footer.jsp" %>
@@ -60,97 +60,12 @@
         upload.on('uploadError', function (file) {
             $.zxxbox.remind("上传出错", null, {delay: 2000});
         });
-        //身份证正面照
-        var upload = WebUploader.create({
-            swf: '../js/webuploader/Uploader.swf',
-            server: '${path}/common/file/upload.htm',
-            //paste: document.body,
-            pick: '#idcardPicFront-img-pic',
-            auto: true,
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        upload.on('uploadSuccess', function (file, data) {
-            $('input[name="idcardPicFront"]').val(data.result.path);
-            $('#idcardPicFront-img-pic').find('img').prop('src', data.result.path);
-        });
-        //身份证反面照
-        var upload = WebUploader.create({
-            swf: '../js/webuploader/Uploader.swf',
-            server: '${path}/common/file/upload.htm',
-            //paste: document.body,
-            pick: '#idcardPicBack-img-pic',
-            auto: true,
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        upload.on('uploadSuccess', function (file, data) {
-            $('input[name="idcardPicBack"]').val(data.result.path);
-            $('#idcardPicBack-img-pic').find('img').prop('src', data.result.path);
-        });
-        //手持正面照
-        var upload = WebUploader.create({
-            swf: '../js/webuploader/Uploader.swf',
-            server: '${path}/common/file/upload.htm',
-            //paste: document.body,
-            pick: '#idcardPicHold-img-pic',
-            auto: true,
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        upload.on('uploadSuccess', function (file, data) {
-            $('input[name="idcardPicHold"]').val(data.result.path);
-            $('#idcardPicHold-img-pic').find('img').prop('src', data.result.path);
-        });
-        //营业执照
-        var upload = WebUploader.create({
-            swf: '../js/webuploader/Uploader.swf',
-            server: '${path}/common/file/upload.htm',
-            //paste: document.body,
-            pick: '#businessLicencePic-img-pic',
-            auto: true,
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        upload.on('uploadSuccess', function (file, data) {
-            $('input[name="businessLicencePic"]').val(data.result.path);
-            $('#businessLicencePic-img-pic').find('img').prop('src', data.result.path);
-        });
         //
-        $('.saveBtn').ajaxbtn('doAddOrModifyTravelAgencyInfo.htm', function () {
+        $('.saveBtn').ajaxbtn('doAddOrModifyMonitorInfo.htm', function () {
             return {
                 id: $.trim($('input[name="id"]').val()),
                 avatar: $.trim($('input[name="avatar"]').val()),
                 phone: $.trim($('input[name="phone"]').val()),
-                name: $.trim($('input[name="name"]').val()),
-                contactPhone: $.trim($('input[name="contactPhone"]').val()),
-                authStatus: $.trim($('select[name="authStatus"]').val()),
-                idcardNumber: $.trim($('input[name="idcardNumber"]').val()),
-                idcardPicFront: $.trim($('input[name="idcardPicFront"]').val()),
-                idcardPicBack: $.trim($('input[name="idcardPicBack"]').val()),
-                idcardPicHold: $.trim($('input[name="idcardPicHold"]').val()),
-                businessLicencePic: $.trim($('input[name="businessLicencePic"]').val())
-            }
-        }, function () {
-            return $('.forminfo').validationEngine('validate');
-        });
-        //
-        $('.saveAdminBtn').ajaxbtn('doAddOrModifyMonitorInfo.htm', function () {
-            return {
-                id: $.trim($('input[name="id"]').val()),
-                avatar: $.trim($('input[name="avatar"]').val()),
                 name: $.trim($('input[name="name"]').val())
             }
         }, function () {
