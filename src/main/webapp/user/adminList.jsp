@@ -5,7 +5,7 @@
         <span>位置：</span>
         <ul class="placeul">
             <li><a href="#">用户管理</a></li>
-            <li><a href="#">中介</a></li>
+            <li><a href="#">运营人员</a></li>
         </ul>
     </div>
     <%@include file="../top.jsp" %>
@@ -13,7 +13,7 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <a href="agentInfo.htm">
+            <a href="adminInfo.htm">
                 <li class="click"><span><img src="${path}/images/t01.png"/></span>添加</li>
             </a>
         </ul>
@@ -46,7 +46,7 @@
                     </select>
                 </div>
             </li>
-            <li><label>关键字${type}</label>
+            <li><label>关键字</label>
                 <input name="keyword" type="text" class="scinput" value="${keyword}"/>
             </li>
             <li><label>&nbsp;</label>
@@ -57,11 +57,9 @@
     <table class="imgtable">
         <thead>
         <tr>
-            <th width="100px;">头像</th>
             <th>姓名</th>
             <th>类型</th>
             <th>审核状态</th>
-            <th>账户余额</th>
             <th>创建时间</th>
             <th>状态</th>
             <th>操作</th>
@@ -69,10 +67,7 @@
         </thead>
         <tbody>
         <c:forEach var="i" items="${list}">
-            <tr data="${i.passport.id}">
-                <td class="imgtd"><img class="lazy" data-original="${i.passport.avatar}"
-                                       style="width:60px;-moz-border-radius: 30px;-webkit-border-radius: 30px;border-radius:30px;"/>
-                </td>
+            <tr data="${i.passport.id}" height="50">
                 <td>
                     <a href="#">${i.passport.name}</a>
 
@@ -96,9 +91,6 @@
                     <c:if test="${PASSPORT_AUTH_STATUS_REFUSE.value == i.passport.authStatus}"><font
                             class="color-red">未通过</font></c:if>
                 </td>
-                <td><fmt:formatNumber type="currency" value="${i.amount} " pattern="#,#00.00#"/><a
-                        href="${path}/account/passportAccountList.htm?passportId=${i.passport.id}"
-                        class="tablelink _amountBtn">(详情)</a></td>
                 <td><fmt:formatDate value='${i.passport.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
                 <td>
                     <a href="javascript:;" class="tablelink _updateBtn">
@@ -109,7 +101,8 @@
                     </a>
                 </td>
                 <td>
-                    <a href="agentInfo.htm?passportId=${i.passport.id}" class="tablelink _modifyBtn">修改</a>&nbsp;
+
+                    <a href="adminInfo.htm?passportId=${i.passport.id}" class="tablelink _modifyBtn">修改</a>&nbsp;
                     <a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;
                 </td>
             </tr>
