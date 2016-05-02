@@ -25,6 +25,17 @@
             </dd>
             <dd>
                 <div class="title">
+                    <span><img src="images/leftico01.png"/></span>用户管理
+                </div>
+                <ul class="menuson">
+                    <li><a target="rightFrame" href="">项目申报者</a></li>
+                    <li><a target="rightFrame" href="">二级学院管理人员</a></li>
+                    <li><a target="rightFrame" href="">科研室管理人员</a></li>
+                    <li><cite></cite><a href="" target="rightFrame">专家</a><i></i>
+                </ul>
+            </dd>
+            <dd>
+                <div class="title">
                     <span><img src="images/leftico01.png"/></span>项目管理
                 </div>
                 <ul class="menuson">
