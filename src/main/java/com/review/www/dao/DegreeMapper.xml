@@ -138,4 +138,15 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="searchDegree" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM degree
+    <where>
+      <if test="keyword != null and keyword != '' ">
+        (number LIKE CONCAT('%','${keyword}','%' ) OR name LIKE CONCAT('%','${keyword}','%' ))
+      </if>
+    </where>
+  </select>
 </mapper>

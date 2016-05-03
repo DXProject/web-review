@@ -2,7 +2,7 @@ $(function () {
     window.$K = {
         //ajax简单封装
         http: function (url, data, success, fail) {
-            $.zxxbox.loading();
+            //$.zxxbox.loading();
             $.post(url, data, function (r) {
                 if (r.code != 1) {
                     if (r.message) {

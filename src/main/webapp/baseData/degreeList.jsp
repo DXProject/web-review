@@ -7,7 +7,7 @@
         <span>位置：</span>
         <ul class="placeul">
             <li><a href="#">通用数据维护</a></li>
-            <li><a href="#">职称维护</a></li>
+            <li><a href="#">学位维护</a></li>
         </ul>
     </div>
     <%@include file="../top.jsp" %>
@@ -40,12 +40,12 @@
         </tr>
         </thead>
         <tbody id="sortable">
-        <c:forEach var="title" items="${list}">
-            <tr data="${title.id}" id="${title.id}" height="40">
-                <td>${title.number}</td>
-                <td>${title.name}</td>
-                <td>${title.remark}</td>
-                <td><fmt:formatDate value='${title.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
+        <c:forEach var="degree" items="${list}">
+            <tr data="${degree.id}" id="${degree.id}" height="40">
+                <td>${degree.number}</td>
+                <td>${degree.name}</td>
+                <td>${degree.remark}</td>
+                <td><fmt:formatDate value='${degree.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
                 <td>
                     <a href="javascript:;" class="tablelink _modifyBtn">修改</a>&nbsp;
                     <a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;
@@ -87,18 +87,18 @@
             $.zxxbox($('#addBox'), {
                 title: '修改'
             });
-            $K.http('getTitleInfo.htm', {
+            $K.http('getDegreeInfo.htm', {
                 id: id
             }, function (r) {
-                var title = r.result;
-                $('input[name="id"]').val(title.id);
-                $('input[name="name"]').val(title.name);
-                $('input[name="remark"]').val(title.remark);
+                var degree = r.result;
+                $('input[name="id"]').val(degree.id);
+                $('input[name="name"]').val(degree.name);
+                $('input[name="remark"]').val(degree.remark);
             })
         });
 
         //do add or modify
-        $('._saveBtn').ajaxbtn('doAddOrModifyTitle.htm', function () {
+        $('._saveBtn').ajaxbtn('doAddOrModifyDegree.htm', function () {
             return {
                 id: $.trim($('input[name="id"]').val()),
                 name: $.trim($('input[name="name"]').val()),
@@ -112,7 +112,7 @@
         $('._removeBtn').on('click', function () {
             var id = $(this).parents('tr').attr('data');
             $.zxxbox.ask('确定要删除?', function () {
-                $K.http('doRemoveTitle.htm', {
+                $K.http('doRemoveDegree.htm', {
                     id: id
                 }, function (r) {
                     $.zxxbox.remind("操作成功。", null, {
