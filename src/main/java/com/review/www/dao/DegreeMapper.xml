@@ -3,6 +3,7 @@
 <mapper namespace="com.review.www.dao.DegreeMapper" >
   <resultMap id="BaseResultMap" type="com.review.www.entity.Degree" >
     <id column="id" property="id" jdbcType="CHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="creator" property="creator" jdbcType="CHAR" />
@@ -12,7 +13,7 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, remark, creator, creation_time, backup_one, backup_two, backup_three
+    id, number, name, remark, creator, creation_time, backup_one, backup_two, backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -25,18 +26,23 @@
     where id = #{id,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.Degree" >
-    insert into degree (id, name, remark, 
-      creator, creation_time, backup_one, 
-      backup_two, backup_three)
-    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, 
-      #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR})
+    insert into degree (id, number, name, 
+      remark, creator, creation_time, 
+      backup_one, backup_two, backup_three
+      )
+    values (#{id,jdbcType=CHAR}, #{number,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
+      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.Degree" >
     insert into degree
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="number != null" >
+        number,
       </if>
       <if test="name != null" >
         name,
@@ -64,6 +70,9 @@
       <if test="id != null" >
         #{id,jdbcType=CHAR},
       </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
@@ -90,6 +99,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.Degree" >
     update degree
     <set >
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -116,7 +128,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Degree" >
     update degree
-    set name = #{name,jdbcType=VARCHAR},
+    set number = #{number,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       creator = #{creator,jdbcType=CHAR},
       creation_time = #{creationTime,jdbcType=TIMESTAMP},

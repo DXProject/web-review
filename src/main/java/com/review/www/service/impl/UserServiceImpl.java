@@ -25,7 +25,7 @@ import javax.annotation.Resource;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl implements UserService, SelfBeanAware<UserService> {
-    private UserService selfService;
+        private UserService selfService;
     @Resource
     private UserMapper  userMapper;
     @Resource

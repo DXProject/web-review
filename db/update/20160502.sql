@@ -1,0 +1,11 @@
+ALTER TABLE `reviewDB`.`title`
+ADD COLUMN `number` VARCHAR(45) NOT NULL COMMENT '' AFTER `id`;
+
+ALTER TABLE `reviewDB`.`degree`
+ADD COLUMN `number` VARCHAR(45) NOT NULL COMMENT '' AFTER `id`;
+
+ALTER TABLE `reviewDB`.`eduction`
+ADD COLUMN `number` VARCHAR(45) NOT NULL COMMENT '' AFTER `id`;
+
+ALTER TABLE `reviewDB`.`department`
+ADD COLUMN `number` VARCHAR(45) NOT NULL COMMENT '' AFTER `id`;

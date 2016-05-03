@@ -43,10 +43,19 @@
                     <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
                 </ul>
             </dd>
+            <dd>
+                <div class="title">
+                    <span><img src="images/leftico01.png"/></span>通用数据维护
+                </div>
+                <ul class="menuson">
+                    <li class="active"><a target="rightFrame" href="baseData/titleList.htm">职称维护</a></li>
+                    <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
+                </ul>
+            </dd>
         </c:when>
     </c:choose>
 
-    <div class="bq">© 2015-2016 智游配 版权所有</div>
+    <div class="bq">© 2015-2016 Mr.Zhang 版权所有</div>
 </dl>
 </body>
 </html>

@@ -5,6 +5,8 @@ import java.util.Date;
 public class Eduction {
     private String id;
 
+    private String number;
+
     private String name;
 
     private String remark;
@@ -25,6 +27,14 @@ public class Eduction {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number == null ? null : number.trim();
     }
 
     public String getName() {
