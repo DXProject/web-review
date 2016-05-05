@@ -58,7 +58,7 @@
         <tr>
             <th>编号</th>
             <th>名称</th>
-            <th>备注</th>
+            <th style="width: 50%;">备注</th>
             <th>创建时间</th>
             <%--<th>状态</th>--%>
             <th>操作</th>
