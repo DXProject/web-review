@@ -11,7 +11,7 @@ public class ClassTwo {
 
     private String remark;
 
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     private String creator;
 
@@ -55,11 +55,11 @@ public class ClassTwo {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Boolean getIsDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Boolean isDeleted) {
+    public void setIsDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
 

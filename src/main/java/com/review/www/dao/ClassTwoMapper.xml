@@ -150,4 +150,10 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="selectAllClassTwo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from class_two
+  </select>
 </mapper>

@@ -1,9 +1,11 @@
 package com.review.www.controller;
 
 import com.alibaba.fastjson.JSONArray;
+import com.jopool.jweb.utils.DateUtils;
 import com.review.www.constants.Constants;
 import com.review.www.exception.REVException;
 import com.review.www.helper.PaginationHelper;
+import com.review.www.request.DateParam;
 import com.review.www.vo.SessionUser;
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
@@ -164,6 +166,24 @@ public class WebBaseController {
                 throw new REVException(Code.ERROR_PARAM);
             }
         }
+    }
+
+    /**
+     * 时间常数
+     *
+     * @param timeStartStr
+     * @param timeEndStr
+     * @return
+     */
+    protected DateParam getDateParam(String timeStartStr, String timeEndStr) {
+        DateParam dateParam = new DateParam();
+        if (!StringUtils.isEmpty(timeStartStr)) {
+            dateParam.setTimeStart(DateUtils.getStartDate(DateUtils.string2Date(timeStartStr, "yyyy-MM-dd")));
+        }
+        if (!StringUtils.isEmpty(timeEndStr)) {
+            dateParam.setTimeEnd(DateUtils.getEndDate(DateUtils.string2Date(timeEndStr, "yyyy-MM-dd")));
+        }
+        return dateParam;
     }
 
 }
