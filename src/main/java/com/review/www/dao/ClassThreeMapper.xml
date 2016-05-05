@@ -7,6 +7,7 @@
     <result column="class_two_id" property="classTwoId" jdbcType="CHAR" />
     <result column="reviewProgram_id" property="reviewprogramId" jdbcType="CHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="TINYINT" />
@@ -18,8 +19,8 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, class_one_id, class_two_id, reviewProgram_id, name, start_time, end_time, status, 
-    is_deleted, creator, creation_time, backup_one, backup_two, backup_three
+    id, class_one_id, class_two_id, reviewProgram_id, name, remark, start_time, end_time, 
+    status, is_deleted, creator, creation_time, backup_one, backup_two, backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -33,15 +34,17 @@
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.ClassThree" >
     insert into class_three (id, class_one_id, class_two_id, 
-      reviewProgram_id, name, start_time, 
-      end_time, status, is_deleted, 
-      creator, creation_time, backup_one, 
-      backup_two, backup_three)
+      reviewProgram_id, name, remark, 
+      start_time, end_time, status, 
+      is_deleted, creator, creation_time, 
+      backup_one, backup_two, backup_three
+      )
     values (#{id,jdbcType=CHAR}, #{classOneId,jdbcType=CHAR}, #{classTwoId,jdbcType=CHAR}, 
-      #{reviewprogramId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=BIT}, 
-      #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, 
-      #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR})
+      #{reviewprogramId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
+      #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
+      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.ClassThree" >
     insert into class_three
@@ -60,6 +63,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="remark != null" >
+        remark,
       </if>
       <if test="startTime != null" >
         start_time,
@@ -105,6 +111,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="startTime != null" >
         #{startTime,jdbcType=TIMESTAMP},
       </if>
@@ -149,6 +158,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="startTime != null" >
         start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
@@ -185,6 +197,7 @@
       class_two_id = #{classTwoId,jdbcType=CHAR},
       reviewProgram_id = #{reviewprogramId,jdbcType=CHAR},
       name = #{name,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=TINYINT},

@@ -1,4 +1,5 @@
 <%@ page import="com.review.www.enums.*" %>
+<%@ page import="com.review.www.constants.Constants" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="/WEB-INF/tld/c.tld" prefix="c" %>
@@ -8,3 +9,9 @@
 <c:set var="SUCCESS" value="1"/>
 <%--user--%>
 <c:set var="USERTYPE_ADMIN" value="<%=UserType.ADMIN%>"/>
+<c:set var="BASE_CONSTANT_TITLE" value="<%=Constants.BASE_CONSTANT_TITLE%>"/>
+<c:set var="BASE_CONSTANT_DEGREE" value="<%=Constants.BASE_CONSTANT_DEGREE%>"/>
+<c:set var="BASE_CONSTANT_EDUCATION" value="<%=Constants.BASE_CONSTANT_EDUCATION%>"/>
+<c:set var="BASE_CONSTANT_DEPARTMENT" value="<%=Constants.BASE_CONSTANT_DEPARTMENT%>"/>
+<c:set var="BASE_CONSTANT_DISCIPLINE_CATEGORY" value="<%=Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY%>"/>
+<c:set var="BASE_CONSTANT_SUBJECT_CATEGORY" value="<%=Constants.BASE_CONSTANT_SUBJECT_CATEGORY%>"/>

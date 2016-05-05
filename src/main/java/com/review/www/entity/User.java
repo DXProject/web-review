@@ -5,13 +5,13 @@ import java.util.Date;
 public class User {
     private String id;
 
-    private String departmentId;
+    private String department;
 
-    private String degreeId;
+    private String degree;
 
-    private String titleId;
+    private String title;
 
-    private String eductionId;
+    private String eduction;
 
     private String number;
 
@@ -51,36 +51,36 @@ public class User {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getDepartmentId() {
-        return departmentId;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId == null ? null : departmentId.trim();
+    public void setDepartment(String department) {
+        this.department = department == null ? null : department.trim();
     }
 
-    public String getDegreeId() {
-        return degreeId;
+    public String getDegree() {
+        return degree;
     }
 
-    public void setDegreeId(String degreeId) {
-        this.degreeId = degreeId == null ? null : degreeId.trim();
+    public void setDegree(String degree) {
+        this.degree = degree == null ? null : degree.trim();
     }
 
-    public String getTitleId() {
-        return titleId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitleId(String titleId) {
-        this.titleId = titleId == null ? null : titleId.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public String getEductionId() {
-        return eductionId;
+    public String getEduction() {
+        return eduction;
     }
 
-    public void setEductionId(String eductionId) {
-        this.eductionId = eductionId == null ? null : eductionId.trim();
+    public void setEduction(String eduction) {
+        this.eduction = eduction == null ? null : eduction.trim();
     }
 
     public String getNumber() {

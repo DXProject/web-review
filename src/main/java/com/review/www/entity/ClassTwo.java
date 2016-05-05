@@ -9,6 +9,8 @@ public class ClassTwo {
 
     private String name;
 
+    private String remark;
+
     private Boolean isDeleted;
 
     private String creator;
@@ -43,6 +45,14 @@ public class ClassTwo {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public Boolean getIsDeleted() {

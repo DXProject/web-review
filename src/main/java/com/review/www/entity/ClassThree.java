@@ -13,6 +13,8 @@ public class ClassThree {
 
     private String name;
 
+    private String remark;
+
     private Date startTime;
 
     private Date endTime;
@@ -69,6 +71,14 @@ public class ClassThree {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public Date getStartTime() {

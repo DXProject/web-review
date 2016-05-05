@@ -4,10 +4,8 @@ import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.UUIDUtils;
-import com.review.www.dao.DegreeMapper;
-import com.review.www.dao.TitleMapper;
-import com.review.www.entity.Degree;
-import com.review.www.entity.Title;
+import com.review.www.dao.BaseConstantMapper;
+import com.review.www.entity.BaseConstant;
 import com.review.www.service.BaseDataService;
 import com.review.www.service.UserService;
 import com.review.www.vo.SearchBaseDataVo;
@@ -23,11 +21,9 @@ import java.util.List;
  */
 @Service
 public class BaseDateServiceImpl extends BaseServiceImpl implements BaseDataService, SelfBeanAware<BaseDataService> {
-    private BaseDataService selfService;
+    private BaseDataService    selfService;
     @Resource
-    private TitleMapper     titleMapper;
-    @Resource
-    private DegreeMapper    degreeMapper;
+    private BaseConstantMapper baseConstantMapper;
 
     @Override
     public void setSelfBean(BaseDataService object) {
@@ -35,64 +31,33 @@ public class BaseDateServiceImpl extends BaseServiceImpl implements BaseDataServ
     }
 
     @Override
-    public Title getTitleById(String id) {
-        return titleMapper.selectByPrimaryKey(id);
+    public BaseConstant getBaseConstantById(String id) {
+        return baseConstantMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public Result addTitle(Title title) {
-        title.setId(UUIDUtils.createId());
-        title.setNumber("");//TODO
-        title.setCreationTime(new Date());
-        titleMapper.insert(title);
+    public Result addBaseConstant(BaseConstant baseConstant) {
+        baseConstant.setId(UUIDUtils.createId());
+        baseConstant.setNumber("");//TODO
+        baseConstant.setCreationTime(new Date());
+        baseConstantMapper.insert(baseConstant);
         return new Result(Code.SUCCESS);
     }
 
     @Override
-    public Result modifyTitle(Title title) {
-        titleMapper.updateByPrimaryKeySelective(title);
+    public Result modifyBaseConstant(BaseConstant baseConstant) {
+        baseConstantMapper.updateByPrimaryKeySelective(baseConstant);
         return new Result(Code.SUCCESS);
     }
 
     @Override
-    public List<Title> searchTitle(SearchBaseDataVo searchBaseDataVo, RowBounds page) {
-        return titleMapper.searchTitle(searchBaseDataVo, page);
+    public List<BaseConstant> searchBaseConstant(SearchBaseDataVo searchBaseDataVo, RowBounds page) {
+        return baseConstantMapper.searchBaseConstant(searchBaseDataVo, page);
     }
 
     @Override
-    public Degree getDegreeById(String id) {
-        return degreeMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public Result addDegree(Degree degree) {
-        degree.setId(UUIDUtils.createId());
-        degree.setNumber("");//TODO
-        degree.setCreationTime(new Date());
-        degreeMapper.insert(degree);
-        return new Result(Code.SUCCESS);
-    }
-
-    @Override
-    public Result modifyDegree(Degree degree) {
-        degreeMapper.updateByPrimaryKeySelective(degree);
-        return new Result(Code.SUCCESS);
-    }
-
-    @Override
-    public List<Degree> searchDegree(SearchBaseDataVo searchBaseDataVo, RowBounds page) {
-        return degreeMapper.searchDegree(searchBaseDataVo, page);
-    }
-
-    @Override
-    public Result doRemoveTitle(String id) {
-        titleMapper.deleteByPrimaryKey(id);
-        return new Result(Code.SUCCESS);
-    }
-
-    @Override
-    public Result doRemoveDegree(String id) {
-        degreeMapper.deleteByPrimaryKey(id);
+    public Result doRemoveBaseConstant(String id) {
+        baseConstantMapper.deleteByPrimaryKey(id);
         return new Result(Code.SUCCESS);
     }
 }

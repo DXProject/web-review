@@ -4,8 +4,7 @@ import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.utils.StringUtils;
-import com.review.www.entity.Degree;
-import com.review.www.entity.Title;
+import com.review.www.entity.BaseConstant;
 import com.review.www.service.BaseDataService;
 import com.review.www.service.impl.BaseDateServiceImpl;
 import com.review.www.vo.SearchBaseDataVo;
@@ -30,97 +29,47 @@ public class BaseDataController extends WebBaseController {
      *
      * @return
      */
-    @RequestMapping("titleList.htm")
-    public ModelAndView titleList(SearchBaseDataVo searchBaseDataVo, Pagination page) {
-        List<Title> titles = baseDataService.searchTitle(searchBaseDataVo, page.page());
-        ModelAndView mv = getPageMv("baseData/titleList", titles, page);
-        mv.addObject("keyword", searchBaseDataVo.getKeyword());
+    @RequestMapping("baseConstantList.htm")
+    public ModelAndView baseConstantList(SearchBaseDataVo searchBaseDataVo, Pagination page) {
+        List<BaseConstant> baseConstants = baseDataService.searchBaseConstant(searchBaseDataVo, page.page());
+        ModelAndView mv = getPageMv("baseData/baseConstantList", baseConstants, page);
+        mv.addObject("key", searchBaseDataVo.getKey());
         return mv;
     }
 
     /**
-     * get title info
+     * get baseConstants info
      * @param id
      * @return
      */
-    @RequestMapping("getTitleInfo.htm")
-    public Result getTitleInfo(String id){
-        return new Result(Code.SUCCESS,baseDataService.getTitleById(id));
+    @RequestMapping("getBaseConstantsInfo.htm")
+    public Result getBaseConstantsInfo(String id){
+        return new Result(Code.SUCCESS,baseDataService.getBaseConstantById(id));
     }
 
     /**
-     * do add/modify title
+     * do add/modify baseConstants
      *
      * @return
      */
-    @RequestMapping("doAddOrModifyTitle.htm")
-    public Result doAddOrModifyTitle(Title title) {
-        if(StringUtils.isEmpty(title.getId())){
-            title.setCreator(getSessionUser().getUserId());
-            return baseDataService.addTitle(title);
+    @RequestMapping("doAddOrModifyBaseConstants.htm")
+    public Result doAddOrModifyBaseConstants(BaseConstant baseConstant) {
+        if(StringUtils.isEmpty(baseConstant.getId())){
+            baseConstant.setCreator(getSessionUser().getUserId());
+            return baseDataService.addBaseConstant(baseConstant);
         }else{
-            return baseDataService.modifyTitle(title);
+            return baseDataService.modifyBaseConstant(baseConstant);
         }
     }
 
     /**
-     * do remove title
+     * do remove baseConstant
      *
      * @return
      */
-    @RequestMapping("doRemoveTitle.htm")
-    public Result doRemoveTitle(String id) {
+    @RequestMapping("doRemoveBaseConstant.htm")
+    public Result doRemoveBaseConstant(String id) {
         validateParam(id);
-        return baseDataService.doRemoveTitle(id);
+        return baseDataService.doRemoveBaseConstant(id);
     }
-
-    /**
-     * 职称列表
-     *
-     * @return
-     */
-    @RequestMapping("degreeList.htm")
-    public ModelAndView degreeList(SearchBaseDataVo searchBaseDataVo, Pagination page) {
-        List<Degree> titles = baseDataService.searchDegree(searchBaseDataVo, page.page());
-        ModelAndView mv = getPageMv("baseData/degreeList", titles, page);
-        mv.addObject("keyword", searchBaseDataVo.getKeyword());
-        return mv;
-    }
-
-    /**
-     * get title info
-     * @param id
-     * @return
-     */
-    @RequestMapping("getDegreeInfo.htm")
-    public Result getDegreeInfo(String id){
-        return new Result(Code.SUCCESS,baseDataService.getTitleById(id));
-    }
-
-    /**
-     * do add/modify title
-     *
-     * @return
-     */
-    @RequestMapping("doAddOrModifyDegree.htm")
-    public Result doAddOrModifyDegree(Degree degree) {
-        if(StringUtils.isEmpty(degree.getId())){
-            degree.setCreator(getSessionUser().getUserId());
-            return baseDataService.addDegree(degree);
-        }else{
-            return baseDataService.modifyDegree(degree);
-        }
-    }
-
-    /**
-     * do remove degree
-     *
-     * @return
-     */
-    @RequestMapping("doRemoveDegree.htm")
-    public Result doRemoveDegree(String id) {
-        validateParam(id);
-        return baseDataService.doRemoveDegree(id);
-    }
-
 }

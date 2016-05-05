@@ -5,9 +5,9 @@ import java.util.Date;
 public class Expert {
     private String id;
 
-    private String titleId;
+    private String title;
 
-    private String degreeId;
+    private String degree;
 
     private String avatar;
 
@@ -43,20 +43,20 @@ public class Expert {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getTitleId() {
-        return titleId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitleId(String titleId) {
-        this.titleId = titleId == null ? null : titleId.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public String getDegreeId() {
-        return degreeId;
+    public String getDegree() {
+        return degree;
     }
 
-    public void setDegreeId(String degreeId) {
-        this.degreeId = degreeId == null ? null : degreeId.trim();
+    public void setDegree(String degree) {
+        this.degree = degree == null ? null : degree.trim();
     }
 
     public String getAvatar() {

@@ -5,6 +5,7 @@
     <id column="id" property="id" jdbcType="CHAR" />
     <result column="class_one_id" property="classOneId" jdbcType="CHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
     <result column="creator" property="creator" jdbcType="CHAR" />
     <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
@@ -13,7 +14,7 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, class_one_id, name, is_deleted, creator, creation_time, backup_one, backup_two, 
+    id, class_one_id, name, remark, is_deleted, creator, creation_time, backup_one, backup_two, 
     backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -28,13 +29,13 @@
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.ClassTwo" >
     insert into class_two (id, class_one_id, name, 
-      is_deleted, creator, creation_time, 
-      backup_one, backup_two, backup_three
-      )
+      remark, is_deleted, creator, 
+      creation_time, backup_one, backup_two, 
+      backup_three)
     values (#{id,jdbcType=CHAR}, #{classOneId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
-      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}
-      )
+      #{remark,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
+      #{backupThree,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.ClassTwo" >
     insert into class_two
@@ -47,6 +48,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="remark != null" >
+        remark,
       </if>
       <if test="isDeleted != null" >
         is_deleted,
@@ -77,6 +81,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="isDeleted != null" >
         #{isDeleted,jdbcType=BIT},
       </if>
@@ -106,6 +113,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
       <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=BIT},
       </if>
@@ -131,6 +141,7 @@
     update class_two
     set class_one_id = #{classOneId,jdbcType=CHAR},
       name = #{name,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=BIT},
       creator = #{creator,jdbcType=CHAR},
       creation_time = #{creationTime,jdbcType=TIMESTAMP},

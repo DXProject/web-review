@@ -39,7 +39,7 @@
                     <span><img src="images/leftico01.png"/></span>项目管理
                 </div>
                 <ul class="menuson">
-                    <li class="active"><a target="rightFrame" href="user/myAccountInfo.htm">我的信息</a></li>
+                    <li class="active"><a target="rightFrame" href="product/addProduct.htm">添加新申报项目</a></li>
                     <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
                 </ul>
             </dd>
@@ -48,9 +48,7 @@
                     <span><img src="images/leftico01.png"/></span>通用数据维护
                 </div>
                 <ul class="menuson">
-                    <li><a target="rightFrame" href="baseData/titleList.htm">职称维护</a></li>
-                    <li><a target="rightFrame" href="baseData/degreeList.htm">学位维护</a></li>
-                    <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
+                    <li><a target="rightFrame" href="baseData/baseConstantList.htm">通用数据维护</a></li>
                 </ul>
             </dd>
         </c:when>

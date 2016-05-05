@@ -20,11 +20,36 @@
         </ul>
     </div>
     <ul class="seachform">
-        <form method="get" action="">
-            <li><label>关键字</label>
+        <form method="get" action="" id="searchForm">
+            <li><label>数据类型</label>
+
+                <div class="vocation">
+                    <select name="key">
+                        <option value="${BASE_CONSTANT_TITLE}"
+                                <c:if test="${BASE_CONSTANT_TITLE  == key}">selected</c:if>>职称
+                        </option>
+                        <option value="${BASE_CONSTANT_DEGREE}"
+                                <c:if test="${BASE_CONSTANT_DEGREE == key}">selected</c:if>>学位
+                        </option>
+                        <option value="${BASE_CONSTANT_EDUCATION}"
+                                <c:if test="${BASE_CONSTANT_EDUCATION == key}">selected</c:if>>学历
+                        </option>
+                        <option value="${BASE_CONSTANT_DEPARTMENT}"
+                                <c:if test="${BASE_CONSTANT_DEPARTMENT == key}">selected</c:if>>部门学院
+                        </option>
+                        <option value="${BASE_CONSTANT_DISCIPLINE_CATEGORY}"
+                                <c:if test="${BASE_CONSTANT_DISCIPLINE_CATEGORY == key}">selected</c:if>>学科门类
+                        </option>
+                        <option value="${BASE_CONSTANT_SUBJECT_CATEGORY}"
+                                <c:if test="${BASE_CONSTANT_SUBJECT_CATEGORY == key}">selected</c:if>>课题类别
+                        </option>
+                    </select>
+                </div>
             </li>
 
-            <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
+            <li><label>&nbsp;</label>
+                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="baseConstantList.htm"/>
+            </li>
         </form>
     </ul>
 
@@ -40,12 +65,12 @@
         </tr>
         </thead>
         <tbody id="sortable">
-        <c:forEach var="degree" items="${list}">
-            <tr data="${degree.id}" id="${degree.id}" height="40">
-                <td>${degree.number}</td>
-                <td>${degree.name}</td>
-                <td>${degree.remark}</td>
-                <td><fmt:formatDate value='${degree.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
+        <c:forEach var="baseConstant" items="${list}">
+            <tr data="${baseConstant.id}" id="${baseConstant.id}" height="40">
+                <td>${baseConstant.number}</td>
+                <td>${baseConstant.name}</td>
+                <td>${baseConstant.remark}</td>
+                <td><fmt:formatDate value='${baseConstant.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
                 <td>
                     <a href="javascript:;" class="tablelink _modifyBtn">修改</a>&nbsp;
                     <a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;
@@ -87,20 +112,21 @@
             $.zxxbox($('#addBox'), {
                 title: '修改'
             });
-            $K.http('getDegreeInfo.htm', {
+            $K.http('getBaseConstantsInfo.htm', {
                 id: id
             }, function (r) {
-                var degree = r.result;
-                $('input[name="id"]').val(degree.id);
-                $('input[name="name"]').val(degree.name);
-                $('input[name="remark"]').val(degree.remark);
+                var baseConstant = r.result;
+                $('input[name="id"]').val(baseConstant.id);
+                $('input[name="name"]').val(baseConstant.name);
+                $('input[name="remark"]').val(baseConstant.remark);
             })
         });
 
         //do add or modify
-        $('._saveBtn').ajaxbtn('doAddOrModifyDegree.htm', function () {
+        $('._saveBtn').ajaxbtn('doAddOrModifyBaseConstants.htm', function () {
             return {
                 id: $.trim($('input[name="id"]').val()),
+                key: key,
                 name: $.trim($('input[name="name"]').val()),
                 remark: $.trim($('input[name="remark"]').val())
             }
@@ -112,7 +138,7 @@
         $('._removeBtn').on('click', function () {
             var id = $(this).parents('tr').attr('data');
             $.zxxbox.ask('确定要删除?', function () {
-                $K.http('doRemoveDegree.htm', {
+                $K.http('doRemoveBaseConstant.htm', {
                     id: id
                 }, function (r) {
                     $.zxxbox.remind("操作成功。", null, {
@@ -123,6 +149,10 @@
                     });
                 })
             })
+        });
+
+        $('._searchBtn').on('click', function () {
+            $('#searchForm').prop('action', $(this).attr('action')).submit();
         });
     });
 </script>

@@ -11,7 +11,7 @@ public class Comment {
 
     private String content;
 
-    private String grade;
+    private String rank;
 
     private String score;
 
@@ -63,12 +63,12 @@ public class Comment {
         this.content = content == null ? null : content.trim();
     }
 
-    public String getGrade() {
-        return grade;
+    public String getRank() {
+        return rank;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade == null ? null : grade.trim();
+    public void setRank(String rank) {
+        this.rank = rank == null ? null : rank.trim();
     }
 
     public String getScore() {

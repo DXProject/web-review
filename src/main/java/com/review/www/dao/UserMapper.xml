@@ -3,10 +3,10 @@
 <mapper namespace="com.review.www.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.review.www.entity.User" >
     <id column="id" property="id" jdbcType="CHAR" />
-    <result column="department_id" property="departmentId" jdbcType="CHAR" />
-    <result column="degree_id" property="degreeId" jdbcType="CHAR" />
-    <result column="title_id" property="titleId" jdbcType="CHAR" />
-    <result column="eduction_id" property="eductionId" jdbcType="CHAR" />
+    <result column="department" property="department" jdbcType="CHAR" />
+    <result column="degree" property="degree" jdbcType="CHAR" />
+    <result column="title" property="title" jdbcType="CHAR" />
+    <result column="eduction" property="eduction" jdbcType="CHAR" />
     <result column="number" property="number" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -24,9 +24,9 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, department_id, degree_id, title_id, eduction_id, number, avatar, name, sex, type, 
-    password, phone, email, birthday, is_deleted, creator, creation_time, backup_one, 
-    backup_two, backup_three
+    id, department, degree, title, eduction, number, avatar, name, sex, type, password, 
+    phone, email, birthday, is_deleted, creator, creation_time, backup_one, backup_two, 
+    backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -39,15 +39,15 @@
     where id = #{id,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.User" >
-    insert into user (id, department_id, degree_id, 
-      title_id, eduction_id, number, 
+    insert into user (id, department, degree, 
+      title, eduction, number, 
       avatar, name, sex, type, 
       password, phone, email, 
       birthday, is_deleted, creator, 
       creation_time, backup_one, backup_two, 
       backup_three)
-    values (#{id,jdbcType=CHAR}, #{departmentId,jdbcType=CHAR}, #{degreeId,jdbcType=CHAR}, 
-      #{titleId,jdbcType=CHAR}, #{eductionId,jdbcType=CHAR}, #{number,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=CHAR}, #{department,jdbcType=CHAR}, #{degree,jdbcType=CHAR}, 
+      #{title,jdbcType=CHAR}, #{eduction,jdbcType=CHAR}, #{number,jdbcType=VARCHAR}, 
       #{avatar,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{type,jdbcType=TINYINT}, 
       #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{birthday,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, 
@@ -60,17 +60,17 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="departmentId != null" >
-        department_id,
+      <if test="department != null" >
+        department,
       </if>
-      <if test="degreeId != null" >
-        degree_id,
+      <if test="degree != null" >
+        degree,
       </if>
-      <if test="titleId != null" >
-        title_id,
+      <if test="title != null" >
+        title,
       </if>
-      <if test="eductionId != null" >
-        eduction_id,
+      <if test="eduction != null" >
+        eduction,
       </if>
       <if test="number != null" >
         number,
@@ -122,17 +122,17 @@
       <if test="id != null" >
         #{id,jdbcType=CHAR},
       </if>
-      <if test="departmentId != null" >
-        #{departmentId,jdbcType=CHAR},
+      <if test="department != null" >
+        #{department,jdbcType=CHAR},
       </if>
-      <if test="degreeId != null" >
-        #{degreeId,jdbcType=CHAR},
+      <if test="degree != null" >
+        #{degree,jdbcType=CHAR},
       </if>
-      <if test="titleId != null" >
-        #{titleId,jdbcType=CHAR},
+      <if test="title != null" >
+        #{title,jdbcType=CHAR},
       </if>
-      <if test="eductionId != null" >
-        #{eductionId,jdbcType=CHAR},
+      <if test="eduction != null" >
+        #{eduction,jdbcType=CHAR},
       </if>
       <if test="number != null" >
         #{number,jdbcType=VARCHAR},
@@ -184,17 +184,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.User" >
     update user
     <set >
-      <if test="departmentId != null" >
-        department_id = #{departmentId,jdbcType=CHAR},
+      <if test="department != null" >
+        department = #{department,jdbcType=CHAR},
       </if>
-      <if test="degreeId != null" >
-        degree_id = #{degreeId,jdbcType=CHAR},
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=CHAR},
       </if>
-      <if test="titleId != null" >
-        title_id = #{titleId,jdbcType=CHAR},
+      <if test="title != null" >
+        title = #{title,jdbcType=CHAR},
       </if>
-      <if test="eductionId != null" >
-        eduction_id = #{eductionId,jdbcType=CHAR},
+      <if test="eduction != null" >
+        eduction = #{eduction,jdbcType=CHAR},
       </if>
       <if test="number != null" >
         number = #{number,jdbcType=VARCHAR},
@@ -246,10 +246,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.review.www.entity.User" >
     update user
-    set department_id = #{departmentId,jdbcType=CHAR},
-      degree_id = #{degreeId,jdbcType=CHAR},
-      title_id = #{titleId,jdbcType=CHAR},
-      eduction_id = #{eductionId,jdbcType=CHAR},
+    set department = #{department,jdbcType=CHAR},
+      degree = #{degree,jdbcType=CHAR},
+      title = #{title,jdbcType=CHAR},
+      eduction = #{eduction,jdbcType=CHAR},
       number = #{number,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},

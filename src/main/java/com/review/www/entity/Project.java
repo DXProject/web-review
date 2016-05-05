@@ -11,9 +11,9 @@ public class Project {
 
     private String userId;
 
-    private String subjectCategoryId;
+    private String subjectCategory;
 
-    private String disciplineCategoryId;
+    private String disciplineCategory;
 
     private String name;
 
@@ -75,20 +75,20 @@ public class Project {
         this.userId = userId == null ? null : userId.trim();
     }
 
-    public String getSubjectCategoryId() {
-        return subjectCategoryId;
+    public String getSubjectCategory() {
+        return subjectCategory;
     }
 
-    public void setSubjectCategoryId(String subjectCategoryId) {
-        this.subjectCategoryId = subjectCategoryId == null ? null : subjectCategoryId.trim();
+    public void setSubjectCategory(String subjectCategory) {
+        this.subjectCategory = subjectCategory == null ? null : subjectCategory.trim();
     }
 
-    public String getDisciplineCategoryId() {
-        return disciplineCategoryId;
+    public String getDisciplineCategory() {
+        return disciplineCategory;
     }
 
-    public void setDisciplineCategoryId(String disciplineCategoryId) {
-        this.disciplineCategoryId = disciplineCategoryId == null ? null : disciplineCategoryId.trim();
+    public void setDisciplineCategory(String disciplineCategory) {
+        this.disciplineCategory = disciplineCategory == null ? null : disciplineCategory.trim();
     }
 
     public String getName() {

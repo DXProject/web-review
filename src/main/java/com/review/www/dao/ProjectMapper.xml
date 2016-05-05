@@ -6,8 +6,8 @@
     <result column="class_three_id" property="classThreeId" jdbcType="CHAR" />
     <result column="review_program_id" property="reviewProgramId" jdbcType="CHAR" />
     <result column="user_id" property="userId" jdbcType="CHAR" />
-    <result column="subject_category_id" property="subjectCategoryId" jdbcType="CHAR" />
-    <result column="discipline_category_id" property="disciplineCategoryId" jdbcType="CHAR" />
+    <result column="subject_category" property="subjectCategory" jdbcType="CHAR" />
+    <result column="discipline_category" property="disciplineCategory" jdbcType="CHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="topic_base" property="topicBase" jdbcType="VARCHAR" />
@@ -24,7 +24,7 @@
     <result column="backup_five" property="backupFive" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, class_three_id, review_program_id, user_id, subject_category_id, discipline_category_id, 
+    id, class_three_id, review_program_id, user_id, subject_category, discipline_category, 
     name, status, topic_base, research, funds, file, is_deleted, creator, creation_time, 
     backup_one, backup_two, backup_three, backup_four, backup_five
   </sql>
@@ -40,14 +40,14 @@
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.Project" >
     insert into project (id, class_three_id, review_program_id, 
-      user_id, subject_category_id, discipline_category_id, 
+      user_id, subject_category, discipline_category, 
       name, status, topic_base, 
       research, funds, file, 
       is_deleted, creator, creation_time, 
       backup_one, backup_two, backup_three, 
       backup_four, backup_five)
     values (#{id,jdbcType=CHAR}, #{classThreeId,jdbcType=CHAR}, #{reviewProgramId,jdbcType=CHAR}, 
-      #{userId,jdbcType=CHAR}, #{subjectCategoryId,jdbcType=CHAR}, #{disciplineCategoryId,jdbcType=CHAR}, 
+      #{userId,jdbcType=CHAR}, #{subjectCategory,jdbcType=CHAR}, #{disciplineCategory,jdbcType=CHAR}, 
       #{name,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{topicBase,jdbcType=VARCHAR}, 
       #{research,jdbcType=VARCHAR}, #{funds,jdbcType=VARCHAR}, #{file,jdbcType=VARCHAR}, 
       #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
@@ -69,11 +69,11 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="subjectCategoryId != null" >
-        subject_category_id,
+      <if test="subjectCategory != null" >
+        subject_category,
       </if>
-      <if test="disciplineCategoryId != null" >
-        discipline_category_id,
+      <if test="disciplineCategory != null" >
+        discipline_category,
       </if>
       <if test="name != null" >
         name,
@@ -131,11 +131,11 @@
       <if test="userId != null" >
         #{userId,jdbcType=CHAR},
       </if>
-      <if test="subjectCategoryId != null" >
-        #{subjectCategoryId,jdbcType=CHAR},
+      <if test="subjectCategory != null" >
+        #{subjectCategory,jdbcType=CHAR},
       </if>
-      <if test="disciplineCategoryId != null" >
-        #{disciplineCategoryId,jdbcType=CHAR},
+      <if test="disciplineCategory != null" >
+        #{disciplineCategory,jdbcType=CHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -193,11 +193,11 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=CHAR},
       </if>
-      <if test="subjectCategoryId != null" >
-        subject_category_id = #{subjectCategoryId,jdbcType=CHAR},
+      <if test="subjectCategory != null" >
+        subject_category = #{subjectCategory,jdbcType=CHAR},
       </if>
-      <if test="disciplineCategoryId != null" >
-        discipline_category_id = #{disciplineCategoryId,jdbcType=CHAR},
+      <if test="disciplineCategory != null" >
+        discipline_category = #{disciplineCategory,jdbcType=CHAR},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -249,8 +249,8 @@
     set class_three_id = #{classThreeId,jdbcType=CHAR},
       review_program_id = #{reviewProgramId,jdbcType=CHAR},
       user_id = #{userId,jdbcType=CHAR},
-      subject_category_id = #{subjectCategoryId,jdbcType=CHAR},
-      discipline_category_id = #{disciplineCategoryId,jdbcType=CHAR},
+      subject_category = #{subjectCategory,jdbcType=CHAR},
+      discipline_category = #{disciplineCategory,jdbcType=CHAR},
       name = #{name,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
       topic_base = #{topicBase,jdbcType=VARCHAR},
