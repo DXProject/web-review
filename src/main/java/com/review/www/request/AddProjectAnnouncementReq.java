@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by zhangtianfeng on 16/5/6.
  */
-public class AddProductAnnouncementReq {
+public class AddProjectAnnouncementReq {
     private String title; //公告标题
     private String content; //公告内容
     private String timeStart; //项目申报时间

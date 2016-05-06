@@ -67,7 +67,7 @@
 <script>
     $(function () {
         //
-        $('.saveBtn').ajaxbtn('doAddProductAnnouncement.htm', function () {
+        $('.saveBtn').ajaxbtn('doAddProjectAnnouncement.htm', function () {
             return {
                 //id: $.trim($('input[name="id"]').val()),
                 title: $.trim($('input[name="title"]').val()),

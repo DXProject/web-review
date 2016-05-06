@@ -1,16 +1,11 @@
 package com.review.www.service.impl;
 
+import com.jopool.jweb.entity.Result;
+import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.spring.SelfBeanAware;
-import com.review.www.dao.AnnouncementMapper;
-import com.review.www.dao.ClassOneMapper;
-import com.review.www.dao.ClassThreeMapper;
-import com.review.www.dao.ClassTwoMapper;
-import com.review.www.entity.Announcement;
-import com.review.www.entity.ClassOne;
-import com.review.www.entity.ClassThree;
-import com.review.www.entity.ClassTwo;
-import com.review.www.service.ProductService;
-import jdk.nashorn.internal.ir.annotations.Reference;
+import com.review.www.dao.*;
+import com.review.www.entity.*;
+import com.review.www.service.ProjectService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,8 +15,8 @@ import java.util.List;
  * Created by zhangtianfeng on 16/5/4.
  */
 @Service
-public class ProductServiceImpl extends BaseServiceImpl implements ProductService, SelfBeanAware<ProductService> {
-    private ProductService     selfService;
+public class ProjectServiceImpl extends BaseServiceImpl implements ProjectService, SelfBeanAware<ProjectService> {
+    private ProjectService     selfService;
     @Resource
     private AnnouncementMapper announcementMapper;
     @Resource
@@ -30,14 +25,16 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
     private ClassTwoMapper     classTwoMapper;
     @Resource
     private ClassThreeMapper   classThreeMapper;
+    @Resource
+    private ProjectMapper      projectMapper;
 
     @Override
-    public void setSelfBean(ProductService object) {
+    public void setSelfBean(ProjectService object) {
         this.selfService = object;
     }
 
     @Override
-    public void doAddProductAnnouncement(Announcement announcement, ClassThree classThree) {
+    public void doAddProjectAnnouncement(Announcement announcement, ClassThree classThree) {
         announcement.setClassThreeId(classThree.getId());
         announcementMapper.insert(announcement);
         classThreeMapper.insert(classThree);
@@ -51,5 +48,11 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
     @Override
     public List<ClassTwo> getClassTwoList() {
         return classTwoMapper.selectAllClassTwo();
+    }
+
+    @Override
+    public Result declareProject(Project project) {
+        projectMapper.insert(project);
+        return new Result(Code.SUCCESS);
     }
 }
