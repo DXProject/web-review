@@ -16,39 +16,17 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click _addBtn"><span><img src="${path}/images/t01.png    "/></span>添加</li>
+            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
         </ul>
     </div>
     <ul class="seachform">
         <form method="get" action="" id="searchForm">
-            <li><label>数据类型</label>
-
-                <div class="vocation">
-                    <select name="key">
-                        <option value="${BASE_CONSTANT_TITLE}"
-                                <c:if test="${BASE_CONSTANT_TITLE  == key}">selected</c:if>>职称
-                        </option>
-                        <option value="${BASE_CONSTANT_DEGREE}"
-                                <c:if test="${BASE_CONSTANT_DEGREE == key}">selected</c:if>>学位
-                        </option>
-                        <option value="${BASE_CONSTANT_EDUCATION}"
-                                <c:if test="${BASE_CONSTANT_EDUCATION == key}">selected</c:if>>学历
-                        </option>
-                        <option value="${BASE_CONSTANT_DEPARTMENT}"
-                                <c:if test="${BASE_CONSTANT_DEPARTMENT == key}">selected</c:if>>部门学院
-                        </option>
-                        <option value="${BASE_CONSTANT_DISCIPLINE_CATEGORY}"
-                                <c:if test="${BASE_CONSTANT_DISCIPLINE_CATEGORY == key}">selected</c:if>>学科门类
-                        </option>
-                        <option value="${BASE_CONSTANT_SUBJECT_CATEGORY}"
-                                <c:if test="${BASE_CONSTANT_SUBJECT_CATEGORY == key}">selected</c:if>>课题类别
-                        </option>
-                    </select>
-                </div>
+            <li><label>关键字${type}</label>
+                <input name="keyword" type="text" class="scinput" value="${keyword}"/>
             </li>
 
             <li><label>&nbsp;</label>
-                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="baseConstantList.htm"/>
+                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="rulesList.htm"/>
             </li>
         </form>
     </ul>
@@ -57,7 +35,7 @@
         <thead>
         <tr>
             <th>名称</th>
-            <th style="width: 50%;">备注</th>
+            <th style="width: 50%;">明细</th>
             <th>创建时间</th>
             <%--<th>状态</th>--%>
             <th>操作</th>
@@ -84,7 +62,7 @@
     <input name="id" type="hidden" value=""/>
     <li class="line"><label>名称</label><input name="name" type="text" class="short-input validate[required]" value=""/>
     </li>
-    <li class="line"><label>备注</label><input name="remark" type="text" class="long-input" value=""/>
+    <li class="line"><label>详情</label><input name="details" type="text" class="long-input" value=""/>
     </li>
     <li></li>
     <li style="width: 100%;text-align: center"><input name="" type="button" class="btn _saveBtn" value="确认保存"/></li>
@@ -110,23 +88,22 @@
             $.zxxbox($('#addBox'), {
                 title: '修改'
             });
-            $K.http('getBaseConstantsInfo.htm', {
+            $K.http('getRulesInfo.htm', {
                 id: id
             }, function (r) {
-                var baseConstant = r.result;
-                $('input[name="id"]').val(baseConstant.id);
-                $('input[name="name"]').val(baseConstant.name);
-                $('input[name="remark"]').val(baseConstant.remark);
+                var rules = r.result;
+                $('input[name="id"]').val(rules.id);
+                $('input[name="name"]').val(rules.name);
+                $('input[name="details"]').val(rules.details);
             })
         });
 
         //do add or modify
-        $('._saveBtn').ajaxbtn('doAddOrModifyBaseConstants.htm', function () {
+        $('._saveBtn').ajaxbtn('doAddOrModifyRules.htm', function () {
             return {
                 id: $.trim($('input[name="id"]').val()),
-                key: key,
                 name: $.trim($('input[name="name"]').val()),
-                remark: $.trim($('input[name="remark"]').val())
+                details: $.trim($('input[name="details"]').val())
             }
         }, function () {
             return $('#addBox').validationEngine('validate');
@@ -136,7 +113,7 @@
         $('._removeBtn').on('click', function () {
             var id = $(this).parents('tr').attr('data');
             $.zxxbox.ask('确定要删除?', function () {
-                $K.http('doRemoveBaseConstant.htm', {
+                $K.http('removeRules.htm', {
                     id: id
                 }, function (r) {
                     $.zxxbox.remind("操作成功。", null, {

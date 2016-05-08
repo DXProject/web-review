@@ -2,6 +2,7 @@ package com.review.www.service.impl;
 
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
+import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.UUIDUtils;
 import com.review.www.dao.ReviewProgramMapper;
@@ -11,7 +12,7 @@ import com.review.www.entity.ReviewProgram;
 import com.review.www.entity.ReviewProgramRules;
 import com.review.www.entity.Rules;
 import com.review.www.service.ProgramService;
-import org.apache.commons.collections.ListUtils;
+import com.review.www.vo.SearchBaseDataVo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -87,6 +88,16 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
             addReviewProgramRules(reviewProgram, rules);
         }
         return null;
+    }
+
+    @Override
+    public List<Rules> searchRules(SearchBaseDataVo searchBaseDataVo, Pagination page) {
+        return rulesMapper.searchRules(searchBaseDataVo,page);
+    }
+
+    @Override
+    public Result getRulesInfo(String id) {
+        return new Result(Code.SUCCESS,rulesMapper.selectByPrimaryKey(id));
     }
 
     private void addReviewProgramRules(ReviewProgram reviewProgram, List<Rules> rules) {
