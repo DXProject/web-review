@@ -7,7 +7,7 @@ public class ReviewProgram {
 
     private String name;
 
-    private Byte type;
+    private int type;
 
     private String className;
 
@@ -41,11 +41,11 @@ public class ReviewProgram {
         this.name = name == null ? null : name.trim();
     }
 
-    public Byte getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(Byte type) {
+    public void setType(int type) {
         this.type = type;
     }
 

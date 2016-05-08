@@ -14,4 +14,11 @@ public interface ReviewProgramRulesMapper {
     int updateByPrimaryKeySelective(ReviewProgramRules record);
 
     int updateByPrimaryKey(ReviewProgramRules record);
+
+    /**
+     * deleted by reviewProgram
+     *
+     * @param reviewProgramId
+     */
+    void deleteByReviewProgram(String reviewProgramId);
 }

@@ -6,8 +6,8 @@
     <div class="place">
         <span>位置：</span>
         <ul class="placeul">
-            <li><a href="#">通用数据维护</a></li>
-            <li><a href="#">学位维护</a></li>
+            <li><a href="#">评审方案管理</a></li>
+            <li><a href="#">评审规则列表</a></li>
         </ul>
     </div>
     <%@include file="../top.jsp" %>
@@ -56,7 +56,6 @@
     <table class="imgtable">
         <thead>
         <tr>
-            <th>编号</th>
             <th>名称</th>
             <th style="width: 50%;">备注</th>
             <th>创建时间</th>
@@ -65,12 +64,11 @@
         </tr>
         </thead>
         <tbody id="sortable">
-        <c:forEach var="baseConstant" items="${list}">
-            <tr data="${baseConstant.id}" id="${baseConstant.id}" height="40">
-                <td>${baseConstant.number}</td>
-                <td>${baseConstant.name}</td>
-                <td>${baseConstant.remark}</td>
-                <td><fmt:formatDate value='${baseConstant.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
+        <c:forEach var="r" items="${list}">
+            <tr data="${r.id}" id="${r.id}" height="40">
+                <td>${r.name}</td>
+                <td>${r.details}</td>
+                <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
                 <td>
                     <a href="javascript:;" class="tablelink _modifyBtn">修改</a>&nbsp;
                     <a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;
