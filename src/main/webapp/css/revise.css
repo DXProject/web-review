@@ -1,0 +1,167 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.container{
+	width: 961px !important;
+}
+.main{
+	width: 961px;
+	float: left;
+}
+
+.content{
+	width: 830px;
+	display: block;
+	float: left;
+	border: 1px solid #ccc;
+	padding: 10px;
+	z-index: 100;
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.per-info,.info-area{
+	width: 778px;
+	margin: 0px auto;
+}
+.per-info a{
+	font-weight: 100 !important;
+
+}
+.per-title{
+	width: 778px;
+	display: block;
+	height: 50px;
+	margin-top: 25px;
+	line-height: 50px;
+	font-size: 18px;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: #ccc;
+	color: #666;
+}
+.per-info .d-info{
+	margin-left: 38px;
+}
+.per-info label{
+	height: 35px;
+	display: block;
+	margin-top: 15px;
+	font-weight: normal;
+	line-height: 35px;
+
+}
+
+.plan-1 p{
+	width: 750px;
+	float:left;
+	margin-top: 10px;
+}
+.plan-1 form{
+	float: left;
+}
+.plan-1 form a{
+	display: block;
+	float: left;
+}
+
+.plan-1 p a{
+	width: 50px;
+	height: 50px;
+	display: block;
+	float: left;
+	position: relative;
+	text-align: center;
+	margin-right: 15px;
+}
+.bbb{
+	border:2px solid #16aeed;
+}
+.plan-1 p input{
+	display: block;
+	width: 48px;
+	height: 48px;
+	position: relative;
+	opacity: 0;
+	background: #ccc !important;
+	margin-top: -50px;
+}
+
+.plan-1 p img{
+	width: 48px;
+	height: 48px;
+	position: relative;
+}
+
+.per-info label input[type="text"],.per-info label input[type="password"],select{
+	height: 35px;
+	width: 240px;
+	text-align: left;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccc;
+	padding: 5px;}
+.per-info label span{
+	display: block;
+	float: left;
+	width: 72px !important;
+}	
+.plan-1{
+	margin-left: 38px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.plan-1 input[type="file"]{
+	width: 180px;
+	float: left;
+}
+
+.btn_addPic{
+display: block;
+position: relative;
+width: 140px;
+height: 39px;
+overflow: hidden;
+border: 1px solid #EBEBEB;
+background: none repeat scroll 0 0 #F3F3F3;
+color: #999999;
+cursor: pointer;
+text-align: center;
+}
+.btn_addPic span{
+	display: block;
+	line-height: 39px;
+}
+.btn_addPic em {
+background:url(../images/file-bg.png) 0 0;
+display: inline-block;
+width: 18px;
+height: 18px;
+overflow: hidden;
+margin: 10px 5px 10px 0;
+line-height: 20em;
+vertical-align: middle;
+}
+.btn_addPic:hover em{
+	background-position:-19px 0;}
+.filePrew {
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+width: 140px;
+height: 39px;
+font-size: 100px; /* 增大不同浏览器的可点击区域 */
+opacity: 0; /* 实现的关键点 */
+filter:alpha(opacity=0);/* 兼容IE */
+}
+
+.save{
+	width: 130px;
+	height: 35px;
+	border: 0px;
+	color: #fff;
+	border-radius: 0px;
+	margin-top: 30px;
+}

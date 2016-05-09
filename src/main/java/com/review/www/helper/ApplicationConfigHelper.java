@@ -5,7 +5,7 @@
  */
 package com.review.www.helper;
 
-import com.review.www.enums.ModeEnum;
+import com.jopool.jweb.enums.ModeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,10 +27,11 @@ public abstract class ApplicationConfigHelper {
     private static final String MODE = "app.mode";
 
     private static ModeEnum mode;
-    private static String  filePath;
+    private static String   filePath;
     private static String   jppushRestUrl;
     private static String   jppushAppId;
     private static String   jppushAppSecret;
+    private static String   baseUrl;
 
     static {
         Properties p = new Properties();
@@ -45,6 +46,7 @@ public abstract class ApplicationConfigHelper {
         jppushRestUrl = p.getProperty("jppush.rest.url");
         jppushAppId = p.getProperty("jppush.appId");
         jppushAppSecret = p.getProperty("jppush.appSecret");
+        baseUrl = p.getProperty("base.url");
     }
 
 
@@ -66,5 +68,9 @@ public abstract class ApplicationConfigHelper {
 
     public static String getJppushAppSecret() {
         return jppushAppSecret;
+    }
+
+    public static String getBaseUrl() {
+        return baseUrl;
     }
 }
