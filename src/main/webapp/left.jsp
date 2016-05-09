@@ -40,7 +40,8 @@
                 </div>
                 <ul class="menuson">
                     <li class="active"><a target="rightFrame" href="project/addProjectAnnouncement.htm">添加新申报项目</a></li>
-                    <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
+                    <li><cite></cite><a href="project/projectAnnouncementList.htm" target="rightFrame">项目列表</a><i></i>
+                    <li><cite></cite><a href="project/projectList.htm" target="rightFrame">申报项目列表</a><i></i>
                 </ul>
             </dd>
             <dd>

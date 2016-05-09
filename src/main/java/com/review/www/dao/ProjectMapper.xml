@@ -267,4 +267,18 @@
       backup_five = #{backupFive,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="searchProject" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from project
+    <where>
+      <if test="keyword != null and keyword != '' ">
+        name LIKE CONCAT('%','${keyword}','%' )
+      </if>
+      <if test="status>0 ">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+    </where>
+  </select>
 </mapper>

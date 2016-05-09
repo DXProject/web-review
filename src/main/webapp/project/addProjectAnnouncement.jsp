@@ -29,7 +29,10 @@
             <input name="timeEnd" type="text" class="short-input Wdate"
                    value="" onfocus="WdatePicker({minDate:'%y-%M-%d'})"/>
         </li>
-
+        <li><label>项目名称</label><input name="name" type="text" class="short-input validate[required]"
+                                      value=""></li>
+        <li class="line"><label>项目备注</label><input name="remark" type="text" class="long-input validate[required]"
+                                      value=""></li>
         <li class="line"><label>项目类别</label>
 
             <div class="vocation">
@@ -71,13 +74,13 @@
             return {
                 //id: $.trim($('input[name="id"]').val()),
                 title: $.trim($('input[name="title"]').val()),
-                content: $.trim($('input[name="content"]').val()),
+                content: $.trim($('textarea[name="content"]').val()),
                 name: $.trim($('input[name="name"]').val()),
+                remark: $.trim($('input[name="remark"]').val()),
                 timeStart: $.trim($('input[name="timeStart"]').val()),
                 timeEnd: $.trim($('input[name="timeEnd"]').val()),
                 classOne: $.trim($('select[name="classOne"]').val()),
-                classTwo: $.trim($('select[name="classTwo"]').val()),
-
+                classTwo: $.trim($('select[name="classTwo"]').val())
             }
         }, function () {
             return $('.forminfo').validationEngine('validate');

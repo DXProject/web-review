@@ -6,6 +6,8 @@ import com.jopool.jweb.spring.SelfBeanAware;
 import com.review.www.dao.*;
 import com.review.www.entity.*;
 import com.review.www.service.ProjectService;
+import com.review.www.vo.SearchProjectVo;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -54,5 +56,15 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     public Result declareProject(Project project) {
         projectMapper.insert(project);
         return new Result(Code.SUCCESS);
+    }
+
+    @Override
+    public List<Project> searchProject(SearchProjectVo searchProjectVo, RowBounds page) {
+        return projectMapper.searchProject(searchProjectVo,page);
+    }
+
+    @Override
+    public List<ClassThree> searchProjectAnnouncementList(SearchProjectVo searchProjectVo, RowBounds page) {
+        return classThreeMapper.search(searchProjectVo,page);
     }
 }
