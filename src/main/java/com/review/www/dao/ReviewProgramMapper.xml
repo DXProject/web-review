@@ -161,4 +161,15 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="searchReviewProgram" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from review_program
+    <where>
+      <if test="keyword != null and keyword != '' ">
+        name LIKE CONCAT('%','${keyword}','%' )
+      </if>
+    </where>
+  </select>
 </mapper>

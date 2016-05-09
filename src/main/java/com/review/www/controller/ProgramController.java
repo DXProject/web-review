@@ -6,13 +6,17 @@ import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.utils.StringUtils;
 import com.review.www.entity.ReviewProgram;
 import com.review.www.entity.Rules;
+import com.review.www.entity.User;
+import com.review.www.response.ReviewProgramResp;
 import com.review.www.service.ProgramService;
+import com.review.www.service.UserService;
 import com.review.www.vo.SearchBaseDataVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +27,8 @@ import java.util.List;
 public class ProgramController extends WebBaseController {
     @Resource
     private ProgramService programService;
+    @Resource
+    private UserService    userService;
 
     @RequestMapping("rulesList.htm")
     public ModelAndView rulesList(SearchBaseDataVo searchBaseDataVo, Pagination page) {
@@ -61,7 +67,7 @@ public class ProgramController extends WebBaseController {
     }
 
     /**
-     * remove rules
+     * 删除 rules
      *
      * @param id
      * @return
@@ -70,6 +76,42 @@ public class ProgramController extends WebBaseController {
     public Result removeRules(String id) {
         validateParam(id);
         return programService.removeRules(id);
+    }
+
+    /**
+     * 评审方案列表
+     *
+     * @param searchBaseDataVo
+     * @param page
+     * @return
+     */
+    @RequestMapping("reviewProgramList.htm")
+    public ModelAndView reviewProgramList(SearchBaseDataVo searchBaseDataVo, Pagination page) {
+        List<ReviewProgramResp> resps = new ArrayList<ReviewProgramResp>();
+        List<ReviewProgram> reviewPrograms = programService.searchReviewProgram(searchBaseDataVo, page);
+        for (ReviewProgram reviewProgram : reviewPrograms) {
+            ReviewProgramResp resp = new ReviewProgramResp(reviewProgram);
+            User user = userService.getById(reviewProgram.getCareator());
+            if (null != user) {
+                resp.setCreator(user.getName());
+            }
+            resps.add(resp);
+        }
+        ModelAndView mv = getPageMv("program/reviewProgramList", resps, page);
+        mv.addObject("keyword", searchBaseDataVo.getKeyword());
+        return mv;
+    }
+
+    /**
+     * 评审方案列表
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("reviewProgramInfo.htm")
+    public ModelAndView reviewProgramInfo(String id) {
+        ModelAndView mv = getSessionUserMV("program/reviewProgramInfo");
+        return mv;
     }
 
     /**

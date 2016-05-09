@@ -65,6 +65,8 @@
     <input name="id" type="hidden" value=""/>
     <li class="line"><label>名称</label><input name="name" type="text" class="short-input validate[required]" value=""/>
     </li>
+    <li class="line"><label>类别</label><input name="type" type="text" class="short-input validate[required]" value=""/>
+    </li>
     <li class="line"><label>详细</label><input name="details" type="text" class="long-input" value=""/>
     </li>
     <li></li>

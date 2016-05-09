@@ -16,7 +16,9 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
+            <a href="reviewProgramInfo.htm">
+                <li class="click"><span><img src="${path}/images/t01.png"/></span>添加</li>
+            </a>
         </ul>
     </div>
     <ul class="seachform">
@@ -35,9 +37,9 @@
         <thead>
         <tr>
             <th>名称</th>
-            <th style="width: 50%;">明细</th>
+            <th>类型</th>
             <th>创建时间</th>
-            <%--<th>状态</th>--%>
+            <th>创建人</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -45,8 +47,8 @@
         <c:forEach var="r" items="${list}">
             <tr data="${r.id}" id="${r.id}" height="40">
                 <td>${r.name}</td>
-                <td>${r.details}</td>
                 <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
+                <td>${r.creator}</td>
                 <td>
                     <a href="javascript:;" class="tablelink _modifyBtn">修改</a>&nbsp;
                     <a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;
