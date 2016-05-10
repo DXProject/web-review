@@ -11,6 +11,7 @@ import java.util.Date;
  */
 public class AddProjectAnnouncementReq {
     private String title; //公告标题
+    private int    type;
     private String content; //公告内容
     private String timeStart; //项目申报时间
     private String timeEnd;
@@ -20,10 +21,11 @@ public class AddProjectAnnouncementReq {
     private String classTwo;
     private String reviewProgram;//评审方案
 
-    public Announcement parseAnnouncement(String userId,DateParam dateParam) {
+    public Announcement parseAnnouncement(String userId, DateParam dateParam) {
         Announcement announcement = new Announcement();
         announcement.setId(UUIDUtils.createId());
         announcement.setTitle(this.title);
+        announcement.setType(this.type);
         announcement.setContent(this.content);
         announcement.setStartTime(dateParam.getTimeStart());
         announcement.setEndTime(dateParam.getTimeEnd());
@@ -32,7 +34,7 @@ public class AddProjectAnnouncementReq {
         return announcement;
     }
 
-    public ClassThree parseThree(String userId,DateParam dateParam) {
+    public ClassThree parseThree(String userId, DateParam dateParam) {
         ClassThree classThree = new ClassThree();
         classThree.setId(UUIDUtils.createId());
         classThree.setClassOneId(this.classOne);

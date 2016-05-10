@@ -11,6 +11,7 @@ import com.review.www.service.ProjectService;
 import com.review.www.vo.SearchProjectVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Created by zhangtianfeng on 16/5/4.
  */
-@Controller
+@RestController
 @RequestMapping("/project")
 public class ProjectController extends WebBaseController {
     @Resource

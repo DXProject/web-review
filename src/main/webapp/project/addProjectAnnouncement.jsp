@@ -20,9 +20,21 @@
     <ul class="forminfo short validationEngineContainer">
         <input name="" type="hidden" value=""/>
         <li><label>公告标题</label><input name="title" type="text" class="long-input validate[required]"
-                                                  value=""></li>
-        <li class="line"><label>公告内容</label><textarea style="width:72%;height:250px" name="content"></textarea></li>
+                                      value=""></li>
+        <li class="line"><label>公告类别</label>
 
+            <div class="vocation">
+                <select name="type" class="useselect validate[required]">
+                    <option value="${NORMAL_ANNOUNCEMENT}">普通公告</option>
+                    <option value="${PROJECT_ANNOUNCEMENT}">项目公告</option>
+                </select>
+            </div>
+        </li>
+        <li class="line"><label>公告内容</label>
+            <%--<textarea style="width:72%;height:250px" name="content"></textarea>--%>
+            <textarea style="width:80%;height:300px" name="characteristic" id="characteristic"
+                      class="ke">${toursDescription.characteristic}</textarea>
+        </li>
         <li class="line"><label>申报时间</label>
             <input name="timeStart" type="text" class="short-input Wdate"
                    value="" onfocus="WdatePicker({minDate:'%y-%M-%d'})"/>&emsp;~&emsp;
@@ -32,7 +44,7 @@
         <li><label>项目名称</label><input name="name" type="text" class="short-input validate[required]"
                                       value=""></li>
         <li class="line"><label>项目备注</label><input name="remark" type="text" class="long-input validate[required]"
-                                      value=""></li>
+                                                   value=""></li>
         <li class="line"><label>项目类别</label>
 
             <div class="vocation">
@@ -66,7 +78,8 @@
     </ul>
 </div>
 <%@include file="../footer.jsp" %>
-
+<script type="text/javascript" src="${path}/js/3rd/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="${path}/js/3rd/kindeditor/lang/zh_CN.js"></script>
 <script>
     $(function () {
         //
@@ -74,6 +87,7 @@
             return {
                 //id: $.trim($('input[name="id"]').val()),
                 title: $.trim($('input[name="title"]').val()),
+                type: $.trim($('select[name="classOne"]').val()),
                 content: $.trim($('textarea[name="content"]').val()),
                 name: $.trim($('input[name="name"]').val()),
                 remark: $.trim($('input[name="remark"]').val()),
@@ -85,5 +99,7 @@
         }, function () {
             return $('.forminfo').validationEngine('validate');
         });
+        //
+        KindEditor.create('.ke');
     });
 </script>

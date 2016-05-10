@@ -8,6 +8,8 @@
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
     <result column="creator" property="creator" jdbcType="CHAR" />
     <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
@@ -16,8 +18,8 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, class_three_id, title, content, start_time, end_time, is_deleted, creator, creation_time, 
-    backup_one, backup_two, backup_three
+    id, class_three_id, title, content, start_time, end_time, type, status, is_deleted, 
+    creator, creation_time, backup_one, backup_two, backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -32,14 +34,14 @@
   <insert id="insert" parameterType="com.review.www.entity.Announcement" >
     insert into announcement (id, class_three_id, title, 
       content, start_time, end_time, 
-      is_deleted, creator, creation_time, 
-      backup_one, backup_two, backup_three
-      )
+      type, status, is_deleted, creator, 
+      creation_time, backup_one, backup_two, 
+      backup_three)
     values (#{id,jdbcType=CHAR}, #{classThreeId,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
       #{content,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
-      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}
-      )
+      #{type,jdbcType=BIT}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
+      #{backupThree,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.Announcement" >
     insert into announcement
@@ -61,6 +63,12 @@
       </if>
       <if test="endTime != null" >
         end_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="isDeleted != null" >
         is_deleted,
@@ -100,6 +108,12 @@
       <if test="endTime != null" >
         #{endTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
       <if test="isDeleted != null" >
         #{isDeleted,jdbcType=BIT},
       </if>
@@ -138,6 +152,12 @@
       <if test="endTime != null" >
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
       <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=BIT},
       </if>
@@ -166,6 +186,8 @@
       content = #{content,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=BIT},
+      status = #{status,jdbcType=TINYINT},
       is_deleted = #{isDeleted,jdbcType=BIT},
       creator = #{creator,jdbcType=CHAR},
       creation_time = #{creationTime,jdbcType=TIMESTAMP},
