@@ -4,6 +4,7 @@ import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.UUIDUtils;
+import com.review.www.constants.Constants;
 import com.review.www.dao.BaseConstantMapper;
 import com.review.www.entity.BaseConstant;
 import com.review.www.service.BaseDataService;
@@ -38,7 +39,7 @@ public class BaseDateServiceImpl extends BaseServiceImpl implements BaseDataServ
     @Override
     public Result addBaseConstant(BaseConstant baseConstant) {
         baseConstant.setId(UUIDUtils.createId());
-        baseConstant.setNumber("");//TODO
+        baseConstant.setNumber(createNumber(Constants.NUMBER_BASE_CONSTANT));
         baseConstant.setCreationTime(new Date());
         baseConstantMapper.insert(baseConstant);
         return new Result(Code.SUCCESS);

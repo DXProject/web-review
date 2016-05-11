@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController extends WebBaseController {
     @Resource
-    private UserService userService;
+    private UserService     userService;
     @Resource
     private BaseDataService baseDataService;
 
@@ -35,7 +35,7 @@ public class UserController extends WebBaseController {
      * register
      */
     @RequestMapping("doAddUser.htm")
-    private Result doAddUser(User user){
+    private Result doAddUser(User user) {
         validateParam(user.getNumber());
         return userService.addUser(user);
     }
@@ -75,6 +75,7 @@ public class UserController extends WebBaseController {
         userService.changePassword(user.getNumber(), newPwd, user.getType());
         return new Result(Code.SUCCESS);
     }
+
     /**
      * 用户管理
      * 1-项目申报者
@@ -83,98 +84,95 @@ public class UserController extends WebBaseController {
      * 4-科研室管理人员
      */
     @RequestMapping("userPage{type}.htm")
-    public ModelAndView userPage(@PathVariable int type){
-        ModelAndView model = new ModelAndView("/user/userList").addObject("type",type);
-        if(type==1){
-            model.addObject("title","项目申报者");
-        }
-        else if(type==2){
-            model.addObject("title","二级学院管理人员");
-        }
-        else if(type==3){
-            model.addObject("title","专家");
-        }
-        else if(type==4){
-            model.addObject("title","科研室管理人员");
+    public ModelAndView userPage(@PathVariable int type) {
+        ModelAndView model = new ModelAndView("/user/userList").addObject("type", type);
+        if (type == 1) {
+            model.addObject("title", "项目申报者");
+        } else if (type == 2) {
+            model.addObject("title", "二级学院管理人员");
+        } else if (type == 3) {
+            model.addObject("title", "专家");
+        } else if (type == 4) {
+            model.addObject("title", "科研室管理人员");
         }
         List<UserResp> userResps = userService.getByType(type);
-        model.addObject("list",userResps);
+        model.addObject("list", userResps);
         return model;
     }
+
     @RequestMapping("userAddPage{type}.htm")
-    public ModelAndView userAddPage(@PathVariable int type){
-        ModelAndView model = new ModelAndView("/user/userAdd").addObject("type",type);
+    public ModelAndView userAddPage(@PathVariable int type) {
+        ModelAndView model = new ModelAndView("/user/userAdd").addObject("type", type);
         List<BaseConstant> list1 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_TITLE);
         List<BaseConstant> list2 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEGREE);
         List<BaseConstant> list3 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_EDUCATION);
         List<BaseConstant> list4 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEPARTMENT);
-        model.addObject("list1",list1);
-        model.addObject("list2",list2);
-        model.addObject("list3",list3);
-        model.addObject("list4",list4);
-        if(type==1){
-            model.addObject("title","项目申报者");
-        }
-        else if(type==2){
-            model.addObject("title","二级学院管理人员");
-        }
-        else if(type==3){
-            model.addObject("title","专家");
-        }
-        else if(type==4){
-            model.addObject("title","科研室管理人员");
+        model.addObject("list1", list1);
+        model.addObject("list2", list2);
+        model.addObject("list3", list3);
+        model.addObject("list4", list4);
+        if (type == 1) {
+            model.addObject("title", "项目申报者");
+        } else if (type == 2) {
+            model.addObject("title", "二级学院管理人员");
+        } else if (type == 3) {
+            model.addObject("title", "专家");
+        } else if (type == 4) {
+            model.addObject("title", "科研室管理人员");
         }
         return model;
     }
+
     @RequestMapping("doUserAddPage{type}.htm")
     @ResponseBody
-    public Result doUserAddPage(@PathVariable int type,User user){
+    public Result doUserAddPage(@PathVariable int type, User user) {
         System.out.println("doUserAddPage");
-        userService.addUserManage(type,user);
-        return new Result(1,"成功!");
+        userService.addUserManage(type, user);
+        return new Result(Code.SUCCESS, "成功!");
     }
+
     @RequestMapping("userEditPage{type}/{id}.htm")
-    public ModelAndView userAddPage(@PathVariable int type,@PathVariable String id){
+    public ModelAndView userAddPage(@PathVariable int type, @PathVariable String id) {
         System.out.println("userEditPage");
-        ModelAndView model = new ModelAndView("/user/userEdit").addObject("type",type);
+        ModelAndView model = new ModelAndView("/user/userEdit").addObject("type", type);
         List<BaseConstant> list1 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_TITLE);
         List<BaseConstant> list2 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEGREE);
         List<BaseConstant> list3 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_EDUCATION);
         List<BaseConstant> list4 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEPARTMENT);
-        model.addObject("list1",list1);
-        model.addObject("list2",list2);
-        model.addObject("list3",list3);
-        model.addObject("list4",list4);
-        UserResp userResp = userService.getByTypeAndId(type,id);
-        model.addObject("user",userResp);
-        if(type==3){
-            model.addObject("title","专家");
-        }else{
-            if(type==1){
-                model.addObject("title","项目申报者");
-            }
-            else if(type==2){
-                model.addObject("title","二级学院管理人员");
-            }
-            else if(type==4){
-                model.addObject("title","科研室管理人员");
+        model.addObject("list1", list1);
+        model.addObject("list2", list2);
+        model.addObject("list3", list3);
+        model.addObject("list4", list4);
+        UserResp userResp = userService.getByTypeAndId(type, id);
+        model.addObject("user", userResp);
+        if (type == 3) {
+            model.addObject("title", "专家");
+        } else {
+            if (type == 1) {
+                model.addObject("title", "项目申报者");
+            } else if (type == 2) {
+                model.addObject("title", "二级学院管理人员");
+            } else if (type == 4) {
+                model.addObject("title", "科研室管理人员");
             }
         }
 
         return model;
     }
+
     @RequestMapping("doUserEditPage{type}.htm")
     @ResponseBody
-    public Result doUserEditPage(@PathVariable int type ,User user){
+    public Result doUserEditPage(@PathVariable int type, User user) {
         System.out.println("doUserEditPage");
-        userService.editUserManage(type,user);
-        return new Result(1,"成功!");
+        userService.editUserManage(type, user);
+        return new Result(Code.SUCCESS, "成功!");
     }
+
     @RequestMapping("userDelPage{type}/{id}.htm")
     @ResponseBody
-    public Result userDelPage(@PathVariable int type,@PathVariable String id){
+    public Result userDelPage(@PathVariable int type, @PathVariable String id) {
         System.out.println("userDelPage");
-        userService.delUserManage(type,id);
-        return new Result(1,"成功!");
+        userService.delUserManage(type, id);
+        return new Result(Code.SUCCESS, "成功!");
     }
 }

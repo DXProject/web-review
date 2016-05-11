@@ -51,8 +51,8 @@
                     <span><img src="images/leftico01.png"/></span>评审方案管理
                 </div>
                 <ul class="menuson">
-                    <li class="active"><a target="rightFrame" href="program/rulesList.htm">评审细则管理</a></li>
                     <li><cite></cite><a href="program/reviewProgramList.htm" target="rightFrame">评审方案管理</a><i></i>
+                    <li class="active"><a target="rightFrame" href="program/rulesList.htm">评审细则管理</a></li>
                 </ul>
             </dd>
             <dd>

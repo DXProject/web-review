@@ -16,7 +16,7 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click _addBtn"><span><img src="${path}/images/t01.png    "/></span>添加</li>
+            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
         </ul>
     </div>
     <ul class="seachform">
@@ -82,7 +82,7 @@
     <div class="pagin">${page}</div>
 </div>
 <%--add--%>
-<ul class="forminfo short zxxbox_contaner validationEngineContainer" id="addBox" style="width: 700px">
+<ul class="forminfo short zxxbox_contaner validationEngineContainer" id="addBox" style="width: 550px">
     <input name="id" type="hidden" value=""/>
     <li class="line"><label>名称</label><input name="name" type="text" class="short-input validate[required]" value=""/>
     </li>
