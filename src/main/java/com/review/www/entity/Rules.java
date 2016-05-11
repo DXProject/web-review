@@ -7,7 +7,7 @@ public class Rules {
 
     private String name;
 
-    private boolean type;
+    private int type;
 
     private String details;
 
@@ -39,11 +39,11 @@ public class Rules {
         this.name = name == null ? null : name.trim();
     }
 
-    public boolean getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(boolean type) {
+    public void setType(int type) {
         this.type = type;
     }
 

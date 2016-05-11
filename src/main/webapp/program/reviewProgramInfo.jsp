@@ -20,7 +20,7 @@
     <ul class="forminfo short validationEngineContainer">
         <input name="toursId" type="hidden" value="${tours.id}"/>
 
-        <li class="line"><label>产品名称</label><input name="title" type="text" class="long-input validate[required]"
+        <li class="line"><label>评审方案名称</label><input name="title" type="text" class="long-input validate[required]"
                                                    value="${tours.title}"/></li>
         <li class="line"><label>产品副标题</label><input name="secondTitle" type="text" class="long-input"
                                                     value="${tours.secondTitle}"/></li>
