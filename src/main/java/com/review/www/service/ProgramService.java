@@ -84,4 +84,13 @@ public interface ProgramService {
      * @return
      */
     Result getRulesInfo(String id);
+
+    /**
+     * search reviewProgram
+     *
+     * @param searchBaseDataVo
+     * @param page
+     * @return
+     */
+    List<ReviewProgram> searchReviewProgram(SearchBaseDataVo searchBaseDataVo, Pagination page);
 }

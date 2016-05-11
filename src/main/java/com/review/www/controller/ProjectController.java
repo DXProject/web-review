@@ -2,13 +2,16 @@ package com.review.www.controller;
 
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
+import com.jopool.jweb.mybatis.page.Pagination;
 import com.review.www.entity.*;
 import com.review.www.request.AddProjectAnnouncementReq;
 import com.review.www.request.DateParam;
 import com.review.www.request.DeclareProjectReq;
 import com.review.www.service.ProjectService;
+import com.review.www.vo.SearchProjectVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -17,7 +20,7 @@ import java.util.List;
 /**
  * Created by zhangtianfeng on 16/5/4.
  */
-@Controller
+@RestController
 @RequestMapping("/project")
 public class ProjectController extends WebBaseController {
     @Resource
@@ -30,7 +33,7 @@ public class ProjectController extends WebBaseController {
      */
     @RequestMapping("addProjectAnnouncement.htm")
     public ModelAndView addProjectAnnouncement() {
-        ModelAndView mv = getSessionUserMV("product/addProjectAnnouncement");
+        ModelAndView mv = getSessionUserMV("project/addProjectAnnouncement");
         List<ClassOne> classOnes = projectService.getClassOneList();
         List<ClassTwo> classTwos = projectService.getClassTwoList();
         mv.addObject("classOnes", classOnes);
@@ -48,6 +51,20 @@ public class ProjectController extends WebBaseController {
     }
 
     /**
+     * 发布项目列表
+     *
+     * @param searchProjectVo
+     * @param page
+     * @return
+     */
+    @RequestMapping("projectAnnouncementList.htm")
+    public ModelAndView projectAnnouncementList(SearchProjectVo searchProjectVo, Pagination page) {
+        List<ClassThree> projects = projectService.searchProjectAnnouncementList(searchProjectVo, page.page());
+        ModelAndView mv = getPageMv("project/projectAnnouncementList", projects, page);
+        return mv;
+    }
+
+    /**
      * 项目申报
      *
      * @param req
@@ -57,5 +74,19 @@ public class ProjectController extends WebBaseController {
     public Result declareProject(DeclareProjectReq req) {
         Project project = req.parseProject(getSessionUser().getUserId());
         return projectService.declareProject(project);
+    }
+
+    /**
+     * 申报项目列表
+     *
+     * @param searchProjectVo
+     * @param page
+     * @return
+     */
+    @RequestMapping("projectList.htm")
+    public ModelAndView projectList(SearchProjectVo searchProjectVo, Pagination page) {
+        List<Project> projects = projectService.searchProject(searchProjectVo, page.page());
+        ModelAndView mv = getPageMv("project/projectList", projects, page);
+        return mv;
     }
 }

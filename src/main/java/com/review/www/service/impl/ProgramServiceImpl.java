@@ -100,6 +100,11 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
         return new Result(Code.SUCCESS,rulesMapper.selectByPrimaryKey(id));
     }
 
+    @Override
+    public List<ReviewProgram> searchReviewProgram(SearchBaseDataVo searchBaseDataVo, Pagination page) {
+        return reviewProgramMapper.searchReviewProgram(searchBaseDataVo,page);
+    }
+
     private void addReviewProgramRules(ReviewProgram reviewProgram, List<Rules> rules) {
         Date date = new Date();
         for (Rules rule : rules) {

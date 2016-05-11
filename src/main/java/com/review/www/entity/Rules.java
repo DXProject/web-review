@@ -7,9 +7,11 @@ public class Rules {
 
     private String name;
 
+    private boolean type;
+
     private String details;
 
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     private String creator;
 
@@ -37,6 +39,14 @@ public class Rules {
         this.name = name == null ? null : name.trim();
     }
 
+    public boolean getType() {
+        return type;
+    }
+
+    public void setType(boolean type) {
+        this.type = type;
+    }
+
     public String getDetails() {
         return details;
     }
@@ -45,11 +55,11 @@ public class Rules {
         this.details = details == null ? null : details.trim();
     }
 
-    public Boolean getIsDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Boolean isDeleted) {
+    public void setIsDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
 

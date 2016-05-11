@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.review.www.entity.Rules" >
     <id column="id" property="id" jdbcType="CHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
     <result column="details" property="details" jdbcType="VARCHAR" />
     <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
     <result column="creator" property="creator" jdbcType="CHAR" />
@@ -13,7 +14,8 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, details, is_deleted, creator, creation_time, backup_one, backup_two, backup_three
+    id, name, type, details, is_deleted, creator, creation_time, backup_one, backup_two, 
+    backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -26,11 +28,11 @@
     where id = #{id,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.Rules" >
-    insert into rules (id, name, details, 
+    insert into rules (id, name, type, details, 
       is_deleted, creator, creation_time, 
       backup_one, backup_two, backup_three
       )
-    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{details,jdbcType=VARCHAR}, 
       #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
       #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}
       )
@@ -43,6 +45,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="type != null" >
+        type,
       </if>
       <if test="details != null" >
         details,
@@ -73,6 +78,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
       <if test="details != null" >
         #{details,jdbcType=VARCHAR},
       </if>
@@ -102,6 +110,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
       <if test="details != null" >
         details = #{details,jdbcType=VARCHAR},
       </if>
@@ -129,6 +140,7 @@
   <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Rules" >
     update rules
     set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
       details = #{details,jdbcType=VARCHAR},
       is_deleted = #{isDeleted,jdbcType=BIT},
       creator = #{creator,jdbcType=CHAR},

@@ -40,8 +40,9 @@
                     <span><img src="images/leftico01.png"/></span>项目管理
                 </div>
                 <ul class="menuson">
-                    <li class="active"><a target="rightFrame" href="project/addProjectAnnouncement.htm.htm">添加新申报项目</a></li>
-                    <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
+                    <li class="active"><a target="rightFrame" href="project/addProjectAnnouncement.htm">添加新申报项目</a></li>
+                    <li><cite></cite><a href="project/projectAnnouncementList.htm" target="rightFrame">项目列表</a><i></i>
+                    <li><cite></cite><a href="project/projectList.htm" target="rightFrame">申报项目列表</a><i></i>
                 </ul>
             </dd>
             <dd>
@@ -49,8 +50,8 @@
                     <span><img src="images/leftico01.png"/></span>评审方案管理
                 </div>
                 <ul class="menuson">
-                    <li class="active"><a target="rightFrame" href="program/rulesList.htm">评审规则管理</a></li>
-                    <li><cite></cite><a href="user/modifyPassword.htm" target="rightFrame">登录密码变更</a><i></i>
+                    <li class="active"><a target="rightFrame" href="program/rulesList.htm">评审细则管理</a></li>
+                    <li><cite></cite><a href="program/reviewProgramList.htm" target="rightFrame">评审方案管理</a><i></i>
                 </ul>
             </dd>
             <dd>

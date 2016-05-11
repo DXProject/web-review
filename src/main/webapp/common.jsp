@@ -15,3 +15,6 @@
 <c:set var="BASE_CONSTANT_DEPARTMENT" value="<%=Constants.BASE_CONSTANT_DEPARTMENT%>"/>
 <c:set var="BASE_CONSTANT_DISCIPLINE_CATEGORY" value="<%=Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY%>"/>
 <c:set var="BASE_CONSTANT_SUBJECT_CATEGORY" value="<%=Constants.BASE_CONSTANT_SUBJECT_CATEGORY%>"/>
+<%--annountmentType--%>
+<c:set var="NORMAL_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.NORMAL_ANNOUNCEMENT.getValue()%>"/>
+<c:set var="PROJECT_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.PROJECT_ANNOUNCEMENT.getValue()%>"/>
