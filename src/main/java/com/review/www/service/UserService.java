@@ -4,6 +4,9 @@ import com.jopool.jweb.entity.Result;
 import com.review.www.entity.User;
 import com.review.www.enums.UserTypeEnum;
 import com.review.www.request.LoginReq;
+import com.review.www.response.UserResp;
+
+import java.util.List;
 
 /**
  * Created by zhangtianfeng on 16/1/5.
@@ -40,4 +43,18 @@ public interface UserService {
      * @param type
      */
     Result changePassword(String number, String newPwd, Byte type);
+    /**
+     * getByType
+     */
+    List<UserResp> getByType(int type);
+    /**
+     * addUserManage
+     */
+    int addUserManage(int type ,User user);
+
+    int editUserManage(int type ,User user);
+
+    int delUserManage(int type ,String id);
+
+    UserResp getByTypeAndId(int type,String id);
 }

@@ -26,4 +26,9 @@ public interface BaseConstantMapper {
      * @return
      */
     List<BaseConstant> searchBaseConstant(SearchBaseDataVo searchBaseDataVo, RowBounds page);
+    /**
+     * search BaseConstantBy Key
+     * @return
+     */
+    List<BaseConstant> searchBaseConstantByKey(String key);
 }

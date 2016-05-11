@@ -60,4 +60,9 @@ public class BaseDateServiceImpl extends BaseServiceImpl implements BaseDataServ
         baseConstantMapper.deleteByPrimaryKey(id);
         return new Result(Code.SUCCESS);
     }
+
+    @Override
+    public List<BaseConstant> getBaseConstantByKey(String key) {
+        return baseConstantMapper.searchBaseConstantByKey(key);
+    }
 }

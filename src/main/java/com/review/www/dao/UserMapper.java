@@ -3,6 +3,8 @@ package com.review.www.dao;
 import com.review.www.entity.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(String id);
 
@@ -32,4 +34,13 @@ public interface UserMapper {
      * @return
      */
     User selectByNumberAndType(@Param("number") String number, @Param("type") int type);
+
+
+    /**
+     * selectByType
+     */
+    List<User> selectByType(int type);
+
+    int deleteById(String id);
+
 }

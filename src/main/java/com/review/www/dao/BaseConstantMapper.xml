@@ -175,4 +175,11 @@
       </if>
     </where>
   </select>
+
+  <select id="searchBaseConstantByKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from base_constant
+    WHERE `key` = #{key,jdbcType=VARCHAR}
+  </select>
 </mapper>

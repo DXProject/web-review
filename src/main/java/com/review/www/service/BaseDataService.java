@@ -51,4 +51,12 @@ public interface BaseDataService {
      * @return
      */
     Result doRemoveBaseConstant(String id);
+
+    /**
+     * get by key
+     *
+     * @param key
+     * @return
+     */
+    List<BaseConstant> getBaseConstantByKey(String key);
 }

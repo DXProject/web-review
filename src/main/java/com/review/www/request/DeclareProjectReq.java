@@ -2,7 +2,6 @@ package com.review.www.request;
 
 import com.jopool.jweb.utils.UUIDUtils;
 import com.review.www.entity.Project;
-import com.xuanwu.msggate.common.protobuf.CommonItem;
 
 import java.util.Date;
 

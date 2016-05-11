@@ -279,4 +279,17 @@
     <include refid="Base_Column_List"/>
     FROM user WHERE number = #{number,jdbcType=VARCHAR} AND type = #{type,jdbcType=BIT}
   </select>
+  <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM user WHERE type = #{type,jdbcType=BIT} AND is_deleted=0
+  </select>
+  <update id="deleteById" parameterType="java.lang.String">
+    UPDATE
+    user
+    SET
+    is_deleted = 1
+    WHERE
+    id = #{id,jdbcType=CHAR}
+  </update>
 </mapper>
