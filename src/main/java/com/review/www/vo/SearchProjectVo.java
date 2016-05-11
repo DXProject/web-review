@@ -7,7 +7,8 @@ public class SearchProjectVo {
     private String keyword;
     private String timeStart;
     private String timeEnd;
-    private int status;
+    private int    type;
+    private int    status;
 
     public String getKeyword() {
         return keyword;
@@ -39,5 +40,13 @@ public class SearchProjectVo {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

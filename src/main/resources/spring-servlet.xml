@@ -32,9 +32,9 @@
         </property>
     </bean>
 
-    <!-- 拦截器
-    <mvc:interceptors>-->
-        <!-- 多个拦截器,顺序执行
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 多个拦截器,顺序执行 -->
         <mvc:interceptor>
             <mvc:mapping path="/**/*"/>
             <mvc:exclude-mapping path="/login.htm"/>
@@ -43,7 +43,7 @@
             <mvc:exclude-mapping path="/file/**/*"/>
             <bean class="com.review.www.interceptors.AuthInterceptor"></bean>
         </mvc:interceptor>
-    </mvc:interceptors> -->
+    </mvc:interceptors>
 
     <!--异常处理-->
     <bean class="com.jopool.jweb.interceptors.JWebExceptionInterceptor"/>

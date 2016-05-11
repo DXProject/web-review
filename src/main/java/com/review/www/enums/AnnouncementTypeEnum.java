@@ -5,9 +5,9 @@ package com.review.www.enums;
  */
 public enum AnnouncementTypeEnum {
     /**
-     * 1：公告类型，2：普通公告，3：项目公告
+     * 公告类型，1：普通公告，2：项目公告
      */
-    NORMAL_ANNOUNCEMENT(1, "开发"), PROJECT_ANNOUNCEMENT(2, "测试");
+    NORMAL_ANNOUNCEMENT(1, "普通公告"), PROJECT_ANNOUNCEMENT(2, "项目公告");
 
     private int value;
     private String name;

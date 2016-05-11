@@ -5,6 +5,7 @@ import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.UUIDUtils;
+import com.review.www.constants.Constants;
 import com.review.www.dao.ReviewProgramMapper;
 import com.review.www.dao.ReviewProgramRulesMapper;
 import com.review.www.dao.RulesMapper;
@@ -40,6 +41,7 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
     @Override
     public Result addRules(Rules rules) {
         rules.setId(UUIDUtils.createId());
+        rules.setNumber(createNumber(Constants.NUMBER_RULES));
         rules.setIsDeleted(false);
         rules.setCreationTime(new Date());
         rulesMapper.insert(rules);

@@ -5,6 +5,8 @@ import java.util.Date;
 public class Rules {
     private String id;
 
+    private String number;
+
     private String name;
 
     private int type;
@@ -29,6 +31,14 @@ public class Rules {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number == null ? null : number.trim();
     }
 
     public String getName() {

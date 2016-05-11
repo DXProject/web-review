@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.review.www.dao.SequenceFactoryMapper" >
+  <resultMap id="BaseResultMap" type="com.review.www.entity.SequenceFactory" >
+    <id column="sequence" property="sequence" jdbcType="BIGINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sequence, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sequence_factory
+    where sequence = #{sequence,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sequence_factory
+    where sequence = #{sequence,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.review.www.entity.SequenceFactory" >
+    insert into sequence_factory (sequence, type)
+    values (#{sequence,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.review.www.entity.SequenceFactory" >
+    insert into sequence_factory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sequence != null" >
+        sequence,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sequence != null" >
+        #{sequence,jdbcType=BIGINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.SequenceFactory" >
+    update sequence_factory
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sequence = #{sequence,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.SequenceFactory" >
+    update sequence_factory
+    set type = #{type,jdbcType=VARCHAR}
+    where sequence = #{sequence,jdbcType=BIGINT}
+  </update>
+  <!--custom-->
+  <insert id="generateSequence" parameterType="com.review.www.entity.SequenceFactory">
+    <selectKey resultType="java.lang.Long" keyProperty="sequence" order="AFTER">
+      SELECT @@IDENTITY
+    </selectKey>
+    replace INTO sequence_factory SET `type`='ALL'
+  </insert>
+</mapper>

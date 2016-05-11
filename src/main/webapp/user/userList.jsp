@@ -34,8 +34,8 @@
     <table class="imgtable">
         <thead>
         <tr>
-            <th>Number</th>
             <th>头像</th>
+            <th>编号</th>
             <th>姓名</th>
             <th>手机号</th>
             <th>创建时间</th>
@@ -46,11 +46,11 @@
         <c:forEach var="i" items="${list}">
             <tr data="${i.id}" height="50">
                 <td>
-                    ${i.number}
-                </td>
-                <td>
                     <img class="lazy" data-original="${i.avatar}"
                          style="width:60px;-moz-border-radius:30px;-webkit-border-radius:30px;border-radius:30px;"/>
+                </td>
+                <td>
+                    ${i.number}
                 </td>
                 <td>
                         ${i.name}

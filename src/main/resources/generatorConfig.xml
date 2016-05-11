@@ -40,7 +40,7 @@
             <!--<property name="enableSubPackages" value="true"/>-->
         </javaClientGenerator>
         <!-- 要生成哪些表，可加domainObjectName="Group"-->
-        <table tableName="announcement" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="rules" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 </context>
 </generatorConfiguration>

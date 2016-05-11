@@ -57,6 +57,20 @@ public class ProjectController extends WebBaseController {
      * @param page
      * @return
      */
+    @RequestMapping("AnnouncementList.htm")
+    public ModelAndView AnnouncementList(SearchProjectVo searchProjectVo, Pagination page) {
+        List<Announcement> announcements = projectService.searchAnnouncementList(searchProjectVo, page.page());
+        ModelAndView mv = getPageMv("project/AnnouncementList", announcements, page);
+        return mv;
+    }
+
+    /**
+     * 发布项目列表
+     *
+     * @param searchProjectVo
+     * @param page
+     * @return
+     */
     @RequestMapping("projectAnnouncementList.htm")
     public ModelAndView projectAnnouncementList(SearchProjectVo searchProjectVo, Pagination page) {
         List<ClassThree> projects = projectService.searchProjectAnnouncementList(searchProjectVo, page.page());
