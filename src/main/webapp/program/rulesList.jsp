@@ -46,7 +46,7 @@
         <tbody id="sortable">
         <c:forEach var="r" items="${list}">
             <tr data="${r.id}" id="${r.id}" height="40">
-                <td></td>
+                <td>${r.number}</td>
                 <td>${r.name}</td>
                 <td>${r.details}</td>
                 <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>

@@ -6,8 +6,12 @@
 package com.review.www.service.impl;
 
 
+import com.review.www.dao.SequenceFactoryMapper;
+import com.review.www.entity.SequenceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.annotation.Resource;
 
 /**
  * RemoteServiceImpl基类
@@ -18,5 +22,21 @@ import org.slf4j.LoggerFactory;
 public class BaseServiceImpl {
 
     protected static final Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
+
+    @Resource
+    private SequenceFactoryMapper sequenceFactoryMapper;
+
+
+    /**
+     * 生成序列号
+     *
+     * @param prefix
+     * @return
+     */
+    protected String createNumber(String prefix) {
+        SequenceFactory sequenceFactory = new SequenceFactory();
+        sequenceFactoryMapper.generateSequence(sequenceFactory);
+        return String.format("%1$s%2$08d", prefix, sequenceFactory.getSequence());
+    }
 
 }

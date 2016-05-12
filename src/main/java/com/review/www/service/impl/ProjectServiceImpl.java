@@ -60,11 +60,16 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
 
     @Override
     public List<Project> searchProject(SearchProjectVo searchProjectVo, RowBounds page) {
-        return projectMapper.searchProject(searchProjectVo,page);
+        return projectMapper.searchProject(searchProjectVo, page);
     }
 
     @Override
     public List<ClassThree> searchProjectAnnouncementList(SearchProjectVo searchProjectVo, RowBounds page) {
-        return classThreeMapper.search(searchProjectVo,page);
+        return classThreeMapper.search(searchProjectVo, page);
+    }
+
+    @Override
+    public List<Announcement> searchAnnouncementList(SearchProjectVo searchProjectVo, RowBounds page) {
+        return announcementMapper.searchAnnouncement(searchProjectVo, page);
     }
 }

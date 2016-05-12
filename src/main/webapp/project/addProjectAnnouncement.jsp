@@ -32,8 +32,8 @@
         </li>
         <li class="line"><label>公告内容</label>
             <%--<textarea style="width:72%;height:250px" name="content"></textarea>--%>
-            <textarea style="width:80%;height:300px" name="characteristic" id="characteristic"
-                      class="ke">${toursDescription.characteristic}</textarea>
+            <textarea style="width:80%;height:300px" name="content" id="content"
+                      class="ke">${toursDescription.content}</textarea>
         </li>
         <li class="line"><label>申报时间</label>
             <input name="timeStart" type="text" class="short-input Wdate"
@@ -87,7 +87,7 @@
             return {
                 //id: $.trim($('input[name="id"]').val()),
                 title: $.trim($('input[name="title"]').val()),
-                type: $.trim($('select[name="classOne"]').val()),
+                type: $.trim($('select[name="type"]').val()),
                 content: $.trim($('textarea[name="content"]').val()),
                 name: $.trim($('input[name="name"]').val()),
                 remark: $.trim($('input[name="remark"]').val()),

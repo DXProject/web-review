@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class AddProjectAnnouncementReq {
     private String title; //公告标题
-    private int    type;
+    private int    type;//公告类型
     private String content; //公告内容
     private String timeStart; //项目申报时间
     private String timeEnd;

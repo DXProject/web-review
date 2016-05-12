@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="CHAR" />
     <result column="class_three_id" property="classThreeId" jdbcType="CHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="BIT" />
@@ -38,7 +38,7 @@
       creation_time, backup_one, backup_two, 
       backup_three)
     values (#{id,jdbcType=CHAR}, #{classThreeId,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=LONGVARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
       #{type,jdbcType=BIT}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, 
       #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
       #{backupThree,jdbcType=VARCHAR})
@@ -100,7 +100,7 @@
         #{title,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+        #{content,jdbcType=LONGVARCHAR},
       </if>
       <if test="startTime != null" >
         #{startTime,jdbcType=TIMESTAMP},
@@ -144,7 +144,7 @@
         title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+        content = #{content,jdbcType=LONGVARCHAR},
       </if>
       <if test="startTime != null" >
         start_time = #{startTime,jdbcType=TIMESTAMP},
@@ -183,7 +183,7 @@
     update announcement
     set class_three_id = #{classThreeId,jdbcType=CHAR},
       title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=BIT},
@@ -196,4 +196,21 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="searchAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from announcement
+    <where>
+      <if test="keyword != null and keyword != '' ">
+        title LIKE CONCAT('%','${keyword}','%' )
+      </if>
+      <if test="status>0 ">
+        AND status = #{status,jdbcType=TINYINT}
+      </if>
+      <if test="type>0 ">
+        AND type = #{type,jdbcType=TINYINT}
+      </if>
+    </where>
+  </select>
 </mapper>

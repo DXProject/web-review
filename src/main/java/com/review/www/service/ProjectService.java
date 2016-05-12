@@ -58,4 +58,13 @@ public interface ProjectService {
      * @return
      */
     List<ClassThree> searchProjectAnnouncementList(SearchProjectVo searchProjectVo, RowBounds page);
+
+    /**
+     * search Announcement
+     *
+     * @param searchProjectVo
+     * @param page
+     * @return
+     */
+    List<Announcement> searchAnnouncementList(SearchProjectVo searchProjectVo, RowBounds page);
 }

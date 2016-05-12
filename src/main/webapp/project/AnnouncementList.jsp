@@ -7,7 +7,7 @@
         <span>位置：</span>
         <ul class="placeul">
             <li><a href="#">项目管理</a></li>
-            <li><a href="#">项目列表</a></li>
+            <li><a href="#">公告列表</a></li>
         </ul>
     </div>
     <%@include file="../top.jsp" %>
@@ -27,7 +27,7 @@
             </li>
 
             <li><label>&nbsp;</label>
-                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="rulesList.htm"/>
+                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="AnnouncementList.htm"/>
             </li>
         </form>
     </ul>
@@ -36,7 +36,8 @@
         <thead>
         <tr>
             <th>编号</th>
-            <th>名称</th>
+            <th>标题</th>
+            <th>类型</th>
             <th>创建时间</th>
             <th>状态</th>
             <th>操作</th>
@@ -46,7 +47,8 @@
         <c:forEach var="r" items="${list}">
             <tr data="${r.id}" id="${r.id}" height="40">
                 <td></td>
-                <td>${r.name}</td>
+                <td>${r.title}</td>
+                <td>${r.type}</td>
                 <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
                 <td>${r.status}</td>
                 <td>

@@ -22,4 +22,11 @@ public class Constants {
     public static final String BASE_CONSTANT_DEPARTMENT          = "DEPARTMENT";//部门学院
     public static final String BASE_CONSTANT_DISCIPLINE_CATEGORY = "DISCIPLINE_CATEGORY";//学科门类
     public static final String BASE_CONSTANT_SUBJECT_CATEGORY    = "SUBJECT_CATEGORY";//课题类别
+
+    // number pre
+    public static final String NUMBER_RULES         = "RL";
+    public static final String NUMBER_BASE_CONSTANT = "BC";
+    public static final String NUMBER_ANNOUNCEMENT  = "AM";
+    public static final String NUMBER_CLASS_THREE   = "CT";
+    public static final String NUMBER_PROJECT       = "PJ";
 }

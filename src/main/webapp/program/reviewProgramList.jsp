@@ -16,9 +16,10 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <a href="reviewProgramInfo.htm">
-                <li class="click"><span><img src="${path}/images/t01.png"/></span>添加</li>
-            </a>
+            <%--<a href="reviewProgramInfo.htm">--%>
+            <%--<li class="click"><span><img src="${path}/images/t01.png"/></span>添加</li>--%>
+            <%--</a>--%>
+            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
         </ul>
     </div>
     <ul class="seachform">

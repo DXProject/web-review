@@ -5,9 +5,11 @@ import java.util.Date;
 public class Rules {
     private String id;
 
+    private String number;
+
     private String name;
 
-    private boolean type;
+    private int type;
 
     private String details;
 
@@ -31,6 +33,14 @@ public class Rules {
         this.id = id == null ? null : id.trim();
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number == null ? null : number.trim();
+    }
+
     public String getName() {
         return name;
     }
@@ -39,11 +49,11 @@ public class Rules {
         this.name = name == null ? null : name.trim();
     }
 
-    public boolean getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(boolean type) {
+    public void setType(int type) {
         this.type = type;
     }
 
