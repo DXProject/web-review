@@ -244,4 +244,58 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
         return resp;
     }
 
+    @Override
+    public List<UserResp> getByNumberOrName(int type,String keyword) {
+        List<UserResp> resps = new ArrayList<UserResp>();
+        if(type==3){
+            List<Expert> experts = expertMapper.selectListByNumberOrName(keyword);
+            for(Expert user : experts){
+                UserResp resp = new UserResp();
+                resp.setId(user.getId());
+                resp.setDepartmentId(user.getSchool());
+                resp.setDegreeId(user.getDegree());
+                resp.setTitleId(user.getTitle());
+                resp.setNumber(user.getNumber());
+                resp.setAvatar(user.getAvatar());
+                resp.setName(user.getName());
+                resp.setPassword(user.getPassword());
+                resp.setPhone(user.getPhone());
+                resp.setEmail(user.getEmail());
+                resp.setCreator(user.getCreator());
+                resp.setCreationTime(user.getCreationTime());
+                resp.setBackupOne(user.getBackupOne());
+                resp.setBackupTwo(user.getBackupTwo());
+                resp.setBackupThree(user.getBackupThree());
+                resps.add(resp);
+            }
+        }
+        else {
+            List<User> users = userMapper.selectListByNumberOrName(keyword);
+            for (User user : users) {
+                UserResp resp = new UserResp();
+                resp.setId(user.getId());
+                resp.setNumber(user.getNumber());
+                resp.setAvatar(user.getAvatar());
+                resp.setName(user.getName());
+                resp.setSex(user.getSex());
+                resp.setType(user.getType());
+                resp.setPassword(user.getPassword());
+                resp.setPhone(user.getPhone());
+                resp.setEmail(user.getEmail());
+                resp.setBirthday(user.getBirthday());
+                resp.setDegreeId(user.getDegree());
+                resp.setTitleId(user.getTitle());
+                resp.setEductionId(user.getEduction());
+                resp.setDepartmentId(user.getDepartment());
+                resp.setCreator(user.getCreator());
+                resp.setCreationTime(user.getCreationTime());
+                resp.setBackupOne(user.getBackupOne());
+                resp.setBackupTwo(user.getBackupTwo());
+                resp.setBackupThree(user.getBackupThree());
+                resps.add(resp);
+            }
+        }
+        return resps;
+    }
+
 }
