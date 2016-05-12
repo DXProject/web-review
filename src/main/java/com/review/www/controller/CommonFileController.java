@@ -124,4 +124,57 @@ public class CommonFileController extends WebBaseController {
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/files/";
         return new Result(Code.SUCCESS, Result.createJsonMap("path", basePath + saveContextPath + File.separator + newFileName));
     }
+    /**
+     * 多文件上传
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping("uploads.htm")
+    public
+    @ResponseBody
+    Result uploads(HttpServletRequest request, HttpServletResponse response, @RequestParam("files")MultipartFile[] files, @RequestParam(defaultValue = "true") boolean isFullPath) {
+        String[] strs = new String[10];
+        //判断file数组不能为空并且长度大于0
+        if(files!=null&&files.length>0) {
+            //循环获取file数组中得文件
+            for (int i = 0; i < files.length; i++) {
+                MultipartFile file = files[i];
+                String fileId = UUIDUtils.generateShortUuid();
+                String saveDir = ApplicationConfigHelper.getFilePath();
+                if (ModeEnum.DEVELOP == ApplicationConfigHelper.getMode()) {
+                    saveDir = request.getSession().getServletContext().getRealPath(ApplicationConfigHelper.getFilePath());
+                }
+                String saveContextPath = DateUtils.date2String(new Date(), "yyyyMMdd");
+                String savePath = saveDir + File.separator + saveContextPath;
+                String suffix = "";
+                String fileName = file.getOriginalFilename();
+                if ((fileName != null) && (fileName.length() > 0)) {
+                    int dot = fileName.lastIndexOf(".");
+                    if ((dot > -1) && (dot < (fileName.length() - 1))) {
+                        suffix = fileName.substring(dot + 1);
+                    }
+                }
+                String newFileName = fileId + "." + suffix;
+                File targetFile = new File(savePath, newFileName);
+                if (!targetFile.exists()) {
+                    targetFile.mkdirs();
+                }
+                try {
+                    file.transferTo(targetFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String path = request.getContextPath();
+                String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/files/";
+                String filePath = saveContextPath + File.separator + newFileName;
+                if (isFullPath) {
+                    filePath = basePath + filePath;
+                    strs[i]=filePath;
+                }
+            }
+        }
+        return new Result(Code.SUCCESS, Result.createJsonMap("path", strs));
+    }
 }

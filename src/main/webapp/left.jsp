@@ -29,10 +29,10 @@
                 </div>
                 <ul class="menuson">
 
-                    <li><a target="rightFrame" href="${ctx}/user/userAddPage1.htm">项目申报者</a></li>
-                    <li><a target="rightFrame" href="${ctx}/user/userAddPage2.htm">二级学院管理人员</a></li>
-                    <li><a target="rightFrame" href="${ctx}/user/userAddPage4.htm">科研室管理人员</a></li>
-                    <li><cite></cite><a href="${ctx}/user/userAddPage3.htm" target="rightFrame">专家</a><i></i>
+                    <li><a target="rightFrame" href="${ctx}/user/userPage1.htm">项目申报者</a></li>
+                    <li><a target="rightFrame" href="${ctx}/user/userPage2.htm">二级学院管理人员</a></li>
+                    <li><a target="rightFrame" href="${ctx}/user/userPage4.htm">科研室管理人员</a></li>
+                    <li><cite></cite><a href="${ctx}/user/userPage3.htm" target="rightFrame">专家</a><i></i>
                 </ul>
             </dd>
             <dd>

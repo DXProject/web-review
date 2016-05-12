@@ -57,4 +57,6 @@ public interface UserService {
     int delUserManage(int type ,String id);
 
     UserResp getByTypeAndId(int type,String id);
+
+    List<UserResp> getByNumberOrName(int type,String keyword);
 }

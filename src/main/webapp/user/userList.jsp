@@ -27,7 +27,7 @@
                 <input name="keyword" type="text" class="scinput" value="${keyword}"/>
             </li>
             <li><label>&nbsp;</label>
-                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="passportList.htm"/>
+                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="${ctx}/user/searchUser${type}.htm"/>
             </li>
         </form>
     </ul>

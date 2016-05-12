@@ -284,6 +284,17 @@
     <include refid="Base_Column_List"/>
     FROM user WHERE type = #{type,jdbcType=BIT} AND is_deleted=0
   </select>
+  <select id="selectListByNumberOrName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    user
+    <where>
+    <if test="keyword != null and keyword != '' ">
+      name LIKE CONCAT('%','${keyword}','%' ) OR  number LIKE CONCAT('%','${keyword}','%' )
+    </if>
+    </where>
+  </select>
   <update id="deleteById" parameterType="java.lang.String">
     UPDATE
     user

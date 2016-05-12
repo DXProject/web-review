@@ -43,4 +43,6 @@ public interface UserMapper {
 
     int deleteById(String id);
 
+    List<User> selectListByNumberOrName(@Param("keyword") String keyword);
+
 }

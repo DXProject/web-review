@@ -1,6 +1,7 @@
 package com.review.www.dao;
 
 import com.review.www.entity.Expert;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public interface ExpertMapper {
      * 查找所有专家
      */
     List<Expert> selectListAll();
+
+    List<Expert> selectListByNumberOrName(@Param("keyword") String keyword);
 
 
 }

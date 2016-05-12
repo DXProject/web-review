@@ -137,6 +137,13 @@
             }
         }, function () {
             return $('.forminfo').validationEngine('validate');
+        },function(r){
+            $.zxxbox.remind(r.message, null, {
+                delay: 2000,
+                onclose: function () {
+                    location.reload();
+                }
+            });
         });
     });
 </script>

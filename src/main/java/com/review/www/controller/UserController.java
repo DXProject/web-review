@@ -101,6 +101,28 @@ public class UserController extends WebBaseController {
         model.addObject("list",userResps);
         return model;
     }
+    @RequestMapping("searchUser{type}.htm")
+    public ModelAndView searchUser(@PathVariable int type, String keyword){
+        ModelAndView model = new ModelAndView("/user/userList").addObject("type",type);
+        if(type==1){
+            model.addObject("title","项目申报者");
+        }
+        else if(type==2){
+            model.addObject("title","二级学院管理人员");
+        }
+        else if(type==3){
+            model.addObject("title","专家");
+        }
+        else if(type==4){
+            model.addObject("title","科研室管理人员");
+        }
+        List<UserResp> userResps = userService.getByNumberOrName(type,keyword);
+        model.addObject("list",userResps);
+        if(!keyword.isEmpty()){
+            model.addObject("keyword",keyword);
+        }
+        return model;
+    }
     @RequestMapping("userAddPage{type}.htm")
     public ModelAndView userAddPage(@PathVariable int type){
         ModelAndView model = new ModelAndView("/user/userAdd").addObject("type",type);
@@ -130,6 +152,10 @@ public class UserController extends WebBaseController {
     @ResponseBody
     public Result doUserAddPage(@PathVariable int type,User user){
         System.out.println("doUserAddPage");
+        User respUser = userService.getByNumberAndType(user.getNumber(),type);
+        if(respUser!=null){
+            return new Result(2,"教工号已经存在!");
+        }
         userService.addUserManage(type,user);
         return new Result(1,"成功!");
     }
