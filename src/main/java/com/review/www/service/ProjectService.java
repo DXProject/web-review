@@ -67,4 +67,20 @@ public interface ProjectService {
      * @return
      */
     List<Announcement> searchAnnouncementList(SearchProjectVo searchProjectVo, RowBounds page);
+
+    /**
+     * remove announcement
+     *
+     * @param id
+     * @return
+     */
+    Result removeAnnouncment(String id);
+
+    /**
+     * remove ClassThree
+     *
+     * @param id
+     * @return
+     */
+    Result removeClassThree(String id);
 }

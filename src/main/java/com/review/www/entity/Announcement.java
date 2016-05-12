@@ -5,7 +5,7 @@ import java.util.Date;
 public class Announcement {
     private String id;
 
-    private String classThreeId;
+    private String number;
 
     private String title;
 
@@ -16,6 +16,8 @@ public class Announcement {
     private Date endTime;
 
     private int type;
+
+    private String classThreeId;
 
     private int status;
 
@@ -28,8 +30,6 @@ public class Announcement {
     private String backupOne;
 
     private String backupTwo;
-
-    private String backupThree;
 
     public String getId() {
         return id;
@@ -135,11 +135,11 @@ public class Announcement {
         this.backupTwo = backupTwo == null ? null : backupTwo.trim();
     }
 
-    public String getBackupThree() {
-        return backupThree;
+    public String getNumber() {
+        return number;
     }
 
-    public void setBackupThree(String backupThree) {
-        this.backupThree = backupThree == null ? null : backupThree.trim();
+    public void setNumber(String number) {
+        this.number = number == null ? null : number.trim();
     }
 }
