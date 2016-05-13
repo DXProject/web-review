@@ -15,11 +15,11 @@
     <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
     <result column="backup_one" property="backupOne" jdbcType="VARCHAR" />
     <result column="backup_two" property="backupTwo" jdbcType="VARCHAR" />
-    <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, class_three_id, title, content, start_time, end_time, type, status, is_deleted, 
-    creator, creation_time, backup_one, backup_two, backup_three
+    creator, creation_time, backup_one, backup_two, number
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -36,12 +36,12 @@
       content, start_time, end_time, 
       type, status, is_deleted, creator, 
       creation_time, backup_one, backup_two, 
-      backup_three)
+      number)
     values (#{id,jdbcType=CHAR}, #{classThreeId,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
       #{content,jdbcType=LONGVARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP},
       #{type,jdbcType=BIT}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, 
       #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
-      #{backupThree,jdbcType=VARCHAR})
+      #{number,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.Announcement" >
     insert into announcement
@@ -85,8 +85,8 @@
       <if test="backupTwo != null" >
         backup_two,
       </if>
-      <if test="backupThree != null" >
-        backup_three,
+      <if test="number != null" >
+        number,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -129,8 +129,8 @@
       <if test="backupTwo != null" >
         #{backupTwo,jdbcType=VARCHAR},
       </if>
-      <if test="backupThree != null" >
-        #{backupThree,jdbcType=VARCHAR},
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -173,8 +173,8 @@
       <if test="backupTwo != null" >
         backup_two = #{backupTwo,jdbcType=VARCHAR},
       </if>
-      <if test="backupThree != null" >
-        backup_three = #{backupThree,jdbcType=VARCHAR},
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=CHAR}
@@ -193,7 +193,7 @@
       creation_time = #{creationTime,jdbcType=TIMESTAMP},
       backup_one = #{backupOne,jdbcType=VARCHAR},
       backup_two = #{backupTwo,jdbcType=VARCHAR},
-      backup_three = #{backupThree,jdbcType=VARCHAR}
+      number = #{number,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
   <!--custom-->

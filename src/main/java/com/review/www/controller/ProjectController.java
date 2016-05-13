@@ -103,4 +103,28 @@ public class ProjectController extends WebBaseController {
         ModelAndView mv = getPageMv("project/projectList", projects, page);
         return mv;
     }
+
+    /**
+     * 删除 Announcment
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("removeAnnouncment.htm")
+    public Result removeAnnouncment(String id) {
+        validateParam(id);
+        return projectService.removeAnnouncment(id);
+    }
+
+    /**
+     * 删除 classThree
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("removeClassThree.htm")
+    public Result removeClassThree(String id) {
+        validateParam(id);
+        return projectService.removeClassThree(id);
+    }
 }

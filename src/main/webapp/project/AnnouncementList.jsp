@@ -16,7 +16,9 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
+            <a href="addProjectAnnouncement.htm">
+                <li class="click"><span><img src="${path}/images/t01.png"/></span>添加</li>
+            </a>
         </ul>
     </div>
     <ul class="seachform">
@@ -46,7 +48,7 @@
         <tbody id="sortable">
         <c:forEach var="r" items="${list}">
             <tr data="${r.id}" id="${r.id}" height="40">
-                <td></td>
+                <td>${r.number}</td>
                 <td>${r.title}</td>
                 <td>${r.type}</td>
                 <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
@@ -72,7 +74,7 @@
         $('._removeBtn').on('click', function () {
             var id = $(this).parents('tr').attr('data');
             $.zxxbox.ask('确定要删除?', function () {
-                $K.http('removeRules.htm', {
+                $K.http('removeAnnouncment.htm', {
                     id: id
                 }, function (r) {
                     $.zxxbox.remind("操作成功。", null, {

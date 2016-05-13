@@ -6,3 +6,6 @@ CREATE TABLE `reviewDB`.`sequence_factory` (
 ALTER TABLE `reviewDB`.`rules`
 ADD COLUMN `number` VARCHAR(45) NULL COMMENT '' AFTER `id`;
 
+ALTER TABLE `reviewDB`.`announcement`
+CHANGE COLUMN `backup_three` `number` VARCHAR(45) NULL DEFAULT NULL COMMENT '' AFTER `id`;
+
