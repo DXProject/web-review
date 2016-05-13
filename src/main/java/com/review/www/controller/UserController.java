@@ -203,4 +203,12 @@ public class UserController extends WebBaseController {
         userService.delUserManage(type,id);
         return new Result(1,"成功!");
     }
+    /**
+     * 多文件测试
+     */
+    @RequestMapping("uploadsPage")
+    public ModelAndView uploadsPage(){
+        ModelAndView mv = getSessionUserMV("user/uploads");
+        return mv;
+    }
 }
