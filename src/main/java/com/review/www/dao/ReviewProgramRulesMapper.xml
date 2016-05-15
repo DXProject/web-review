@@ -108,4 +108,17 @@
     delete from review_program_rules
     where review_program_id = #{reviewProgramId,jdbcType=CHAR}
   </delete>
+    <select id="search" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from review_program_rules
+        <where>
+            <if test="id != null and id != '' ">
+                review_program_id = #{id,jdbcType=CHAR}
+            </if>
+            <if test="keyword != null and keyword != '' ">
+                name LIKE CONCAT('%','${keyword}','%' )
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -11,14 +11,14 @@ public class ReviewProgramResp {
     private String id;
     private String name;
     private int    type;
-    private Date   creation_time;
+    private Date   creationTime;
     private String creator;
 
     public ReviewProgramResp(ReviewProgram reviewProgram) {
         this.id = reviewProgram.getId();
         this.name = reviewProgram.getName();
         this.type = reviewProgram.getType();
-        this.creation_time = reviewProgram.getCreationTime();
+        this.creationTime = reviewProgram.getCreationTime();
     }
 
     public String getId() {
@@ -45,12 +45,12 @@ public class ReviewProgramResp {
         this.type = type;
     }
 
-    public Date getCreation_time() {
-        return creation_time;
+    public Date getCreationTime() {
+        return creationTime;
     }
 
-    public void setCreation_time(Date creation_time) {
-        this.creation_time = creation_time;
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
     }
 
     public String getCreator() {

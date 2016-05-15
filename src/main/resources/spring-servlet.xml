@@ -41,6 +41,7 @@
             <mvc:exclude-mapping path="/doLogin.htm"/>
             <mvc:exclude-mapping path="/api/**/*"/>
             <mvc:exclude-mapping path="/file/**/*"/>
+            <mvc:exclude-mapping path="/front/**/*"/>
             <bean class="com.review.www.interceptors.AuthInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>

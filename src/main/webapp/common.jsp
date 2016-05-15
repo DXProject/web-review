@@ -18,3 +18,9 @@
 <%--annountmentType--%>
 <c:set var="NORMAL_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.NORMAL_ANNOUNCEMENT.getValue()%>"/>
 <c:set var="PROJECT_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.PROJECT_ANNOUNCEMENT.getValue()%>"/>
+<%--reviewProgram--%>
+<c:set var="REVIEW_PROGRAM" value="<%=ReviewProgramTypeEnum.values()%>"/>
+<c:set var="REVIEW_PROGRAM_TYPE_ONE" value="<%=ReviewProgramTypeEnum.TYPE_ONE%>"/>
+<c:set var="REVIEW_PROGRAM_TYPE_TWO" value="<%=ReviewProgramTypeEnum.TYPE_TWO%>"/>
+<c:set var="REVIEW_PROGRAM_TYPE_THREE" value="<%=ReviewProgramTypeEnum.TYPE_THREE%>"/>
+<c:set var="REVIEW_PROGRAM_TYPE_FOUR" value="<%=ReviewProgramTypeEnum.TYPE_FOUR%>"/>

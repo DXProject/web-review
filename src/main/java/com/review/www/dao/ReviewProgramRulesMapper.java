@@ -1,6 +1,10 @@
 package com.review.www.dao;
 
+import com.jopool.jweb.mybatis.page.Pagination;
 import com.review.www.entity.ReviewProgramRules;
+import com.review.www.vo.SearchBaseDataVo;
+
+import java.util.List;
 
 public interface ReviewProgramRulesMapper {
     int deleteByPrimaryKey(String id);
@@ -21,4 +25,13 @@ public interface ReviewProgramRulesMapper {
      * @param reviewProgramId
      */
     void deleteByReviewProgram(String reviewProgramId);
+
+    /**
+     * search
+     *
+     * @param searchBaseDataVo
+     * @param page
+     * @return
+     */
+    List<ReviewProgramRules> search(SearchBaseDataVo searchBaseDataVo, Pagination page);
 }

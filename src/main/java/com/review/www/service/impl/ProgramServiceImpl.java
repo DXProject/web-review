@@ -4,6 +4,7 @@ import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.spring.SelfBeanAware;
+import com.jopool.jweb.utils.StringUtils;
 import com.jopool.jweb.utils.UUIDUtils;
 import com.review.www.constants.Constants;
 import com.review.www.dao.ReviewProgramMapper;
@@ -66,14 +67,14 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
     }
 
     @Override
-    public Result addReviewProgram(ReviewProgram reviewProgram, List<Rules> rules) {
+    public Result addReviewProgram(ReviewProgram reviewProgram) {
         reviewProgram.setId(UUIDUtils.createId());
         reviewProgram.setCreationTime(new Date());
         reviewProgram.setIsDeleted(false);
         reviewProgramMapper.insert(reviewProgram);
-        if (rules.size() != 0) {
-            addReviewProgramRules(reviewProgram, rules);
-        }
+//        if (rules.size() != 0) {
+//            addReviewProgramRules(reviewProgram, rules);
+//        }
         return new Result(Code.SUCCESS);
     }
 
@@ -83,13 +84,13 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
     }
 
     @Override
-    public Result modifyReviewProgram(ReviewProgram reviewProgram, List<Rules> rules) {
+    public Result modifyReviewProgram(ReviewProgram reviewProgram) {
         reviewProgramMapper.updateByPrimaryKeySelective(reviewProgram);
-        if (rules.size() != 0) {
-            reviewProgramRulesMapper.deleteByReviewProgram(reviewProgram.getId());
-            addReviewProgramRules(reviewProgram, rules);
-        }
-        return null;
+//        if (rules.size() != 0) {
+//            reviewProgramRulesMapper.deleteByReviewProgram(reviewProgram.getId());
+//            addReviewProgramRules(reviewProgram, rules);
+//        }
+        return new Result(Code.SUCCESS);
     }
 
     @Override
@@ -105,6 +106,31 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
     @Override
     public List<ReviewProgram> searchReviewProgram(SearchBaseDataVo searchBaseDataVo, Pagination page) {
         return reviewProgramMapper.searchReviewProgram(searchBaseDataVo,page);
+    }
+
+    @Override
+    public List<ReviewProgramRules> searchReviewProgramRules(SearchBaseDataVo searchBaseDataVo, Pagination page) {
+        return reviewProgramRulesMapper.search(searchBaseDataVo,page);
+    }
+
+    @Override
+    public Result addRulesToReviewProgramRules(String userId, String reviewProgramId, String[] rulesIds) {
+        if (rulesIds.length <= 0) {
+            return new Result(Code.ERROR, "请选择评审细则");
+        }
+        for(String rulesId : rulesIds){
+            if(StringUtils.isEmpty(rulesId)){
+                continue;
+            }
+            ReviewProgramRules rpr = new ReviewProgramRules();
+            rpr.setId(UUIDUtils.createId());
+            rpr.setCreationTime(new Date());
+            rpr.setCreator(userId);
+            rpr.setReviewProgramId(reviewProgramId);
+            rpr.setRulesId(rulesId);
+            reviewProgramRulesMapper.insert(rpr);
+        }
+        return new Result(Code.SUCCESS);
     }
 
     private void addReviewProgramRules(ReviewProgram reviewProgram, List<Rules> rules) {

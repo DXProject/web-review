@@ -3,6 +3,7 @@ package com.review.www.service;
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.mybatis.page.Pagination;
 import com.review.www.entity.ReviewProgram;
+import com.review.www.entity.ReviewProgramRules;
 import com.review.www.entity.Rules;
 import com.review.www.vo.SearchBaseDataVo;
 
@@ -51,7 +52,7 @@ public interface ProgramService {
      * @param
      * @return
      */
-    Result addReviewProgram(ReviewProgram reviewProgram, List<Rules> rules);
+    Result addReviewProgram(ReviewProgram reviewProgram);
 
     /**
      * get reviewProgram by id
@@ -63,10 +64,10 @@ public interface ProgramService {
 
     /**
      * @param reviewProgram
-     * @param rules
+     * @param
      * @return
      */
-    Result modifyReviewProgram(ReviewProgram reviewProgram, List<Rules> rules);
+    Result modifyReviewProgram(ReviewProgram reviewProgram);
 
     /**
      * search
@@ -93,4 +94,21 @@ public interface ProgramService {
      * @return
      */
     List<ReviewProgram> searchReviewProgram(SearchBaseDataVo searchBaseDataVo, Pagination page);
+
+    /**
+     * search ReviewProgramRules
+     * @param searchBaseDataVo
+     * @param page
+     * @return
+     */
+    List<ReviewProgramRules> searchReviewProgramRules(SearchBaseDataVo searchBaseDataVo, Pagination page);
+
+    /**
+     * add rules to reviewProgram
+     * @param userId
+     * @param reviewProgramId
+     * @param split
+     * @return
+     */
+    Result addRulesToReviewProgramRules(String userId, String reviewProgramId, String[] split);
 }

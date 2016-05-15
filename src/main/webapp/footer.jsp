@@ -17,6 +17,7 @@
 <script type="text/javascript" src="${path}/js/json2.js"></script>
 <script type="text/javascript" src="${path}/js/kiss-web.1.0.js"></script>
 <script type="text/javascript" src="${path}/js/bmap.js"></script>
+<script type="text/javascript" src="${path}/js/jquery.menu.js"></script>
 <script>
     $(function () {
         //
