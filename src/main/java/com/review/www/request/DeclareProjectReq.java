@@ -30,6 +30,7 @@ public class DeclareProjectReq {
         project.setTopicBase(this.topicBase);
         project.setResearch(this.research);
         project.setFunds(this.funds);
+        project.setIsDeleted(false);
         project.setCreationTime(new Date());
         project.setCreator(userId);
         return project;

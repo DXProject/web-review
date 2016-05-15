@@ -79,18 +79,6 @@ public class ProjectController extends WebBaseController {
     }
 
     /**
-     * 项目申报
-     *
-     * @param req
-     * @return
-     */
-    @RequestMapping("declareProject.htm")
-    public Result declareProject(DeclareProjectReq req) {
-        Project project = req.parseProject(getSessionUser().getUserId());
-        return projectService.declareProject(project);
-    }
-
-    /**
      * 申报项目列表
      *
      * @param searchProjectVo
@@ -126,5 +114,16 @@ public class ProjectController extends WebBaseController {
     public Result removeClassThree(String id) {
         validateParam(id);
         return projectService.removeClassThree(id);
+    }
+    /**
+     * 删除 removeProject
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("removeProject.htm")
+    public Result removeProject(String id) {
+        validateParam(id);
+        return projectService.removeProject(id);
     }
 }

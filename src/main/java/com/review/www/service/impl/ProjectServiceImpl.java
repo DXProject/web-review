@@ -86,4 +86,10 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
         classThreeMapper.deleteByPrimaryKey(id);
         return new Result(Code.SUCCESS);
     }
+
+    @Override
+    public Result removeProject(String id) {
+        projectMapper.deleteByPrimaryKey(id);
+        return new Result(Code.SUCCESS);
+    }
 }

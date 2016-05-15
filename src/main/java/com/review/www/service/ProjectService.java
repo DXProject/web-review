@@ -83,4 +83,12 @@ public interface ProjectService {
      * @return
      */
     Result removeClassThree(String id);
+
+    /**
+     * remove project
+     *
+     * @param id
+     * @return
+     */
+    Result removeProject(String id);
 }
