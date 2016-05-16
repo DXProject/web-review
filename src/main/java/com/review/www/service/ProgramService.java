@@ -97,6 +97,7 @@ public interface ProgramService {
 
     /**
      * search ReviewProgramRules
+     *
      * @param searchBaseDataVo
      * @param page
      * @return
@@ -105,10 +106,19 @@ public interface ProgramService {
 
     /**
      * add rules to reviewProgram
+     *
      * @param userId
      * @param reviewProgramId
      * @param split
      * @return
      */
     Result addRulesToReviewProgramRules(String userId, String reviewProgramId, String[] split);
+
+    /**
+     * remove reviewProgram
+     *
+     * @param id
+     * @return
+     */
+    Result removeReviewProgram(String id);
 }

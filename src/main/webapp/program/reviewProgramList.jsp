@@ -66,19 +66,12 @@
                     <div class="subDiv">
                         <ul>
                             <li>
-                                <a href=""
-                                   target="rightFrame">编辑修改</a>
+                                <a href="javascript:;"
+                                   target="rightFrame" class="_editPwdBtn">修改</a>
                             </li>
                             <li>
                                 <a href="javascript:;"
-                                   target="rightFrame" class="_editPwdBtn">修改密码</a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"
-                                   target="rightFrame" class="_doDelBtn">删除</a>
-                            </li>
-                            <li>
-                                <a href="">业务员</a>
+                                   target="rightFrame" class="_removeBtn">删除</a>
                             </li>
                             <li>
                                 <a href="getAlreadyAddedRules.htm?id=${r.id}">已有细则</a>
@@ -160,7 +153,7 @@
         $('._removeBtn').on('click', function () {
             var id = $(this).parents('tr').attr('data');
             $.zxxbox.ask('确定要删除?', function () {
-                $K.http('removeRules.htm', {
+                $K.http('removeReviewProgram.htm', {
                     id: id
                 }, function (r) {
                     $.zxxbox.remind("操作成功。", null, {
