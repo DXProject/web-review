@@ -3,11 +3,14 @@ package com.review.www.controller;
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.mybatis.page.Pagination;
+import com.review.www.constants.CodeMessage;
 import com.review.www.entity.*;
 import com.review.www.request.AddProjectAnnouncementReq;
 import com.review.www.request.DateParam;
 import com.review.www.request.DeclareProjectReq;
+import com.review.www.response.ProjectListResp;
 import com.review.www.service.ProjectService;
+import com.review.www.service.UserService;
 import com.review.www.vo.SearchProjectVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +29,8 @@ import java.util.List;
 public class ProjectController extends WebBaseController {
     @Resource
     private ProjectService projectService;
+    @Resource
+    private UserService    userService;
 
     /**
      * 发布新项目申请
@@ -87,8 +93,24 @@ public class ProjectController extends WebBaseController {
      */
     @RequestMapping("projectList.htm")
     public ModelAndView projectList(SearchProjectVo searchProjectVo, Pagination page) {
+        List<ProjectListResp> resps = new ArrayList<ProjectListResp>();
         List<Project> projects = projectService.searchProject(searchProjectVo, page.page());
-        ModelAndView mv = getPageMv("project/projectList", projects, page);
+        for (Project project : projects) {
+            ProjectListResp resp = new ProjectListResp();
+            resp.setId(project.getId());
+            resp.setName(project.getName());
+            resp.setNumber(project.getNumber());
+            User user =userService.getById(project.getCreator());
+            if(null != user){
+                resp.setCreator(user.getName());
+                resp.setCreatorNumber(user.getNumber());
+            }
+            resp.setStatus(1);
+            resp.setCreationTime(project.getCreationTime());
+            resps.add(resp);
+        }
+        ModelAndView mv = getPageMv("project/projectList", resps, page);
+        mv.addObject("keyword",searchProjectVo.getKeyword());
         return mv;
     }
 
@@ -115,6 +137,7 @@ public class ProjectController extends WebBaseController {
         validateParam(id);
         return projectService.removeClassThree(id);
     }
+
     /**
      * 删除 removeProject
      *

@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <title>高校教科研项目网上评审</title>
 </head>
-<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/web-nav.css">
-<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/register.css">
+<link rel="stylesheet" type="text/css" href="${path}/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">
+<link rel="stylesheet" type="text/css" href="${path}/css/register.css">
 <body>
 <div class="wrap">
     <div class="header">
@@ -23,7 +23,7 @@
 					</span>
             </div>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="index.html">首页</a></li>
+                <li role="presentation"><a href="${path}/front/index.htm">首页</a></li>
                 <li role="presentation"><a href="news.html">通告通知</a></li>
                 <li role="presentation"><a href="document2015.html">历史文献</a></li>
                 <li role="presentation"><a href="problem.html">常见问题</a></li>
@@ -44,14 +44,6 @@
                                 <c:forEach var="t" items="${list}">
                                     <option value="${t.id}">${t.name}</option>
                                 </c:forEach>
-                                <%--<option value="volvo">水利与环境工程学院</option>--%>
-                                <%--<option value="saab">建筑工程学院</option>--%>
-                                <%--<option value="fiat">机械与汽车工程学院</option>--%>
-                                <%--<option value="audi">信息工程与艺术设计学院</option>--%>
-                                <%--<option value="audi">测绘与市政工程学院</option>--%>
-                                <%--<option value="audi">电气工程学院</option>--%>
-                                <%--<option value="audi">经济与管理工程学院</option>--%>
-                                <%--<option value="audi">国际教育交流学院</option>--%>
                             </select>
 						</span>
 						<span>
@@ -103,7 +95,7 @@
 </body>
 </html>
 <script type="text/javascript" src="${path}/js/jquery/jquery.1.11.2.min.js"></script>
-<script type="text/javascript" src="${path}/frontStaticHtml/JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${path}/js/3rd/validate/jquery.validationEngine.js"></script>
 <script type="text/javascript" src="${path}/js/3rd/validate/jquery.validationEngine-zh_CN.js"></script>
 <script type="text/javascript" src="${path}/js/jquery/jquery.zxxbox.3.0.js"></script>

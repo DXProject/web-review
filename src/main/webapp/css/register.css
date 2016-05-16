@@ -3,35 +3,23 @@
 	margin: 0px;
 	font-family: 微软雅黑;
 }
-*{
-	padding: 0px;
-	margin: 0px;
+.header{
 }
-.regcontent,.regprocedure{
+.main{
 	float: left;
-}
-.regprocedure{
-	width: 220px;
-	height: 660px;
-	border: 1px solid #ccc;
-}
-.regprocedure span{
-	padding: 5px 10px;
+	width: 100%;
 }
 .regtitle{
-	width: 600px;
-	margin: 30px auto;
 	text-align: center;
 }
 .regcontent{
-	width: 730px;
+	margin: 0 auto;
+	width: 900px;
 	height: 650px;
-	margin-left: 10px;
-	border: 1px solid #ccc;
 }
 .reginfo{
-	width: 400px;
-	margin: 50px auto 0px auto;
+	text-align: center;
+	margin-top: 50px;
 }
 .reginfo span{
 	display: block;
@@ -65,5 +53,5 @@
 }
 .news-title a:hover{
 	text-decoration: none;
-	
+
 }

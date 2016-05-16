@@ -56,6 +56,7 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
 
     @Override
     public Result declareProject(Project project) {
+        project.setNumber(createNumber(Constants.NUMBER_PROJECT));
         projectMapper.insert(project);
         return new Result(Code.SUCCESS);
     }

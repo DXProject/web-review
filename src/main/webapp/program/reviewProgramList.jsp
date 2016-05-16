@@ -59,9 +59,9 @@
                     <%--<a href="getRulesByReviewProgramId.htm?id=${r.id}" class="tablelink _modifyBtn">添加评分细则</a>&nbsp;--%>
                     <%--<a href="javascript:;" class="tablelink _modifyBtn">修改</a>&nbsp;--%>
                     <%--<a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;--%>
-                <td class="tdPosi _menu" data="${shop.id}">
-                    <a>操作</a>
-                    <i class="iconfont icMoreColor">&#xe602;</i>
+                <td class="tdPosi _menu" data="${r.id}">
+                    <a class="tablelink">操作</a>
+                    <%--<i class="iconfont icMoreColor">&#xe602;</i>--%>
                     <%--<canvas id="iCanvas" width="5px;" height="5px;" style="border:1px solid black;">not support</canvas>--%>
                     <div class="subDiv">
                         <ul>

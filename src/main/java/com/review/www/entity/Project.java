@@ -5,27 +5,31 @@ import java.util.Date;
 public class Project {
     private String id;
 
+    private String userId;
+
+    private String number;
+
+    private String name;
+
     private String classThreeId;
 
     private String reviewProgramId;
 
-    private String userId;
+    private String topicBase;
+
+    private String department;
 
     private String subjectCategory;
 
     private String disciplineCategory;
-
-    private String name;
-
-    private Byte status;
-
-    private String topicBase;
 
     private String research;
 
     private String funds;
 
     private String file;
+
+    private int status;
 
     private Boolean isDeleted;
 
@@ -51,6 +55,30 @@ public class Project {
         this.id = id == null ? null : id.trim();
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number == null ? null : number.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
     public String getClassThreeId() {
         return classThreeId;
     }
@@ -67,12 +95,20 @@ public class Project {
         this.reviewProgramId = reviewProgramId == null ? null : reviewProgramId.trim();
     }
 
-    public String getUserId() {
-        return userId;
+    public String getTopicBase() {
+        return topicBase;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setTopicBase(String topicBase) {
+        this.topicBase = topicBase == null ? null : topicBase.trim();
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department == null ? null : department.trim();
     }
 
     public String getSubjectCategory() {
@@ -89,30 +125,6 @@ public class Project {
 
     public void setDisciplineCategory(String disciplineCategory) {
         this.disciplineCategory = disciplineCategory == null ? null : disciplineCategory.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public String getTopicBase() {
-        return topicBase;
-    }
-
-    public void setTopicBase(String topicBase) {
-        this.topicBase = topicBase == null ? null : topicBase.trim();
     }
 
     public String getResearch() {
@@ -137,6 +149,14 @@ public class Project {
 
     public void setFile(String file) {
         this.file = file == null ? null : file.trim();
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Boolean getIsDeleted() {

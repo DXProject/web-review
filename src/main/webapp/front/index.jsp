@@ -11,9 +11,9 @@
     <meta http-equiv="expires" content="0">
     <title>高校教科研项目网上评审</title>
 </head>
-<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/web-nav.css">
-<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/index.css">
+<link rel="stylesheet" type="text/css" href="${path}/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">
+<link rel="stylesheet" type="text/css" href="${path}/css/index.css">
 <body>
 <div class="wrap">
 
@@ -29,9 +29,9 @@
 					</span>
             </div>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="${path}/frontStaticHtml/index.html">首页</a></li>
-                <li role="presentation"><a href="${path}/frontStaticHtml/news.html">通告通知</a></li>
-                <li role="presentation"><a href="${path}/frontStaticHtml/document2015.html">历史文献</a></li>
+                <li role="presentation"><a href="${path}/front/index.htm">首页</a></li>
+                <li role="presentation"><a href="">通告通知</a></li>
+                <li role="presentation"><a href="">历史文献</a></li>
                 <li role="presentation"><a href="${path}/frontStaticHtml/problem.html">常见问题</a></li>
                 <li role="presentation"><a href="${path}/frontStaticHtml/aboutus.html">关于我们</a></li>
             </ul>
@@ -55,19 +55,19 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="${path}/frontStaticHtml/images/banner_1.jpg" alt="...">
+                                <img src="${path}/images/banner_1.jpg" alt="...">
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="${path}/frontStaticHtml/images/banner_2.jpg" alt="...">
+                                <img src="${path}/images/banner_2.jpg" alt="...">
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="${path}/frontStaticHtml/images/banner_1.jpg" alt="...">
+                                <img src="${path}/images/banner_1.jpg" alt="...">
                                 <div class="carousel-caption">
                                     ...
                                 </div>
@@ -92,7 +92,7 @@
                 <!-- 公告栏开始 -->
                 <div class="main-foot-notice">
                     <div class="news-title">
-                        <span class="icon"><img src="${path}/frontStaticHtml/images/icon-1.png"></span>
+                        <span class="icon"><img src="${path}/images/icon-1.png"></span>
                         <a href="#">通知通告</a>
                     </div>
                     <div class="news-content">
@@ -113,27 +113,27 @@
                 <!-- 快速入口 -->
                 <div class="main-foot-fast">
                     <div class="link-title">
-                        <span class="icon"><img src="${path}/frontStaticHtml/images/icon-2.png"></span>
+                        <span class="icon"><img src="${path}/images/icon-2.png"></span>
                         <a href="#">快速入口</a>
                     </div>
                     <div class="content">
                         <div class="block-l">
                             <div class="left-1">
-                                <span><img src="${path}/frontStaticHtml/images/icon-3.gif"><a href="##" data-toggle="modal" data-target="#myModal" >登录/注册</a></span>
+                                <span><img src="${path}/images/icon-3.gif"><a href="##" data-toggle="modal" data-target="#myModal" >登录/注册</a></span>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span class="connect"></span>
                             <div class="left-2">
-                                <span><img src="${path}/frontStaticHtml/images/icon-4.gif"><a href="document2014.html">历史文献</a></span>
+                                <span><img src="${path}/images/icon-4.gif"><a href="">历史文献</a></span>
                             </div>
 
                         </div>
                         <div class="block-r">
                             <div class="right-1">
-                                <span><img src="${path}/frontStaticHtml/images/icon-6.gif"><a href="Applicants.html">项目申报</a></span>
+                                <span><img src="${path}/images/icon-6.gif"><a href="${path}/front/project/applyProject.htm">项目申报</a></span>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span class="connect"></span>
                             <div class="right-2">
-                                <span><img src="${path}/frontStaticHtml/images/icon-5.gif"><a href="aboutus.html">关于我们</a></span>
+                                <span><img src="${path}/images/icon-5.gif"><a href="">关于我们</a></span>
                             </div>
 
                         </div>
@@ -187,7 +187,7 @@
 </body>
 </html>
 <script type="text/javascript" src="${path}/js/jquery/jquery.1.11.2.min.js"></script>
-<script type="text/javascript" src="${path}/frontStaticHtml/JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${path}/js/jquery/jquery.zxxbox.3.0.js"></script>
 <script type="text/javascript" src="${path}/js/jquery/jquery.jp.ajaxbtn.js"></script>
 <script type="text/javascript" src="${path}/js/3rd/validate/jquery.validationEngine.js"></script>

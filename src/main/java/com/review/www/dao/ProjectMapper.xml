@@ -3,17 +3,19 @@
 <mapper namespace="com.review.www.dao.ProjectMapper" >
   <resultMap id="BaseResultMap" type="com.review.www.entity.Project" >
     <id column="id" property="id" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="class_three_id" property="classThreeId" jdbcType="CHAR" />
     <result column="review_program_id" property="reviewProgramId" jdbcType="CHAR" />
-    <result column="user_id" property="userId" jdbcType="CHAR" />
+    <result column="topic_base" property="topicBase" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="CHAR" />
     <result column="subject_category" property="subjectCategory" jdbcType="CHAR" />
     <result column="discipline_category" property="disciplineCategory" jdbcType="CHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="topic_base" property="topicBase" jdbcType="VARCHAR" />
     <result column="research" property="research" jdbcType="VARCHAR" />
     <result column="funds" property="funds" jdbcType="VARCHAR" />
     <result column="file" property="file" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
     <result column="creator" property="creator" jdbcType="CHAR" />
     <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
@@ -24,9 +26,9 @@
     <result column="backup_five" property="backupFive" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, class_three_id, review_program_id, user_id, subject_category, discipline_category, 
-    name, status, topic_base, research, funds, file, is_deleted, creator, creation_time, 
-    backup_one, backup_two, backup_three, backup_four, backup_five
+    id, user_id, number, name, class_three_id, review_program_id, topic_base, department, 
+    subject_category, discipline_category, research, funds, file, status, is_deleted, 
+    creator, creation_time, backup_one, backup_two, backup_three, backup_four, backup_five
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -39,20 +41,22 @@
     where id = #{id,jdbcType=CHAR}
   </delete>
   <insert id="insert" parameterType="com.review.www.entity.Project" >
-    insert into project (id, class_three_id, review_program_id, 
-      user_id, subject_category, discipline_category, 
-      name, status, topic_base, 
-      research, funds, file, 
-      is_deleted, creator, creation_time, 
-      backup_one, backup_two, backup_three, 
-      backup_four, backup_five)
-    values (#{id,jdbcType=CHAR}, #{classThreeId,jdbcType=CHAR}, #{reviewProgramId,jdbcType=CHAR}, 
-      #{userId,jdbcType=CHAR}, #{subjectCategory,jdbcType=CHAR}, #{disciplineCategory,jdbcType=CHAR}, 
-      #{name,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{topicBase,jdbcType=VARCHAR}, 
-      #{research,jdbcType=VARCHAR}, #{funds,jdbcType=VARCHAR}, #{file,jdbcType=VARCHAR}, 
-      #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
-      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}, 
-      #{backupFour,jdbcType=VARCHAR}, #{backupFive,jdbcType=VARCHAR})
+    insert into project (id, user_id, number, 
+      name, class_three_id, review_program_id, 
+      topic_base, department, subject_category, 
+      discipline_category, research, funds, 
+      file, status, is_deleted, 
+      creator, creation_time, backup_one, 
+      backup_two, backup_three, backup_four, 
+      backup_five)
+    values (#{id,jdbcType=CHAR}, #{userId,jdbcType=CHAR}, #{number,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{classThreeId,jdbcType=CHAR}, #{reviewProgramId,jdbcType=CHAR}, 
+      #{topicBase,jdbcType=VARCHAR}, #{department,jdbcType=CHAR}, #{subjectCategory,jdbcType=CHAR}, 
+      #{disciplineCategory,jdbcType=CHAR}, #{research,jdbcType=VARCHAR}, #{funds,jdbcType=VARCHAR}, 
+      #{file,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=BIT}, 
+      #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, 
+      #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}, #{backupFour,jdbcType=VARCHAR}, 
+      #{backupFive,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.Project" >
     insert into project
@@ -60,29 +64,32 @@
       <if test="id != null" >
         id,
       </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
       <if test="classThreeId != null" >
         class_three_id,
       </if>
       <if test="reviewProgramId != null" >
         review_program_id,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="topicBase != null" >
+        topic_base,
+      </if>
+      <if test="department != null" >
+        department,
       </if>
       <if test="subjectCategory != null" >
         subject_category,
       </if>
       <if test="disciplineCategory != null" >
         discipline_category,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="topicBase != null" >
-        topic_base,
       </if>
       <if test="research != null" >
         research,
@@ -92,6 +99,9 @@
       </if>
       <if test="file != null" >
         file,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="isDeleted != null" >
         is_deleted,
@@ -122,29 +132,32 @@
       <if test="id != null" >
         #{id,jdbcType=CHAR},
       </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
       <if test="classThreeId != null" >
         #{classThreeId,jdbcType=CHAR},
       </if>
       <if test="reviewProgramId != null" >
         #{reviewProgramId,jdbcType=CHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=CHAR},
+      <if test="topicBase != null" >
+        #{topicBase,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=CHAR},
       </if>
       <if test="subjectCategory != null" >
         #{subjectCategory,jdbcType=CHAR},
       </if>
       <if test="disciplineCategory != null" >
         #{disciplineCategory,jdbcType=CHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="topicBase != null" >
-        #{topicBase,jdbcType=VARCHAR},
       </if>
       <if test="research != null" >
         #{research,jdbcType=VARCHAR},
@@ -154,6 +167,9 @@
       </if>
       <if test="file != null" >
         #{file,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
       </if>
       <if test="isDeleted != null" >
         #{isDeleted,jdbcType=BIT},
@@ -184,29 +200,32 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.Project" >
     update project
     <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
       <if test="classThreeId != null" >
         class_three_id = #{classThreeId,jdbcType=CHAR},
       </if>
       <if test="reviewProgramId != null" >
         review_program_id = #{reviewProgramId,jdbcType=CHAR},
       </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=CHAR},
+      <if test="topicBase != null" >
+        topic_base = #{topicBase,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=CHAR},
       </if>
       <if test="subjectCategory != null" >
         subject_category = #{subjectCategory,jdbcType=CHAR},
       </if>
       <if test="disciplineCategory != null" >
         discipline_category = #{disciplineCategory,jdbcType=CHAR},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="topicBase != null" >
-        topic_base = #{topicBase,jdbcType=VARCHAR},
       </if>
       <if test="research != null" >
         research = #{research,jdbcType=VARCHAR},
@@ -216,6 +235,9 @@
       </if>
       <if test="file != null" >
         file = #{file,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
       </if>
       <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=BIT},
@@ -246,17 +268,19 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Project" >
     update project
-    set class_three_id = #{classThreeId,jdbcType=CHAR},
+    set user_id = #{userId,jdbcType=CHAR},
+      number = #{number,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      class_three_id = #{classThreeId,jdbcType=CHAR},
       review_program_id = #{reviewProgramId,jdbcType=CHAR},
-      user_id = #{userId,jdbcType=CHAR},
+      topic_base = #{topicBase,jdbcType=VARCHAR},
+      department = #{department,jdbcType=CHAR},
       subject_category = #{subjectCategory,jdbcType=CHAR},
       discipline_category = #{disciplineCategory,jdbcType=CHAR},
-      name = #{name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=TINYINT},
-      topic_base = #{topicBase,jdbcType=VARCHAR},
       research = #{research,jdbcType=VARCHAR},
       funds = #{funds,jdbcType=VARCHAR},
       file = #{file,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
       is_deleted = #{isDeleted,jdbcType=BIT},
       creator = #{creator,jdbcType=CHAR},
       creation_time = #{creationTime,jdbcType=TIMESTAMP},

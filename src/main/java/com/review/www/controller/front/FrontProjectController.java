@@ -6,9 +6,11 @@ import com.review.www.constants.Constants;
 import com.review.www.controller.WebBaseController;
 import com.review.www.entity.BaseConstant;
 import com.review.www.entity.Project;
+import com.review.www.entity.User;
 import com.review.www.request.DeclareProjectReq;
 import com.review.www.service.BaseDataService;
 import com.review.www.service.ProjectService;
+import com.review.www.service.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +29,8 @@ public class FrontProjectController extends WebBaseController {
     private ProjectService  projectService;
     @Resource
     private BaseDataService baseDataService;
+    @Resource
+    private UserService     userService;
 
     /**
      * 发布项目列表
@@ -53,6 +57,8 @@ public class FrontProjectController extends WebBaseController {
     public Result declareProject(DeclareProjectReq req) {
         validateParam(getSessionUser().getUserId());
         Project project = req.parseProject(getSessionUser().getUserId());
+        User user = userService.getById(project.getCreator());
+        project.setDepartment(user.getDepartment());
         ModelAndView mv = null;
 //        if (projectService.declareProject(project) == new Result(Code.SUCCESS)) {
 //            mv = getSessionUserMV("project/applyProject");

@@ -14,11 +14,6 @@
 </div>
 
 <div class="rightinfo">
-    <div class="tools">
-        <ul class="toolbar">
-            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
-        </ul>
-    </div>
     <ul class="seachform">
         <form method="get" action="" id="searchForm">
 
@@ -27,7 +22,7 @@
             </li>
 
             <li><label>&nbsp;</label>
-                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="rulesList.htm"/>
+                <input name="" type="button" class="scbtn _searchBtn" value="查询" action="projectList.htm"/>
             </li>
         </form>
     </ul>
@@ -46,14 +41,27 @@
         <tbody id="sortable">
         <c:forEach var="r" items="${list}">
             <tr data="${r.id}" id="${r.id}" height="40">
-                <td></td>
+                <td>${r.number}</td>
                 <td>${r.name}</td>
                 <td>${r.status}</td>
                 <td>${r.creator}</td>
                 <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
-                <td>
-                    <a href="javascript:;" class="tablelink _modifyBtn">修改</a>&nbsp;
-                    <a href="javascript:;" class="tablelink _removeBtn">删除</a>&nbsp;
+                <td class="tdPosi _menu" data="${r.id}">
+                    <a class="tablelink">操作</a>
+                        <%--<i class="iconfont icMoreColor">&#xe602;</i>--%>
+                        <%--<canvas id="iCanvas" width="5px;" height="5px;" style="border:1px solid black;">not support</canvas>--%>
+                    <div class="subDiv">
+                        <ul>
+                            <li>
+                                <a href="javascript:;"
+                                   target="rightFrame" class="_editPwdBtn">详情</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"
+                                   target="rightFrame" class="_removeBtn">删除</a>
+                            </li>
+                        </ul>
+                    </div>
                 </td>
             </tr>
         </c:forEach>
@@ -83,6 +91,13 @@
                     });
                 })
             })
+        });
+
+        //
+        $('._menu').menu();
+
+        $('._searchBtn').on('click', function () {
+            $('#searchForm').prop('action', $(this).attr('action')).submit();
         });
 
         $('._searchBtn').on('click', function () {

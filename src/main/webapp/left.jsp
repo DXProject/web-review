@@ -48,6 +48,15 @@
             </dd>
             <dd>
                 <div class="title">
+                    <span><img src="images/leftico01.png"/></span>我的评审
+                </div>
+                <ul class="menuson">
+                    <li><cite></cite><a href="" target="rightFrame"></a><i></i>
+                    <li class="active"><a target="rightFrame" href="">评审细则管理</a></li>
+                </ul>
+            </dd>
+            <dd>
+                <div class="title">
                     <span><img src="images/leftico01.png"/></span>评审方案管理
                 </div>
                 <ul class="menuson">

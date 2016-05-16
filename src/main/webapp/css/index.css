@@ -4,23 +4,20 @@
 	outline:none!important;
 }
 
-.main-left{
-	width: 624px;
+.main-top{
+	width: 950px;
 	float: left;
 }
 
-.main-left-1{
+.main-slide{
 	height: 292px;
 }
 .item img{
-	width: 624px !important;
+	width: 950px !important;
 	height: 292px !important;
 }
 
 
-.main-left-2{
-	
-}
 .news-title,.link-title{
 	padding: 10px 0px;
 	margin-top: 15px;
@@ -31,7 +28,7 @@
 }
 .news-title a:hover{
 	text-decoration: none;
-	
+
 }
 .news-content{
 	margin-top: 20px;
@@ -58,93 +55,23 @@
 	float: left;
 }
 
-.main-right{
-	width: 318px;
+.main-foot{
+	width: 950px;
+	height: 292px;
+	margin-top: 20px;
+	float: left;
+}
+.main-foot-notice{
+	width: 550px;
 	height: 292px;
 	float: left;
 }
-.main-right-1{
-	width: 318px;
-	height: 292px;
-	margin-left: 19px;
-	border:1px solid #ccc;
-	padding: 15px 15px;
-}
 
-.main-right-2{
-	margin-top: 15px;
-}
 
-.login{
-	float: left;
-}
-.login-title{
-	width: 288px;
-	padding: 0px 0px 10px 0px;
-	font-size: 16px;
-	font-family: 微软雅黑;
-	border-bottom: 1px solid #ccc;
-
-}
-.login-title a:hover{
-	text-decoration: none;
-	
-}
-
-.login-content{
-	margin-top: 15px;
-}
-
-label{
-	font-weight: normal;
-}
-.info-div input{
-	width: 194px;
-	height: 28px;
-	border:1px solid #ccc;
-	padding: 5px;
-	font-size: 14px;
-}
-.select-div{
-	width: 285px;
-	display: block;
-	float: left;
-	margin-top: 15px;
-}
-.select-div a,.select-div a:hover{
-	width: 60px;
-	display: block;
-	float: left;
-	color: #000;
-	text-decoration: none;
-}
-.select-div span{
-	display: block;
-	width: 100px;
-	float: left;
-}
-.select-div label{
-	margin-left: 10px;
-}
-.btn-div{
-	margin-left: 50px;
-	margin-top: 15px;
-}
-.btn-div input{
-	width: 80px;
-	height: 30px;
-	margin-right: 20px;
-	background: url(../images/btn-1.png);
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	color: #000;
-	font-family: 微软雅黑;
-	line-height: 10px;
-}
-
-.main-right-2{
+.main-foot-fast{
 	width: 318px;
 	margin-left: 20px;
+	float: right;
 }
 .content{
 	width: 300px;
@@ -157,7 +84,7 @@ label{
 	text-align: center;
 }
 .block-l{
-	margin-right:5px;: 
+	margin-right:5px;:
 }
 .left-1,.right-1{
 	width: 147px;
@@ -206,4 +133,17 @@ label{
 	text-decoration: none;
 }
 
+.login-content{
+	margin-top: 15px;
+}
 
+.info-div input{
+	width: 194px;
+	font-size: 14px;
+}
+.info-div .radio input{
+	line-height: 24px;
+}
+label{
+	font-weight: normal;
+}
