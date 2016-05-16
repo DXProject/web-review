@@ -133,6 +133,12 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
         return new Result(Code.SUCCESS);
     }
 
+    @Override
+    public Result removeReviewProgram(String id) {
+        reviewProgramMapper.deleteByPrimaryKey(id);
+        return new Result(Code.SUCCESS);
+    }
+
     private void addReviewProgramRules(ReviewProgram reviewProgram, List<Rules> rules) {
         Date date = new Date();
         for (Rules rule : rules) {

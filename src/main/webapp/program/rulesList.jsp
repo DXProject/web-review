@@ -16,7 +16,7 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click _addBtn"><span><img src="${path}/images/t01.png    "/></span>添加</li>
+            <li class="click _addBtn"><span><img src="${path}/images/t01.png"/></span>添加</li>
         </ul>
     </div>
     <ul class="seachform">

@@ -49,7 +49,7 @@ public class ProgramController extends WebBaseController {
     }
 
     /**
-     * add or modify rules
+     * 添加/修改评审细则
      *
      * @return
      */
@@ -65,7 +65,7 @@ public class ProgramController extends WebBaseController {
     }
 
     /**
-     * get rules info
+     * 删除评审细则详情
      *
      * @param id
      * @return
@@ -77,7 +77,7 @@ public class ProgramController extends WebBaseController {
     }
 
     /**
-     * 删除 rules
+     * 删除评审细则
      *
      * @param id
      * @return
@@ -190,7 +190,7 @@ public class ProgramController extends WebBaseController {
     }
 
     /**
-     * add or modify reviewProgram
+     * 添加/修改评审方案列表
      *
      * @param id
      * @param name
@@ -213,5 +213,17 @@ public class ProgramController extends WebBaseController {
             reviewProgram.setType(type);
             return programService.modifyReviewProgram(reviewProgram);
         }
+    }
+
+    /**
+     * 删除评审方案
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("removeReviewProgram.htm")
+    public Result removeReviewProgram(String id) {
+        validateParam(id);
+       return programService.removeReviewProgram(id);
     }
 }
