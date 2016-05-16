@@ -1,0 +1,74 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	outline:none!important;
+}
+.projectdetail{
+	width: 750px;
+	margin: 0px auto;
+}
+table{
+	width: 750px;
+	float: left;
+	margin-top: 30px;
+}
+td{
+	padding: 5px;
+	vertical-align: top;
+	text-align: left;
+}
+.tdname{
+	width: 100px;
+	color: #666;
+	
+}
+.tdcontain{
+	width: 650px;
+}
+.tdcontain2{
+	width: 300px;
+}
+.passbtn input{
+	width: 80px;
+	border: 0px;
+	color: #fff;
+	border-radius: 5px;
+	margin-right: 10px;
+	float: right;
+	padding: 5px 10px;
+	background: #fe6d14;
+}
+.tdcontain textarea{
+	margin: 0px;
+	padding: 0px;
+	width: 600px;
+	height: 100px;
+}
+.suggestion{
+	float: left;
+	margin-top: 30px;
+}
+.suggestion div{
+	float: left;
+}
+.passbtn{
+	display: block;
+	margin-top: 20px;
+}
+
+.btnspace{
+	width: 710px;
+	display: block;
+}
+
+.fileinput{
+	width: 65px;
+
+}
+.tdborder{
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ccc;
+}
+.tdsuggest{
+	padding-top: 30px;
+}

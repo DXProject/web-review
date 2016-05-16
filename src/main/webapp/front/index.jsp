@@ -3,17 +3,17 @@
 <%@ taglib uri="/WEB-INF/tld/fmt.tld" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/tld/fn.tld" prefix="fn" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title>高校教科研项目网上评审</title>
 </head>
-<link rel="stylesheet" type="text/css" href="${path}/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">
-<link rel="stylesheet" type="text/css" href="${path}/css/index.css">
-<script type="text/javascript" src="${path}/Js/jquery.min.js"></script>
-<script type="text/javascript" src="${path}/Js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/web-nav.css">
+<link rel="stylesheet" type="text/css" href="${path}/frontStaticHtml/Css/index.css">
 <body>
 <div class="wrap">
 
@@ -29,11 +29,11 @@
 					</span>
             </div>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><a href="index.html">首页</a></li>
-                <li role="presentation"><a href="news.html">通告通知</a></li>
-                <li role="presentation"><a href="document2015.html">历史文献</a></li>
-                <li role="presentation"><a href="problem.html">常见问题</a></li>
-                <li role="presentation"><a href="aboutus.html">关于我们</a></li>
+                <li role="presentation"><a href="${path}/frontStaticHtml/index.html">首页</a></li>
+                <li role="presentation"><a href="${path}/frontStaticHtml/news.html">通告通知</a></li>
+                <li role="presentation"><a href="${path}/frontStaticHtml/document2015.html">历史文献</a></li>
+                <li role="presentation"><a href="${path}/frontStaticHtml/problem.html">常见问题</a></li>
+                <li role="presentation"><a href="${path}/frontStaticHtml/aboutus.html">关于我们</a></li>
             </ul>
 
         </div>
@@ -41,9 +41,9 @@
 
     <div class="container">
         <div class="main">
-            <div class="main-left">
+            <div class="main-top">
                 <!-- 轮播图开始 -->
-                <div class="main-left-1">
+                <div class="main-slide">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
@@ -55,19 +55,19 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="images/banner_1.jpg" alt="...">
+                                <img src="${path}/frontStaticHtml/images/banner_1.jpg" alt="...">
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="images/banner_2.jpg" alt="...">
+                                <img src="${path}/frontStaticHtml/images/banner_2.jpg" alt="...">
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="images/banner_1.jpg" alt="...">
+                                <img src="${path}/frontStaticHtml/images/banner_1.jpg" alt="...">
                                 <div class="carousel-caption">
                                     ...
                                 </div>
@@ -86,11 +86,13 @@
                     </div>
                 </div>
                 <!-- end -->
+            </div>
 
+            <div class="main-foot">
                 <!-- 公告栏开始 -->
-                <div class="main-left-2">
+                <div class="main-foot-notice">
                     <div class="news-title">
-                        <span class="icon"><img src="images/icon-1.png"></span>
+                        <span class="icon"><img src="${path}/frontStaticHtml/images/icon-1.png"></span>
                         <a href="#">通知通告</a>
                     </div>
                     <div class="news-content">
@@ -98,73 +100,40 @@
                             <li><a href="#">不忘初心，方得始终—记经管学院赴杭州嘉兴等地开展双百暑期社会实践活动</a></li>
                             <li><a href="#">风云定海山 治水我先行—记经管学院赴定海暑期社会实践活动</a></li>
                             <li><a href="#">我校参加第四届全国大学生水利创新设计大赛获佳绩</a></li>
-                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践活动</a></li>
-                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践活动</a></li>
-                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践活动</a></li>
+                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践</a></li>
+                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践</a></li>
+                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践</a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- end -->
-            </div>
 
-            <div class="main-right">
 
-                <!-- 登录开始 -->
-                <div class='main-right-1'>
-                    <div class="login">
-                        <div class="login-title">
-                            <span class="icon"><img src="images/icon-2.png"></span>
-                            <a href="#">用户登录</a>
-                        </div>
-                        <div class="login-content">
-                            <form>
-                                <div class="info-div">
-                                    <label>用&nbsp;&nbsp;户：<input type="username" id="username" name="username"></label>
-                                    <label>密&nbsp;&nbsp;码：<input type="username" id="username" name="username"></label>
-                                </div>
-                                <div class="select-div">
-                                    <a>用户类型</a>
-												<span>
-													<label><input type="radio" name="identity"> 项目申请人</label>
-													<label><input type="radio" name="identity"> 评审专家</label>
-												</span>
-                                </div>
-
-                                <div class="btn-div">
-                                    <label><input type="submit" value="登录" class="btn"></label>
-                                    <label><input type="submit" value="注册" class="btn"></label>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- end -->
 
                 <!-- 快速入口 -->
-                <div class="main-right-2">
+                <div class="main-foot-fast">
                     <div class="link-title">
-                        <span class="icon"><img src="images/icon-2.png"></span>
+                        <span class="icon"><img src="${path}/frontStaticHtml/images/icon-2.png"></span>
                         <a href="#">快速入口</a>
                     </div>
                     <div class="content">
                         <div class="block-l">
                             <div class="left-1">
-                                <span><img src="images/icon-3.gif"><a href="register.html">会员注册</a></span>
+                                <span><img src="${path}/frontStaticHtml/images/icon-3.gif"><a href="##" data-toggle="modal" data-target="#myModal" >登录/注册</a></span>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span class="connect"></span>
                             <div class="left-2">
-                                <span><img src="images/icon-4.gif"><a href="document2014.html">历史文献</a></span>
+                                <span><img src="${path}/frontStaticHtml/images/icon-4.gif"><a href="document2014.html">历史文献</a></span>
                             </div>
 
                         </div>
                         <div class="block-r">
                             <div class="right-1">
-                                <span><img src="images/icon-6.gif"><a href="Applicants.html">项目申报</a></span>
+                                <span><img src="${path}/frontStaticHtml/images/icon-6.gif"><a href="Applicants.html">项目申报</a></span>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span class="connect"></span>
                             <div class="right-2">
-                                <span><img src="images/icon-5.gif"><a href="aboutus">关于我们</a></span>
+                                <span><img src="${path}/frontStaticHtml/images/icon-5.gif"><a href="aboutus.html">关于我们</a></span>
                             </div>
 
                         </div>
@@ -180,7 +149,75 @@
             <span>京ICP备10054422号 技术支持：东旭工作室</span>
         </div>
     </div>
-
 </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >用户登录</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="login-content">
+                    <form class="forminfo">
+                        <div class="info-div">
+                            <label class="user">用&nbsp;&nbsp;户：<input type="text"  name="number" class="validate[required]"/></label>
+                            <label class="password">密&nbsp;&nbsp;码：<input type="password"  name="password" class="validate[required]"/></label>
+						<span class="radio">用户类型：
+							<label ><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
+							<label ><input type="radio" name="identity" value="2"/> 评审专家</label>
+						</span>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-default" href="${path}/front/register.htm">注册</a>
+                <a type="button" class="btn btn-primary doLoginBtn">登录</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 </body>
 </html>
+<script type="text/javascript" src="${path}/js/jquery/jquery.1.11.2.min.js"></script>
+<script type="text/javascript" src="${path}/frontStaticHtml/JS/bootstrap.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery/jquery.zxxbox.3.0.js"></script>
+<script type="text/javascript" src="${path}/js/jquery/jquery.jp.ajaxbtn.js"></script>
+<script type="text/javascript" src="${path}/js/3rd/validate/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="${path}/js/3rd/validate/jquery.validationEngine-zh_CN.js"></script>
+<script type="text/javascript" src="${path}/js/json2.js"></script>
+<script type="text/javascript" src="${path}/js/kiss-web.1.0.js"></script>
+<script type="text/javascript">
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('.doLoginBtn').ajaxbtn('${path}/front/doLoginFront.htm',function () {
+            return {
+                number: $.trim($('input[name="number"]').val()),
+                password: $.trim($('input[name="password"]').val()),
+                identity : $.trim($('input[name="identity"]').val())
+            }
+        }, function () {
+            return $('.forminfo').validationEngine('validate');
+        },function(r){
+            $.zxxbox.remind(r.message, null, {
+                delay: 1000,
+                onclose: function () {
+                    if(r.code==1){
+                        location.reload();
+                    }
+                }
+            });
+        });
+    });
+</script>

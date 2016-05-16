@@ -243,5 +243,13 @@
     set
 
   </update>
+  <select id="selectByNumberAndType" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+    expert
+    WHERE
+    number = #{number,jdbcType=VARCHAR}
+  </select>
 
 </mapper>

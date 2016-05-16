@@ -298,4 +298,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
         return resps;
     }
 
+    @Override
+    public User getExpertByNumberAndType(String number, int type) {
+        Expert expert = expertMapper.selectByNumberAndType(number,type);
+        if(expert==null){
+            return null;
+        }
+        User user = new User();
+        user.setNumber(expert.getNumber());
+        user.setPassword(expert.getPassword());
+        return user;
+    }
+
 }

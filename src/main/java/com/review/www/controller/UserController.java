@@ -152,7 +152,12 @@ public class UserController extends WebBaseController {
     @ResponseBody
     public Result doUserAddPage(@PathVariable int type,User user){
         System.out.println("doUserAddPage");
-        User respUser = userService.getByNumberAndType(user.getNumber(),type);
+        User respUser;
+        if(type==3){
+            respUser = userService.getExpertByNumberAndType(user.getNumber(),type);
+        }else {
+            respUser = userService.getByNumberAndType(user.getNumber(),type);
+        }
         if(respUser!=null){
             return new Result(2,"教工号已经存在!");
         }

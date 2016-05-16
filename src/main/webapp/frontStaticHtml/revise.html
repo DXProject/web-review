@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高校教科研项目网上评审</title>
+</head>
+<link rel="stylesheet" type="text/css" href="Css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="Css/web-nav.css">
+<link rel="stylesheet" type="text/css" href="Css/left-tab.css">
+<link rel="stylesheet" type="text/css" href="Css/revise.css">
+<script type="text/javascript" src="Js/jquery.min.js"></script>
+<script type="text/javascript" src="Js/bootstrap.min.js"></script>
+
+<body>
+
+	<div class="wrap">
+
+		
+		
+		<div class="header">
+			<div class="container">
+				
+				<div class="web-title">
+					<span class="title-l"></span>
+					<span class="txt">
+						<a>高校教科研项目网上评审</a><br>University Scientific Research Project Online Review
+					</span>
+				</div>
+				<ul class="nav nav-pills pull-right">
+				  <li role="presentation"><a href="index.html">首页</a></li>
+				  <li role="presentation"><a href="news.html">通告通知</a></li>
+				  <li role="presentation"><a href="document2015.html">历史文献</a></li>
+				  <li role="presentation"><a href="problem.html">常见问题</a></li>
+				  <li role="presentation"><a href="aboutus.html">关于我们</a></li>
+				</ul>
+				
+			</div>
+		</div>
+		<div class="container">
+			<div class="main">
+			
+				<div class="left-tab">
+					<ul>
+						<li class="apply"><a href="#">个人设置</a><span></span></li>
+						<li class="active"><a href="#">个人资料</a></li>
+						<li><a href="#">头像设置</a></li>
+						<li><a href="#">修改密码</a></li>
+					</ul>
+				</div>
+				<div class="content">
+						<div class="per-info">
+							<span class="per-title">个人资料</span>
+							<form class="d-info">
+								<label><span>性别：</span><input type="radio" name="sex">&nbsp;男&nbsp;&nbsp;<input type="radio" name="sex">&nbsp;女</label>
+								<label>
+									<span>所属院名：</span>
+									<select>
+										<option>信息工程和艺术设计学院</option>
+										<option>水利与环境工程学院</option>
+										<option>建筑工程学院</option>
+										<option>测绘与市政工程学院</option>
+										<option>机械与器械工程学院</option>
+										<option>电气工程学院</option>
+										<option>经济与管理学院</option>
+										<option>国际教育交流学院</option>
+									</select>
+								</label>
+								<label>
+									<span>专业名称：</span>
+									<select>
+										<option>信息工程和艺术设计学院</option>
+										<option>信息工程和艺术设计学院</option>
+										<option>信息工程和艺术设计学院</option>
+										<option>信息工程和艺术设计学院</option>
+									</select>
+								</label>
+								<label>
+									<span>所在班级：</span>
+									<select>
+										<option>信息工程和艺术设计学院</option>
+										<option>信息工程和艺术设计学院</option>
+										<option>信息工程和艺术设计学院</option>
+										<option>信息工程和艺术设计学院</option>
+									</select>
+								</label>
+								<label>
+									<span>手机：</span><input type="text" name="tel">
+								</label>
+								<label>
+									<span>邮箱：</span><input type="text" name="mail">
+								</label>
+							</form>
+						</div>
+
+
+						<div class="per-info">
+							<span class="per-title">头像编辑</span>
+							<div class="plan-1">
+								<p>方法一：选择本地照片，上传编辑自己头像</p>
+								<FORM>
+
+									<INPUT class="file" title=支持jpg、jpeg、gif、png格式，文件小于5M tabIndex=3 type=file size=3 name=pic>
+
+								</FORM>
+							</div>
+							<div class="plan-1" >
+								<p>方法二：可随机生成自己头像</p>
+								<p id="aaa">
+									<a><img src="images/touxiang1.jpg" class="sel-img"><input type="radio" class="sel-touxiang bbb" name="sel-touxiang"></a>
+									<a><img src="images/touxiang2.jpg" class="sel-img"><input type="radio" class="sel-touxiang" name="sel-touxiang"></a>
+									<a><img src="images/touxiang3.jpg" class="sel-img"><input type="radio" class="sel-touxiang" name="sel-touxiang"></a>
+									<a><img src="images/touxiang4.jpg" class="sel-img"><input type="radio" class="sel-touxiang" name="sel-touxiang"></a>
+									<a><img src="images/touxiang5.jpg" class="sel-img"><input type="radio" class="sel-touxiang" name="sel-touxiang"></a>
+									<a><img src="images/touxiang6.jpg" class="sel-img"><input type="radio" class="sel-touxiang" name="sel-touxiang"></a>
+								</p>
+								<span class="btn-area"><input type="button" value="保存头像" class="btn btn-info save"></span>
+							</div>
+						</div>
+						<div class="per-info">
+							<span class="per-title">修改密码</span>
+							<div class="plan-1">
+								<label><span>当前密码：</span><input type="password" name="password"></label>
+								<label><span>新密码：</span><input type="password" name="password"></label>
+								<label><span>确认密码：</span><input type="password" name="password"></label>
+								<span><input type="button" value="保存密码" class="btn btn-info save"></span>
+							</div>
+
+						</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+            $("#aaa a img").removeClass("bbb");
+            for(i=0;i<6;i++){
+            	$("#aaa a").eq(i).click(function(){
+            		$("#aaa a img").removeClass("bbb");
+            		$(this).find("img").addClass("bbb");
+            	});
+            }
+        });
+</script>
+</html>

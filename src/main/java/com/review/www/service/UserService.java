@@ -59,4 +59,6 @@ public interface UserService {
     UserResp getByTypeAndId(int type,String id);
 
     List<UserResp> getByNumberOrName(int type,String keyword);
+
+    User getExpertByNumberAndType(String number, int type);
 }

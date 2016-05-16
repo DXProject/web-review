@@ -25,5 +25,5 @@ public interface ExpertMapper {
 
     List<Expert> selectListByNumberOrName(@Param("keyword") String keyword);
 
-
+    Expert selectByNumberAndType(@Param("number")String number,@Param("type")int type);
 }
