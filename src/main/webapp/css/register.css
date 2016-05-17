@@ -18,32 +18,11 @@
 	height: 650px;
 }
 .reginfo{
-	text-align: center;
+	width: 300px;
+	margin:0 auto;
 	margin-top: 50px;
 }
-.reginfo span{
-	display: block;
-}
-.reginfo label{
-	width: 80px;
-}
-.reginfo input, select{
-	width: 250px;
-	padding: 2px;
-	margin-bottom: 15px;
-}
-.regbtn{
-	margin-top: 15px;
-}
-.regbtn input{
-	background: #fe6d14;
-	border:0px;
-	color: #fff;
-	padding: 5px;
-}
-.regbtn input:hover{
-	background: #fe6d30;
-}
+
 .news-title,.link-title{
 	padding: 10px 0px;
 	font-size: 16px;

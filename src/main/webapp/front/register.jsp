@@ -37,46 +37,67 @@
                 <h4>浙江水利水电学院科研项目注册填报</h4>
             </div>
             <div class="reginfo">
-                <form class="forminfo">
-						<span>
-							<label>学院部门：</label>
-							<select name="department">
+                <form class="forminfo form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">学院：</label>
+
+                        <div class="col-sm-8">
+                            <select name="department" class="form-control">
                                 <c:forEach var="t" items="${list}">
                                     <option value="${t.id}">${t.name}</option>
                                 </c:forEach>
                             </select>
-						</span>
-						<span>
-							<label>教师工号：</label>
-							<input type="text" name="number">
-						</span>
-						<span>
-							<label>职称：</label>
-							<select name="title">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">教师工号：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="number" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">职称：</label>
+
+                        <div class="col-sm-8">
+                            <select name="title" class="form-control">
                                 <c:forEach var="t" items="${list1}">
                                     <option value="${t.id}">${t.name}</option>
                                 </c:forEach>
                             </select>
-						</span>
-						<span>
-							<label>手机：</label>
-							<input type="text" name="phone">
-						</span>
-						<span>
-							<label>邮箱：</label>
-							<input type="text" name="email">
-						</span>
-						<span>
-							<label>登录密码：</label>
-							<input type="password" id="password" class="validate[required]" >
-						</span>
-						<span>
-							<label>确认密码:</label>
-							<input type="password" name="password" class="validate[required,equals[password]]">
-						</span>
-						<span class="regbtn">
-							<label></label><input type="button" class="doRegister" value="提交注册"/>
-						</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">手机：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="phone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">邮箱：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="email" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">登录密码：</label>
+
+                        <div class="col-sm-8">
+                            <input type="password" id="password" class="validate[required] form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">确认密码:</label>
+
+                        <div class="col-sm-8">
+                            <input type="password" name="password"
+                                   class="validate[required,equals[password]] form-control">
+                        </div>
+                    </div>
+                    <div class="regbtn">
+                        <label></label><input type="button" class="btn btn-primary pull-right doRegister" value="提交注册"/>
+                    </div>
                 </form>
             </div>
         </div>
@@ -102,9 +123,9 @@
 <script type="text/javascript" src="${path}/js/jquery/jquery.jp.ajaxbtn.js"></script>
 <script type="text/javascript" src="${path}/js/json2.js"></script>
 <script type="text/javascript" src="${path}/js/kiss-web.1.0.js"></script>
-<script type="text/javascript" >
-    $(function(){
-        $('.doRegister').ajaxbtn('${path}/front/doRegister.htm',function () {
+<script type="text/javascript">
+    $(function () {
+        $('.doRegister').ajaxbtn('${path}/front/doRegister.htm', function () {
             return {
                 phone: $.trim($('input[name="phone"]').val()),
                 title: $.trim($('select[name="title"]').val()),
@@ -115,12 +136,12 @@
             }
         }, function () {
             return $('.forminfo').validationEngine('validate');
-        },function(r){
+        }, function (r) {
             $.zxxbox.remind(r.message, null, {
                 delay: 2000,
                 onclose: function () {
-                    if(r.code==1){
-                        location.href="${path}/front/index.htm";
+                    if (r.code == 1) {
+                        location.href = "${path}/front/index.htm";
                     }
                 }
             });

@@ -164,8 +164,8 @@
                 <div class="login-content">
                     <form class="forminfo">
                         <div class="info-div">
-                            <label class="user">用&nbsp;&nbsp;户：<input type="text"  name="number" class="validate[required]"/></label>
-                            <label class="password">密&nbsp;&nbsp;码：<input type="password"  name="password" class="validate[required]"/></label>
+                            <label class="user" style="line-height:30px;">用&nbsp;&nbsp;户：<input type="text" id="number" name="username" class="form-control pull-right validate[required]"></label>
+                            <label class="password" style="line-height:30px;">密&nbsp;&nbsp;码：<input type="password" id="password" name="username" class="form-control pull-right validate[required]"></label>
 						<span class="radio">用户类型：
 							<label ><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
 							<label ><input type="radio" name="identity" value="2"/> 评审专家</label>
