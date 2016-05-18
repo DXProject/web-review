@@ -91,4 +91,8 @@ public interface ProjectService {
      * @return
      */
     Result removeProject(String id);
+    /**
+     * add file
+     */
+    void addFile(File file);
 }

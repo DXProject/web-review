@@ -4,10 +4,18 @@ import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.enums.ModeEnum;
 import com.jopool.jweb.utils.DateUtils;
+import com.jopool.jweb.utils.FileUtils;
 import com.jopool.jweb.utils.UUIDUtils;
 import com.review.www.helper.ApplicationConfigHelper;
+import com.review.www.utils.Zip;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,13 +23,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
 
+import java.io.*;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by gexin on 15/3/22.
@@ -176,5 +190,64 @@ public class CommonFileController extends WebBaseController {
             }
         }
         return new Result(Code.SUCCESS, Result.createJsonMap("path", strs));
+    }
+    /**
+     * 文件下载(多文件下载)
+     */
+    /**
+     *  批量打包下载文件生成zip文件下载
+     */
+    @RequestMapping("downloadZip")
+    public String downloadFiles(String tcLwIds, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        //tcLwIds="http://127.0.0.1:8080/files/20160518/U6YB4Fje.docx,http://127.0.0.1:8080/files/20160518/U6YB4Fkf.docx";
+        if(""==tcLwIds||null==tcLwIds){
+            System.out.println("下载的文件不存在");
+            return "失败!";
+        }
+        Zip zip = new Zip();
+        tcLwIds = overWriter(tcLwIds,request);
+        List<File> files = new ArrayList<File>();
+
+        String[] tcLwIdArray = tcLwIds.split(",");
+        for(String tcLwId : tcLwIdArray)
+        {
+            File file = new File(tcLwId);
+            files.add(file);
+        }
+
+        String fileName = UUID.randomUUID().toString() + ".zip";
+        //在服务器端创建打包下载的临时文件
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/files/";
+        String s =request.getSession().getServletContext().getRealPath("/files/");
+        String outFilePath = s+"/zip/";
+
+        zip.createFile(outFilePath,fileName);
+        File file = new File(outFilePath+fileName);
+        //文件输出流
+        FileOutputStream outStream = new FileOutputStream(file);
+        //压缩流
+        ZipOutputStream toClient = new ZipOutputStream(outStream);
+        zip.zipFile(files, toClient);
+        toClient.close();
+        outStream.close();
+        zip.downloadFile(file, response,true);
+        return null;
+    }
+    /**
+     * 将 http://127.0.0.1:8080/files/20160518/U6YB4Fje.docx
+     * 路径取/Users/zrl/Desktop/web-review/src/main/webapp/files/20160518/U6YB4Fje.docx
+     */
+    public String overWriter(String strs,HttpServletRequest request){
+        String s =request.getSession().getServletContext().getRealPath("/files/");
+        String[] strs1 = strs.split(",");
+        String returnStr = "";
+        for(int i=0;i<strs1.length;i++){
+            String[] sts = strs1[i].split("/");
+            returnStr+=s+"/"+sts[sts.length-2]+"/"+sts[sts.length-1]+",";
+        }
+       // System.out.println("returnStr:"+returnStr.substring(0,returnStr.length()-1));
+        return returnStr.substring(0,returnStr.length()-1);
     }
 }

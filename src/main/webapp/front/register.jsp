@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${path}/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/register.css">
+<link rel="stylesheet" type="text/css" href="${path}/js/3rd/validate/validationEngine.jquery.css"/>
 <body>
 <div class="wrap">
     <div class="header">
@@ -146,5 +147,6 @@
                 }
             });
         });
+       
     });
 </script>

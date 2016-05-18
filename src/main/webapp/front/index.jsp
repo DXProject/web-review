@@ -164,8 +164,8 @@
                 <div class="login-content">
                     <form class="forminfo">
                         <div class="info-div">
-                            <label class="user" style="line-height:30px;">用&nbsp;&nbsp;户：<input type="text" id="number" name="username" class="form-control pull-right validate[required]"></label>
-                            <label class="password" style="line-height:30px;">密&nbsp;&nbsp;码：<input type="password" id="password" name="username" class="form-control pull-right validate[required]"></label>
+                            <label class="user" style="line-height:30px;">用&nbsp;&nbsp;户：<input type="text" id="number" name="number" class="form-control pull-right validate[required]"></label>
+                            <label class="password" style="line-height:30px;">密&nbsp;&nbsp;码：<input type="password" id="password" name="password" class="form-control pull-right validate[required]"></label>
 						<span class="radio">用户类型：
 							<label ><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
 							<label ><input type="radio" name="identity" value="2"/> 评审专家</label>
@@ -210,14 +210,19 @@
         }, function () {
             return $('.forminfo').validationEngine('validate');
         },function(r){
-            $.zxxbox.remind(r.message, null, {
-                delay: 1000,
-                onclose: function () {
-                    if(r.code==1){
-                        location.reload();
+            if(r.code==1){
+                location.reload();
+            }else{
+                $.zxxbox.remind(r.message, function(){
+                    $("#password").val("");
+                }, {
+                    delay: 1000,
+                    onclose: function () {
+
+
                     }
-                }
-            });
+                });
+            }
         });
     });
 </script>

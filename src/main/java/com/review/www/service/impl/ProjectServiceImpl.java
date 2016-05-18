@@ -30,6 +30,8 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     private ClassThreeMapper   classThreeMapper;
     @Resource
     private ProjectMapper      projectMapper;
+    @Resource
+    private FileMapper      fileMapper;
 
     @Override
     public void setSelfBean(ProjectService object) {
@@ -92,5 +94,10 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     public Result removeProject(String id) {
         projectMapper.deleteByPrimaryKey(id);
         return new Result(Code.SUCCESS);
+    }
+
+    @Override
+    public void addFile(File file) {
+        fileMapper.insert(file);
     }
 }
