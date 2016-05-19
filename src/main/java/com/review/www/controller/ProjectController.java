@@ -1,14 +1,14 @@
 package com.review.www.controller;
 
+import com.jopool.jweb.entity.Page;
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.mybatis.page.Pagination;
-import com.review.www.constants.CodeMessage;
 import com.review.www.entity.*;
 import com.review.www.request.AddProjectAnnouncementReq;
 import com.review.www.request.DateParam;
-import com.review.www.request.DeclareProjectReq;
 import com.review.www.response.ProjectListResp;
+import com.review.www.response.UserResp;
 import com.review.www.service.ProjectService;
 import com.review.www.service.UserService;
 import com.review.www.vo.SearchProjectVo;
@@ -99,9 +99,10 @@ public class ProjectController extends WebBaseController {
             ProjectListResp resp = new ProjectListResp();
             resp.setId(project.getId());
             resp.setName(project.getName());
+            resp.setDisciplineCategory(project.getDisciplineCategory());
             resp.setNumber(project.getNumber());
-            User user =userService.getById(project.getCreator());
-            if(null != user){
+            User user = userService.getById(project.getCreator());
+            if (null != user) {
                 resp.setCreator(user.getName());
                 resp.setCreatorNumber(user.getNumber());
             }
@@ -110,7 +111,7 @@ public class ProjectController extends WebBaseController {
             resps.add(resp);
         }
         ModelAndView mv = getPageMv("project/projectList", resps, page);
-        mv.addObject("keyword",searchProjectVo.getKeyword());
+        mv.addObject("keyword", searchProjectVo.getKeyword());
         return mv;
     }
 
@@ -148,5 +149,79 @@ public class ProjectController extends WebBaseController {
     public Result removeProject(String id) {
         validateParam(id);
         return projectService.removeProject(id);
+    }
+
+    /**
+     * 根据学科门类获取专家
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("getExpertByDisciplineCategoryId.htm")
+    public ModelAndView getExpertByDisciplineCategoryId(String id, String projectId, Pagination page) {
+        validateParam(id);
+        List<UserResp> resps = new ArrayList<UserResp>();
+        List<Expert> experts = userService.getExpertByDisciplineCategoryId(id, page);
+        for (Expert expert : experts) {
+            UserResp resp = new UserResp();
+            resp.setId(expert.getId());
+            resp.setDepartmentId(expert.getSchool());
+            resp.setDegreeId(expert.getDegree());
+            resp.setTitleId(expert.getTitle());
+            resp.setNumber(expert.getNumber());
+            resp.setAvatar(expert.getAvatar());
+            resp.setName(expert.getName());
+            resp.setPhone(expert.getPhone());
+            resp.setEmail(expert.getEmail());
+            resp.setCreator(expert.getCreator());
+            resp.setCreationTime(expert.getCreationTime());
+            resps.add(resp);
+        }
+        ModelAndView mv = getPageMv("project/getExpertByDisciplineCategoryId", resps, page);
+        mv.addObject("projectId", projectId);
+        return mv;
+    }
+
+    /**
+     * 分配专家
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("distributionExpert.htm")
+    public Result distributionExpert(String id, String expertIds) {
+        validateParam(id, expertIds);
+        return projectService.distributionExpert(getSessionUser().getUserId(), id, expertIds.split(","));
+    }
+
+    /**
+     * 本项目专家列表
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("getExpertByProjectId.htm")
+    public ModelAndView getExpertByProjectId(String id, Pagination page) {
+        validateParam(id);
+        List<UserResp> resps = new ArrayList<UserResp>();
+        List<Comment> comments = projectService.getExpertByProjectId(id, page.page());
+        for (Comment comment : comments) {
+            Expert expert = userService.getExpertById(comment.getExpertId());
+            UserResp resp = new UserResp();
+            resp.setId(expert.getId());
+            resp.setDepartmentId(expert.getSchool());
+            resp.setDegreeId(expert.getDegree());
+            resp.setTitleId(expert.getTitle());
+            resp.setNumber(expert.getNumber());
+            resp.setAvatar(expert.getAvatar());
+            resp.setName(expert.getName());
+            resp.setPhone(expert.getPhone());
+            resp.setEmail(expert.getEmail());
+            resp.setCreator(expert.getCreator());
+            resp.setCreationTime(expert.getCreationTime());
+            resps.add(resp);
+        }
+        ModelAndView mv = getPageMv("project/getExpertByProjectId", resps, page);
+        return mv;
     }
 }

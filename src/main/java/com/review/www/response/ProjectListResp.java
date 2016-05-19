@@ -11,6 +11,7 @@ public class ProjectListResp {
     private String name;
     private String creator;
     private String creatorNumber;
+    private String disciplineCategory;
     private int    status;
     private Date   creationTime;
 
@@ -52,6 +53,14 @@ public class ProjectListResp {
 
     public void setCreatorNumber(String creatorNumber) {
         this.creatorNumber = creatorNumber;
+    }
+
+    public String getDisciplineCategory() {
+        return disciplineCategory;
+    }
+
+    public void setDisciplineCategory(String disciplineCategory) {
+        this.disciplineCategory = disciplineCategory;
     }
 
     public int getStatus() {

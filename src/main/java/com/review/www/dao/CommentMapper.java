@@ -1,6 +1,9 @@
 package com.review.www.dao;
 
 import com.review.www.entity.Comment;
+import org.apache.ibatis.session.RowBounds;
+
+import java.util.List;
 
 public interface CommentMapper {
     int deleteByPrimaryKey(String id);
@@ -14,4 +17,13 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    /**
+     * select by prjectId
+     *
+     * @param projectId
+     * @param page
+     * @return
+     */
+    List<Comment> selectByProjectId(String projectId, RowBounds page);
 }

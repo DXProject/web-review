@@ -11,6 +11,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="discipline_category" property="disciplineCategory" jdbcType="CHAR" />
     <result column="post" property="post" jdbcType="VARCHAR" />
     <result column="school" property="school" jdbcType="VARCHAR" />
     <result column="creator" property="creator" jdbcType="CHAR" />
@@ -20,8 +21,8 @@
     <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, title, degree, avatar, number, phone, name, password, email, post, school, creator, 
-    creation_time, backup_one, backup_two, backup_three
+    id, title, degree, avatar, number, phone, name, password, email, discipline_category, 
+    post, school, creator, creation_time, backup_one, backup_two, backup_three
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -36,16 +37,16 @@
   <insert id="insert" parameterType="com.review.www.entity.Expert" >
     insert into expert (id, title, degree, avatar, 
       number, phone, name, 
-      password, email, post, 
-      school, creator, creation_time, 
-      backup_one, backup_two, backup_three
-      )
+      password, email, discipline_category, 
+      post, school, creator, 
+      creation_time, backup_one, backup_two, 
+      backup_three)
     values (#{id,jdbcType=CHAR}, #{title,jdbcType=CHAR}, #{degree,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, 
       #{number,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
-      #{school,jdbcType=VARCHAR}, #{creator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
-      #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR}
-      )
+      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{disciplineCategory,jdbcType=CHAR}, 
+      #{post,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, #{creator,jdbcType=CHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
+      #{backupThree,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.review.www.entity.Expert" >
     insert into expert
@@ -76,6 +77,9 @@
       </if>
       <if test="email != null" >
         email,
+      </if>
+      <if test="disciplineCategory != null" >
+        discipline_category,
       </if>
       <if test="post != null" >
         post,
@@ -127,6 +131,9 @@
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
+      <if test="disciplineCategory != null" >
+        #{disciplineCategory,jdbcType=CHAR},
+      </if>
       <if test="post != null" >
         #{post,jdbcType=VARCHAR},
       </if>
@@ -177,6 +184,9 @@
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
+      <if test="disciplineCategory != null" >
+        discipline_category = #{disciplineCategory,jdbcType=CHAR},
+      </if>
       <if test="post != null" >
         post = #{post,jdbcType=VARCHAR},
       </if>
@@ -211,6 +221,7 @@
       name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
+      discipline_category = #{disciplineCategory,jdbcType=CHAR},
       post = #{post,jdbcType=VARCHAR},
       school = #{school,jdbcType=VARCHAR},
       creator = #{creator,jdbcType=CHAR},
@@ -220,7 +231,7 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <!--selectListAll-->
+  <!--custom-->
   <select id="selectListAll" resultMap="BaseResultMap" parameterType="java.lang.String">
     SELECT
     <include refid="Base_Column_List" />
@@ -237,12 +248,6 @@
      name LIKE CONCAT('%','${keyword}','%' ) OR  number LIKE CONCAT('%','${keyword}','%' )
     </if>
   </select>
-  <update id="deleteById" parameterType="java.lang.String">
-    update
-    expert
-    set
-
-  </update>
   <select id="selectByNumberAndType" resultMap="BaseResultMap" parameterType="java.lang.String">
     SELECT
     <include refid="Base_Column_List" />
@@ -251,5 +256,10 @@
     WHERE
     number = #{number,jdbcType=VARCHAR}
   </select>
-
+  <select id="selectByDisciplineCategoryId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM expert
+    WHERE discipline_category = #{disciplineCategory,jdbcType=CHAR}
+  </select>
 </mapper>

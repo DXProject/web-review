@@ -5,7 +5,8 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -16,7 +17,6 @@
 <link rel="stylesheet" type="text/css" href="${path}/css/index.css">
 <body>
 <div class="wrap">
-
 
 
     <div class="header">
@@ -56,18 +56,21 @@
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
                                 <img src="${path}/images/banner_1.jpg" alt="...">
+
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
                                 <img src="${path}/images/banner_2.jpg" alt="...">
+
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
                                 <img src="${path}/images/banner_1.jpg" alt="...">
+
                                 <div class="carousel-caption">
                                     ...
                                 </div>
@@ -75,11 +78,13 @@
                         </div>
 
                         <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                           data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                           data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -97,17 +102,13 @@
                     </div>
                     <div class="news-content">
                         <ul>
-                            <li><a href="#">不忘初心，方得始终—记经管学院赴杭州嘉兴等地开展双百暑期社会实践活动</a></li>
-                            <li><a href="#">风云定海山 治水我先行—记经管学院赴定海暑期社会实践活动</a></li>
-                            <li><a href="#">我校参加第四届全国大学生水利创新设计大赛获佳绩</a></li>
-                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践</a></li>
-                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践</a></li>
-                            <li><a href="#">穹顶之下 守望乡村碧水蓝天——记测市学院“追寻致污源头，共创节水家园”暑期社会实践</a></li>
+                            <c:forEach var="r" items="${announcements}">
+                                <li><a href="#">${r.title}[<fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/>]</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
                 <!-- end -->
-
 
 
                 <!-- 快速入口 -->
@@ -119,9 +120,12 @@
                     <div class="content">
                         <div class="block-l">
                             <div class="left-1">
-                                <span><img src="${path}/images/icon-3.gif"><a href="##" data-toggle="modal" data-target="#myModal" >登录/注册</a></span>
+                                <span><img src="${path}/images/icon-3.gif"><a href="##" data-toggle="modal"
+                                                                              data-target="#myModal">登录/注册</a></span>
                             </div>
-                            <span class="connect"></span><span class="connect"></span><span class="connect"></span><span class="connect"></span>
+                            <span class="connect"></span><span class="connect"></span><span class="connect"></span><span
+                                class="connect"></span>
+
                             <div class="left-2">
                                 <span><img src="${path}/images/icon-4.gif"><a href="">历史文献</a></span>
                             </div>
@@ -129,9 +133,12 @@
                         </div>
                         <div class="block-r">
                             <div class="right-1">
-                                <span><img src="${path}/images/icon-6.gif"><a href="${path}/front/project/applyProject.htm">项目申报</a></span>
+                                <span><img src="${path}/images/icon-6.gif"><a
+                                        href="${path}/front/project/applyProject.htm">项目申报</a></span>
                             </div>
-                            <span class="connect"></span><span class="connect"></span><span class="connect"></span><span class="connect"></span>
+                            <span class="connect"></span><span class="connect"></span><span class="connect"></span><span
+                                class="connect"></span>
+
                             <div class="right-2">
                                 <span><img src="${path}/images/icon-5.gif"><a href="">关于我们</a></span>
                             </div>
@@ -156,20 +163,26 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" >用户登录</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">用户登录</h4>
             </div>
             <div class="modal-body">
 
                 <div class="login-content">
                     <form class="forminfo">
                         <div class="info-div">
-                            <label class="user" style="line-height:30px;">用&nbsp;&nbsp;户：<input type="text" id="number" name="number" class="form-control pull-right validate[required]"></label>
-                            <label class="password" style="line-height:30px;">密&nbsp;&nbsp;码：<input type="password" id="password" name="password" class="form-control pull-right validate[required]"></label>
-						<span class="radio">用户类型：
-							<label ><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
-							<label ><input type="radio" name="identity" value="2"/> 评审专家</label>
-						</span>
+                            <label class="user" style="line-height:30px;">用&nbsp;&nbsp;户：<input type="text" id="number"
+                                                                                                name="number"
+                                                                                                class="form-control pull-right validate[required]"></label>
+                            <label class="password" style="line-height:30px;">密&nbsp;&nbsp;码：<input type="password"
+                                                                                                    id="password"
+                                                                                                    name="password"
+                                                                                                    class="form-control pull-right validate[required]"></label>
+    <span class="radio">用户类型：
+    <label><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
+    <label><input type="radio" name="identity" value="2"/> 评审专家</label>
+    </span>
                         </div>
 
                     </form>
@@ -201,19 +214,19 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('.doLoginBtn').ajaxbtn('${path}/front/doLoginFront.htm',function () {
+        $('.doLoginBtn').ajaxbtn('${path}/front/doLoginFront.htm', function () {
             return {
                 number: $.trim($('input[name="number"]').val()),
                 password: $.trim($('input[name="password"]').val()),
-                identity : $.trim($('input[name="identity"]').val())
+                identity: $.trim($('input[name="identity"]').val())
             }
         }, function () {
             return $('.forminfo').validationEngine('validate');
-        },function(r){
-            if(r.code==1){
+        }, function (r) {
+            if (r.code == 1) {
                 location.reload();
-            }else{
-                $.zxxbox.remind(r.message, function(){
+            } else {
+                $.zxxbox.remind(r.message, function () {
                     $("#password").val("");
                 }, {
                     delay: 1000,

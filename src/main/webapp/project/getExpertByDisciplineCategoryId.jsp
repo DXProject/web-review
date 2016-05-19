@@ -6,8 +6,8 @@
     <div class="place">
         <span>位置：</span>
         <ul class="placeul">
-            <li><a href="#">评审细则</a></li>
-            <li><a href="#">添加评审细则</a></li>
+            <li><a href="#">申报项目管理</a></li>
+            <li><a href="#">分配专家</a></li>
         </ul>
     </div>
     <%@include file="../top.jsp" %>
@@ -25,31 +25,42 @@
                 <input name="" type="button" class="scbtn _searchBtn" value="查询" action="rulesList.htm"/>
             </li>
         </form>
-        <input type="hidden" name="reviewProgramId" value="${reviewProgramId}">
+        <input type="hidden" name="projectId" value="${projectId}">
         <li style="float: right;"><label>&nbsp;</label>
-            <input name="" type="button" class="scbtn _doAddBtn" value="确认"/>
+            <input name="" type="button" class="scbtn _doAddBtn" value="确认组团"/>
         </li>
     </ul>
 
     <table class="imgtable cart-menu">
         <thead>
         <tr>
-            <input type="hidden" name="reviewProgramId" value="$">
+            <input type="hidden" name="expertId" value="$">
             <th width="60px"><input type="checkbox" name="CheckboxGroup1" class="select-all">全选</th>
+            <th>头像</th>
             <th>编号</th>
-            <th>名称</th>
-            <th style="width: 50%;">详细</th>
+            <th>姓名</th>
+            <th>手机号</th>
             <th>创建时间</th>
-            <%--<th>状态</th>--%>
+            <%--<th>操作</th>--%>
         </tr>
         </thead>
         <tbody id="sortable">
         <c:forEach var="r" items="${list}">
             <tr data="${r.id}" id="${r.id}" height="40">
                 <td><input type="checkbox" name="CheckboxGroup1" id="CheckboxGroup1_1"></td>
-                <td>${r.number}</td>
-                <td>${r.name}</td>
-                <td>${r.details}</td>
+                <td>
+                    <img class="lazy" data-original="${r.avatar}"
+                         style="width:60px;-moz-border-radius:30px;-webkit-border-radius:30px;border-radius:30px;"/>
+                </td>
+                <td>
+                        ${r.number}
+                </td>
+                <td>
+                        ${r.name}
+                </td>
+                <td>
+                    <p>${r.phone}</p>
+                </td>
                 <td><fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/></td>
             </tr>
         </c:forEach>
@@ -76,24 +87,21 @@
         //
         //批量添加
         $("._doAddBtn").click(function () {
-            var rules = "";
-            var ruleId;
-            var peopleCount = 0;
-            var count;
-            var startTime = "";
+            var expertIds = "";
+            var expertId;
             $(".cart-menu tr").each(function (i, e) {
-                ruleId = $(e).attr('data');
-                console.log("ruleId:" + ruleId);
+                expertId = $(e).attr('data');
+                console.log("expertId:" + expertId);
                 if ($(e).find("input[type='checkbox']").prop("checked")) {
-                    rules += "," + ruleId;
+                    expertIds += "," + expertId;
                 }
             });
-            if (rules.substr(0, 1) == ',') {
-                rules = rules.substr(1);
+            if (expertIds.substr(0, 1) == ',') {
+                expertIds = expertIds.substr(1);
             }
-            $K.http('addRulesToReviewProgramRules.htm', {
-                reviewProgramId:$.trim($('input[name="reviewProgramId"]').val()),
-                rules: rules
+            $K.http('distributionExpert.htm', {
+                id: $.trim($('input[name="projectId"]').val()),
+                expertIds: expertIds
             }, function (r) {
                 $.zxxbox.remind("操作成功。", null, {
                     delay: 3000,

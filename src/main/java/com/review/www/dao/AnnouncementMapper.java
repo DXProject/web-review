@@ -27,4 +27,11 @@ public interface AnnouncementMapper {
      * @return
      */
     List<Announcement> searchAnnouncement(SearchProjectVo searchProjectVo, RowBounds page);
+
+    /**
+     * select index announcement
+     *
+     * @return
+     */
+    List<Announcement> selectIndexAnnouncement();
 }
