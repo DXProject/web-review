@@ -36,7 +36,7 @@
 
         <c:if test="${type!=3}">
         <li><label>性别</label>
-            <input name="sex" type="radio" value="0"/>&nbsp;男 &nbsp;
+            <input name="sex" type="radio" value="0" checked/>&nbsp;男 &nbsp;
             <input name="sex" type="radio" value="1"/>&nbsp;女</li>
         </c:if>
         <li><label>邮箱</label>

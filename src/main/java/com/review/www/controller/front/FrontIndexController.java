@@ -99,15 +99,23 @@ public class FrontIndexController extends WebBaseController {
     public ModelAndView register() {
         List<BaseConstant> list = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEPARTMENT);
         List<BaseConstant> list1 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_TITLE);
-        return new ModelAndView("/front/register").addObject("list", list).addObject("list1", list1);
+        List<BaseConstant> list2 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEGREE);
+        List<BaseConstant> list3 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_EDUCATION);
+        return new ModelAndView("/front/register").addObject("list", list).addObject("list1", list1).addObject("list2", list2).addObject("list3", list3);
     }
 
     @RequestMapping("doRegister")
-    public Result doRegister(User user) {
+    public Result doRegister(HttpServletRequest request,User user) {
         log.debug("user:{}{}", user.getNumber(), user.getPassword());
         User user1 = userService.getByNumberAndType(user.getNumber(), 1);//项目申报者
         if (user1 == null) {
             userService.addUserManage(1, user);
+            User user2 = userService.getByNumberAndType(user.getNumber(), UserType.APPLICANT);//项目申报者
+            SessionUser userSession = new SessionUser();
+            userSession.setType(user2.getType());
+            userSession.setName(user2.getName());
+            userSession.setUserId(user2.getId());
+            request.getSession().setAttribute(Constants.SESSION_KEY_LOGIN_USER, userSession);
             return new Result(1, "成功!");
         }
         return new Result(2, "该教工号已经存在!");

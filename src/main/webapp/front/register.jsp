@@ -39,22 +39,80 @@
             </div>
             <div class="reginfo">
                 <form class="forminfo form-horizontal">
+
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">学院：</label>
+                        <label class="col-sm-4 control-label">教师工号：</label>
 
                         <div class="col-sm-8">
-                            <select name="department" class="form-control">
-                                <c:forEach var="t" items="${list}">
+                            <input type="text" name="number" class="validate[required] form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">手机：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="phone" class="validate[required] form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">昵称：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="name" class="validate[required] form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">性别：</label>
+
+                        <div class="col-sm-8">
+                            <input name="sex" type="radio" value="0" checked/>&nbsp;男 &nbsp;
+                            <input name="sex" type="radio" value="1"/>&nbsp;女
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">邮箱：</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="email" class="form-control"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">登录密码:</label>
+
+                        <div class="col-sm-8">
+                            <input type="password" id="password" class="validate[required] form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">确认密码:</label>
+
+                        <div class="col-sm-8">
+                            <input type="password" name="password"
+                                   class="validate[required,equals[password]] form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">学历：</label>
+
+                        <div class="col-sm-8">
+                            <select name="eduction" class="form-control validate[required]">
+                                <c:forEach var="t" items="${list3}" varStatus="status">
                                     <option value="${t.id}">${t.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">教师工号：</label>
+                        <label class="col-sm-4 control-label">学位：</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="number" class="form-control">
+                            <select name="degree" class="form-control validate[required]">
+                                <c:forEach var="t" items="${list2}">
+                                    <option value="${t.id}">${t.name}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,31 +127,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">手机：</label>
+                        <label class="col-sm-4 control-label">学院：</label>
 
                         <div class="col-sm-8">
-                            <input type="text" name="phone" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">邮箱：</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" name="email" class="form-control"></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">登录密码：</label>
-
-                        <div class="col-sm-8">
-                            <input type="password" id="password" class="validate[required] form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">确认密码:</label>
-
-                        <div class="col-sm-8">
-                            <input type="password" name="password"
-                                   class="validate[required,equals[password]] form-control">
+                            <select name="department" class="form-control">
+                                <c:forEach var="t" items="${list}">
+                                    <option value="${t.id}">${t.name}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                     </div>
                     <div class="regbtn">
