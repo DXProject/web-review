@@ -23,9 +23,9 @@
                                       value=""></li>
         <li class="line"><label>公告类别</label>
             <div class="vocation">
-                <select name="type" class="useselect validate[required]">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                <select name="type" class="useselect validate[required] _showProjectDiv">
+                    <option value="1">普通公告</option>
+                    <option value="2">项目公告</option>
                 </select>
             </div>
         </li>
@@ -34,12 +34,15 @@
             <textarea style="width:80%;height:300px" name="content" id="content_id"
                       class="ke"></textarea>
         </li>
+        <!--当项目公告被选中时,出现下面选项-->
+        <div class="projectDiv" style="display: none">
         <li class="line"><label>申报时间</label>
             <input name="timeStart" type="text" class="short-input Wdate"
                    value="" onfocus="WdatePicker({minDate:'%y-%M-%d'})"/>&emsp;~&emsp;
             <input name="timeEnd" type="text" class="short-input Wdate"
                    value="" onfocus="WdatePicker({minDate:'%y-%M-%d'})"/>
         </li>
+
         <li><label>项目名称</label><input name="name" type="text" class="short-input validate[required]"
                                       value=""></li>
         <li class="line"><label>项目备注</label><input name="remark" type="text" class="long-input validate[required]"
@@ -72,7 +75,7 @@
                 </select>
             </div>
         </li>
-
+        </div>
         <li><label>&nbsp;</label><input type="button" class="btn saveBtn" value="确认保存"/></li>
     </ul>
 </div>
@@ -101,5 +104,15 @@
             KE.sync("content_id");//将富文本编辑器内容读入textarea
             return $('.forminfo').validationEngine('validate');
         });
+        //当select改变时
+        $('._showProjectDiv').on('change',function(){
+            if($('select[name="type"]').val()==2){
+                $('.projectDiv').css("display","block");
+            }else{
+                $('.projectDiv').css("display","none");
+            }
+        });
+
+
     });
 </script>

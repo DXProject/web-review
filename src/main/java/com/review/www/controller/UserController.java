@@ -8,6 +8,7 @@ import com.review.www.constants.Constants;
 import com.review.www.entity.BaseConstant;
 import com.review.www.entity.User;
 import com.review.www.enums.UserType;
+import com.review.www.repeat.UserRepeat;
 import com.review.www.request.LoginReq;
 import com.review.www.response.UserResp;
 import com.review.www.service.BaseDataService;
@@ -86,18 +87,7 @@ public class UserController extends WebBaseController {
     @RequestMapping("userPage{type}.htm")
     public ModelAndView userPage(@PathVariable int type){
         ModelAndView model = new ModelAndView("/user/userList").addObject("type",type);
-        if(type== UserType.APPLICANT){
-            model.addObject("title","项目申报者");
-        }
-        else if(type==UserType.SECONDARY_COLLEGE){
-            model.addObject("title","二级学院管理人员");
-        }
-        else if(type==UserType.EXPERT){
-            model.addObject("title","专家");
-        }
-        else if(type==UserType.ADMIN){
-            model.addObject("title","科研室管理人员");
-        }
+        model = new UserRepeat().compareType(type,model);
         List<UserResp> userResps = userService.getByType(type);
         model.addObject("list",userResps);
         return model;
@@ -105,18 +95,7 @@ public class UserController extends WebBaseController {
     @RequestMapping("searchUser{type}.htm")
     public ModelAndView searchUser(@PathVariable int type, String keyword){
         ModelAndView model = new ModelAndView("/user/userList").addObject("type",type);
-        if(type== UserType.APPLICANT){
-            model.addObject("title","项目申报者");
-        }
-        else if(type==UserType.SECONDARY_COLLEGE){
-            model.addObject("title","二级学院管理人员");
-        }
-        else if(type==UserType.EXPERT){
-            model.addObject("title","专家");
-        }
-        else if(type==UserType.ADMIN){
-            model.addObject("title","科研室管理人员");
-        }
+        model = new UserRepeat().compareType(type,model);
         List<UserResp> userResps = userService.getByNumberOrName(type,keyword);
         model.addObject("list",userResps);
         if(!keyword.isEmpty()){
@@ -135,18 +114,7 @@ public class UserController extends WebBaseController {
         model.addObject("list2",list2);
         model.addObject("list3",list3);
         model.addObject("list4",list4);
-        if(type== UserType.APPLICANT){
-            model.addObject("title","项目申报者");
-        }
-        else if(type==UserType.SECONDARY_COLLEGE){
-            model.addObject("title","二级学院管理人员");
-        }
-        else if(type==UserType.EXPERT){
-            model.addObject("title","专家");
-        }
-        else if(type==UserType.ADMIN){
-            model.addObject("title","科研室管理人员");
-        }
+        model = new UserRepeat().compareType(type,model);
         return model;
     }
     @RequestMapping("doUserAddPage{type}.htm")
@@ -179,20 +147,7 @@ public class UserController extends WebBaseController {
         model.addObject("list4",list4);
         UserResp userResp = userService.getByTypeAndId(type,id);
         model.addObject("user",userResp);
-        if(type==UserType.EXPERT){
-            model.addObject("title","专家");
-        }else{
-            if(type== UserType.APPLICANT){
-                model.addObject("title","项目申报者");
-            }
-            else if(type==UserType.SECONDARY_COLLEGE){
-                model.addObject("title","二级学院管理人员");
-            }
-            else if(type==UserType.ADMIN){
-                model.addObject("title","科研室管理人员");
-            }
-        }
-
+        model = new UserRepeat().compareType(type,model);
         return model;
     }
     @RequestMapping("doUserEditPage{type}.htm")
