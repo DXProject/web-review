@@ -139,6 +139,11 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
         return new Result(Code.SUCCESS);
     }
 
+    @Override
+    public List<ReviewProgram> getAllReviewProgram() {
+        return reviewProgramMapper.selectAll();
+    }
+
     private void addReviewProgramRules(ReviewProgram reviewProgram, List<Rules> rules) {
         Date date = new Date();
         for (Rules rule : rules) {

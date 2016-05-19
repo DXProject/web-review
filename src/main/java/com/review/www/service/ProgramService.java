@@ -121,4 +121,11 @@ public interface ProgramService {
      * @return
      */
     Result removeReviewProgram(String id);
+
+    /**
+     * get all review Program
+     *
+     * @return
+     */
+    List<ReviewProgram> getAllReviewProgram();
 }

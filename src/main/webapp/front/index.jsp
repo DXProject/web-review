@@ -25,7 +25,7 @@
             <div class="web-title">
                 <span class="title-l"></span>
 					<span class="txt">
-						<a>高校教科研项目网上评审</a><br>University Scientific Research Project Online Review
+						<a>水院教科研项目网上评审</a><br>University Scientific Research Project Online Review
 					</span>
             </div>
             <ul class="nav nav-pills pull-right">
@@ -98,12 +98,12 @@
                 <div class="main-foot-notice">
                     <div class="news-title">
                         <span class="icon"><img src="${path}/images/icon-1.png"></span>
-                        <a href="#">通知通告</a>
+                        <a href="${path}/front/project/announcementList.htm">通知通告</a>
                     </div>
                     <div class="news-content">
                         <ul>
                             <c:forEach var="r" items="${announcements}">
-                                <li><a href="#">${r.title}[<fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd HH:mm:ss'/>]</a></li>
+                                <li><a href="${path}/front/project/announcementInfo.htm?id=${r.id}">${r.title}[<fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd'/>]</a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -139,7 +139,7 @@
                         <div class="block-r">
                             <div class="right-1">
                                 <span><img src="${path}/images/icon-6.gif"><a
-                                        href="${path}/front/project/applyProject.htm">项目申报</a></span>
+                                        href="${path}/front/project/announcementList.htm?type=2">项目申报</a></span>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span
                                 class="connect"></span>

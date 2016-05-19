@@ -9,6 +9,7 @@
 <c:set var="SUCCESS" value="1"/>
 <%--user--%>
 <c:set var="USERTYPE_ADMIN" value="<%=UserType.ADMIN%>"/>
+<c:set var="USERTYPE_APPLICANT" value="<%=UserType.APPLICANT%>"/>
 <c:set var="BASE_CONSTANT_TITLE" value="<%=Constants.BASE_CONSTANT_TITLE%>"/>
 <c:set var="BASE_CONSTANT_DEGREE" value="<%=Constants.BASE_CONSTANT_DEGREE%>"/>
 <c:set var="BASE_CONSTANT_EDUCATION" value="<%=Constants.BASE_CONSTANT_EDUCATION%>"/>

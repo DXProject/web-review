@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.review.www.dao.AnnouncementMapper" >
-  <resultMap id="BaseResultMap" type="com.review.www.entity.Announcement" >
-    <id column="id" property="id" jdbcType="CHAR" />
-    <result column="class_three_id" property="classThreeId" jdbcType="CHAR" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="content" property="content" jdbcType="LONGVARCHAR" />
-    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-    <result column="type" property="type" jdbcType="BIT" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
-    <result column="creator" property="creator" jdbcType="CHAR" />
-    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
-    <result column="backup_one" property="backupOne" jdbcType="VARCHAR" />
-    <result column="backup_two" property="backupTwo" jdbcType="VARCHAR" />
-    <result column="number" property="number" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.review.www.dao.AnnouncementMapper">
+    <resultMap id="BaseResultMap" type="com.review.www.entity.Announcement">
+        <id column="id" property="id" jdbcType="CHAR"/>
+        <result column="class_three_id" property="classThreeId" jdbcType="CHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="LONGVARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="type" property="type" jdbcType="BIT"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="BIT"/>
+        <result column="creator" property="creator" jdbcType="CHAR"/>
+        <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="backup_one" property="backupOne" jdbcType="VARCHAR"/>
+        <result column="backup_two" property="backupTwo" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, class_three_id, title, content, start_time, end_time, type, status, is_deleted, 
     creator, creation_time, backup_one, backup_two, number
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from announcement
-    where id = #{id,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from announcement
+        where id = #{id,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from announcement
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.review.www.entity.Announcement" >
+    <insert id="insert" parameterType="com.review.www.entity.Announcement">
     insert into announcement (id, class_three_id, title, 
       content, start_time, end_time, 
       type, status, is_deleted, creator, 
@@ -43,143 +43,143 @@
       #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, #{backupTwo,jdbcType=VARCHAR}, 
       #{number,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.review.www.entity.Announcement" >
-    insert into announcement
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="classThreeId != null" >
-        class_three_id,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-      <if test="startTime != null" >
-        start_time,
-      </if>
-      <if test="endTime != null" >
-        end_time,
-      </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="isDeleted != null" >
-        is_deleted,
-      </if>
-      <if test="creator != null" >
-        creator,
-      </if>
-      <if test="creationTime != null" >
-        creation_time,
-      </if>
-      <if test="backupOne != null" >
-        backup_one,
-      </if>
-      <if test="backupTwo != null" >
-        backup_two,
-      </if>
-      <if test="number != null" >
-        number,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=CHAR},
-      </if>
-      <if test="classThreeId != null" >
-        #{classThreeId,jdbcType=CHAR},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="startTime != null" >
-        #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null" >
-        #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=BIT},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="isDeleted != null" >
-        #{isDeleted,jdbcType=BIT},
-      </if>
-      <if test="creator != null" >
-        #{creator,jdbcType=CHAR},
-      </if>
-      <if test="creationTime != null" >
-        #{creationTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="backupOne != null" >
-        #{backupOne,jdbcType=VARCHAR},
-      </if>
-      <if test="backupTwo != null" >
-        #{backupTwo,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null" >
-        #{number,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.Announcement" >
-    update announcement
-    <set >
-      <if test="classThreeId != null" >
-        class_three_id = #{classThreeId,jdbcType=CHAR},
-      </if>
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="startTime != null" >
-        start_time = #{startTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTime != null" >
-        end_time = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=BIT},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="isDeleted != null" >
-        is_deleted = #{isDeleted,jdbcType=BIT},
-      </if>
-      <if test="creator != null" >
-        creator = #{creator,jdbcType=CHAR},
-      </if>
-      <if test="creationTime != null" >
-        creation_time = #{creationTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="backupOne != null" >
-        backup_one = #{backupOne,jdbcType=VARCHAR},
-      </if>
-      <if test="backupTwo != null" >
-        backup_two = #{backupTwo,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null" >
-        number = #{number,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Announcement" >
+    <insert id="insertSelective" parameterType="com.review.www.entity.Announcement">
+        insert into announcement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="classThreeId != null">
+                class_three_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="creationTime != null">
+                creation_time,
+            </if>
+            <if test="backupOne != null">
+                backup_one,
+            </if>
+            <if test="backupTwo != null">
+                backup_two,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="classThreeId != null">
+                #{classThreeId,jdbcType=CHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=BIT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=BIT},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=CHAR},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="backupOne != null">
+                #{backupOne,jdbcType=VARCHAR},
+            </if>
+            <if test="backupTwo != null">
+                #{backupTwo,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.Announcement">
+        update announcement
+        <set>
+            <if test="classThreeId != null">
+                class_three_id = #{classThreeId,jdbcType=CHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=BIT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=BIT},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=CHAR},
+            </if>
+            <if test="creationTime != null">
+                creation_time = #{creationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="backupOne != null">
+                backup_one = #{backupOne,jdbcType=VARCHAR},
+            </if>
+            <if test="backupTwo != null">
+                backup_two = #{backupTwo,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.review.www.entity.Announcement">
     update announcement
     set class_three_id = #{classThreeId,jdbcType=CHAR},
       title = #{title,jdbcType=VARCHAR},
@@ -196,28 +196,38 @@
       number = #{number,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <!--custom-->
-  <select id="searchAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from announcement
-    <where>
-      <if test="keyword != null and keyword != '' ">
-        title LIKE CONCAT('%','${keyword}','%' )
-      </if>
-      <if test="status>0 ">
-        AND status = #{status,jdbcType=TINYINT}
-      </if>
-      <if test="type>0 ">
-        AND type = #{type,jdbcType=TINYINT}
-      </if>
-    </where>
-  </select>
-  <select id="selectIndexAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from announcement
-    order by creation_time desc
-    limit 5
-  </select>
+    <!--custom-->
+    <select id="searchAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from announcement
+        <where>
+            <if test="keyword != null and keyword != '' ">
+                title LIKE CONCAT('%','${keyword}','%' )
+            </if>
+            <if test="status>0 ">
+                AND status = #{status,jdbcType=TINYINT}
+            </if>
+            <if test="type>0 ">
+                AND type = #{type,jdbcType=TINYINT}
+            </if>
+        </where>
+    </select>
+    <select id="selectIndexAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from announcement
+        order by creation_time desc
+        limit 5
+    </select>
+    <select id="selectAnnouncementListByType" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from announcement
+        <where>
+            <if test="type > 0">
+                type = #{type,jdbcType=BIT}
+            </if>
+        </where>
+    </select>
 </mapper>

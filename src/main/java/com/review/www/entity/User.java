@@ -197,11 +197,11 @@ public class User {
         this.type = type;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }

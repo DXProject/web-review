@@ -1,6 +1,7 @@
 package com.review.www.service;
 
 import com.jopool.jweb.entity.Result;
+import com.jopool.jweb.mybatis.page.Pagination;
 import com.review.www.entity.*;
 import com.review.www.vo.SearchProjectVo;
 import org.apache.ibatis.session.RowBounds;
@@ -120,4 +121,29 @@ public interface ProjectService {
      * @return
      */
     List<Comment> getExpertByProjectId(String id, RowBounds page);
+
+    /**
+     * get announcementList by type
+     *
+     * @param type
+     * @param page
+     * @return
+     */
+    List<Announcement> getAnnouncementListByType(int type, RowBounds page);
+
+    /**
+     * get announcement info
+     *
+     * @param id
+     * @return
+     */
+    Announcement getAnnouncementInfo(String id);
+
+    /**
+     * get classThreeInfo
+     *
+     * @param classThreeId
+     * @return
+     */
+    ClassThree getClassThreeInfo(String classThreeId);
 }

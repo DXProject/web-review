@@ -2,6 +2,7 @@ package com.review.www.service.impl;
 
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
+import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.StringUtils;
 import com.jopool.jweb.utils.UUIDUtils;
@@ -134,5 +135,20 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     @Override
     public List<Comment> getExpertByProjectId(String id, RowBounds page) {
         return commentMapper.selectByProjectId(id,page);
+    }
+
+    @Override
+    public List<Announcement> getAnnouncementListByType(int type, RowBounds page) {
+        return announcementMapper.selectAnnouncementListByType(type,page);
+    }
+
+    @Override
+    public Announcement getAnnouncementInfo(String id) {
+        return announcementMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public ClassThree getClassThreeInfo(String classThreeId) {
+        return classThreeMapper.selectByPrimaryKey(classThreeId );
     }
 }

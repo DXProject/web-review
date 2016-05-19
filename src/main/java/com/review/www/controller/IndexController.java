@@ -45,11 +45,13 @@ public class IndexController extends WebBaseController {
             addErrorAction(model, "请输入教工号或密码");
             return "redirect:login.htm";
         }
-        User user = userService.getByNumberAndType(number, UserType.APPLICANT);
+        User user = userService.getByNumberAndType(number, UserType.ADMIN);
         if (null == user) {
-            user = userService.getByNumberAndType(number, UserType.ADMIN);
+            user = userService.getByNumberAndType(number, UserType.SECONDARY_COLLEGE);
             if (null == user) {
-                user = userService.getByNumberAndType(number, UserType.SECONDARY_COLLEGE);
+                user = userService.getByNumberAndType(number, UserType.APPLICANT);
+                addErrorAction(model, "没有权限登录");
+                return "redirect:login.htm";
             }
             if (null == user) {
                 addErrorAction(model, "教工号或密码错误");

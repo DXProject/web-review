@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.review.www.dao.ReviewProgramMapper" >
-  <resultMap id="BaseResultMap" type="com.review.www.entity.ReviewProgram" >
-    <id column="id" property="id" jdbcType="CHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="TINYINT" />
-    <result column="class_name" property="className" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
-    <result column="careator" property="careator" jdbcType="CHAR" />
-    <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP" />
-    <result column="backup_one" property="backupOne" jdbcType="VARCHAR" />
-    <result column="backup_two" property="backupTwo" jdbcType="VARCHAR" />
-    <result column="backup_three" property="backupThree" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.review.www.dao.ReviewProgramMapper">
+    <resultMap id="BaseResultMap" type="com.review.www.entity.ReviewProgram">
+        <id column="id" property="id" jdbcType="CHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="TINYINT"/>
+        <result column="class_name" property="className" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="BIT"/>
+        <result column="careator" property="careator" jdbcType="CHAR"/>
+        <result column="creation_time" property="creationTime" jdbcType="TIMESTAMP"/>
+        <result column="backup_one" property="backupOne" jdbcType="VARCHAR"/>
+        <result column="backup_two" property="backupTwo" jdbcType="VARCHAR"/>
+        <result column="backup_three" property="backupThree" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, name, type, class_name, url, is_deleted, careator, creation_time, backup_one, 
     backup_two, backup_three
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from review_program
-    where id = #{id,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from review_program
+        where id = #{id,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from review_program
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.review.www.entity.ReviewProgram" >
+    <insert id="insert" parameterType="com.review.www.entity.ReviewProgram">
     insert into review_program (id, name, type, 
       class_name, url, is_deleted, 
       careator, creation_time, backup_one, 
@@ -38,116 +38,116 @@
       #{careator,jdbcType=CHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{backupOne,jdbcType=VARCHAR}, 
       #{backupTwo,jdbcType=VARCHAR}, #{backupThree,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.review.www.entity.ReviewProgram" >
-    insert into review_program
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="className != null" >
-        class_name,
-      </if>
-      <if test="url != null" >
-        url,
-      </if>
-      <if test="isDeleted != null" >
-        is_deleted,
-      </if>
-      <if test="careator != null" >
-        careator,
-      </if>
-      <if test="creationTime != null" >
-        creation_time,
-      </if>
-      <if test="backupOne != null" >
-        backup_one,
-      </if>
-      <if test="backupTwo != null" >
-        backup_two,
-      </if>
-      <if test="backupThree != null" >
-        backup_three,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=CHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=TINYINT},
-      </if>
-      <if test="className != null" >
-        #{className,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null" >
-        #{isDeleted,jdbcType=BIT},
-      </if>
-      <if test="careator != null" >
-        #{careator,jdbcType=CHAR},
-      </if>
-      <if test="creationTime != null" >
-        #{creationTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="backupOne != null" >
-        #{backupOne,jdbcType=VARCHAR},
-      </if>
-      <if test="backupTwo != null" >
-        #{backupTwo,jdbcType=VARCHAR},
-      </if>
-      <if test="backupThree != null" >
-        #{backupThree,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.ReviewProgram" >
-    update review_program
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="className != null" >
-        class_name = #{className,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="isDeleted != null" >
-        is_deleted = #{isDeleted,jdbcType=BIT},
-      </if>
-      <if test="careator != null" >
-        careator = #{careator,jdbcType=CHAR},
-      </if>
-      <if test="creationTime != null" >
-        creation_time = #{creationTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="backupOne != null" >
-        backup_one = #{backupOne,jdbcType=VARCHAR},
-      </if>
-      <if test="backupTwo != null" >
-        backup_two = #{backupTwo,jdbcType=VARCHAR},
-      </if>
-      <if test="backupThree != null" >
-        backup_three = #{backupThree,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.review.www.entity.ReviewProgram" >
+    <insert id="insertSelective" parameterType="com.review.www.entity.ReviewProgram">
+        insert into review_program
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="className != null">
+                class_name,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+            <if test="careator != null">
+                careator,
+            </if>
+            <if test="creationTime != null">
+                creation_time,
+            </if>
+            <if test="backupOne != null">
+                backup_one,
+            </if>
+            <if test="backupTwo != null">
+                backup_two,
+            </if>
+            <if test="backupThree != null">
+                backup_three,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=TINYINT},
+            </if>
+            <if test="className != null">
+                #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=BIT},
+            </if>
+            <if test="careator != null">
+                #{careator,jdbcType=CHAR},
+            </if>
+            <if test="creationTime != null">
+                #{creationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="backupOne != null">
+                #{backupOne,jdbcType=VARCHAR},
+            </if>
+            <if test="backupTwo != null">
+                #{backupTwo,jdbcType=VARCHAR},
+            </if>
+            <if test="backupThree != null">
+                #{backupThree,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.review.www.entity.ReviewProgram">
+        update review_program
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=TINYINT},
+            </if>
+            <if test="className != null">
+                class_name = #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=BIT},
+            </if>
+            <if test="careator != null">
+                careator = #{careator,jdbcType=CHAR},
+            </if>
+            <if test="creationTime != null">
+                creation_time = #{creationTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="backupOne != null">
+                backup_one = #{backupOne,jdbcType=VARCHAR},
+            </if>
+            <if test="backupTwo != null">
+                backup_two = #{backupTwo,jdbcType=VARCHAR},
+            </if>
+            <if test="backupThree != null">
+                backup_three = #{backupThree,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.review.www.entity.ReviewProgram">
     update review_program
     set name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
@@ -161,15 +161,21 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
-  <!--custom-->
-  <select id="searchReviewProgram" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from review_program
-    <where>
-      <if test="keyword != null and keyword != '' ">
-        name LIKE CONCAT('%','${keyword}','%' )
-      </if>
-    </where>
-  </select>
+    <!--custom-->
+    <select id="searchReviewProgram" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from review_program
+        <where>
+            <if test="keyword != null and keyword != '' ">
+                name LIKE CONCAT('%','${keyword}','%' )
+            </if>
+        </where>
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from review_program
+        where is_deleted = 0
+    </select>
 </mapper>

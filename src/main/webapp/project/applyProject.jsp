@@ -30,7 +30,7 @@
             <div class="web-title">
                 <span class="title-l"></span>
 					<span class="txt">
-						<a>高校教科研项目网上评审</a><br>University Scientific Research Project Online Review
+						<a>水院教科研项目网上评审</a><br>University Scientific Research Project Online Review
 					</span>
             </div>
             <ul class="nav nav-pills pull-right">
@@ -65,6 +65,9 @@
                 <div class="table">
                     <form method="get" action="declareProject.htm" id="searchForm">
                         <table border=1>
+                            <input type="hidden" value="${reviewProgram}" name="reviewProgram">
+                            <input type="hidden" value="${classThree}" name="classThree">
+                            <input type="hidden" value="${department.id}" name="department">
                             <tr>
                                 <td colspan="5" class="bigtitle">
                                     <span>科研项目申请书</span>
@@ -85,9 +88,9 @@
                                 <td colspan="2"><span>联系方式</span></td>
                             </tr>
                             <tr>
-                                <td><span><input type="text" value="${user.name}" disabled></span></td>
-                                <td><span><input type="text"></span></td>
-                                <td colspan="2"><span><input type="text"></span></td>
+                                <td><span><input type="text" value="${application.name}" disabled></span></td>
+                                <td><span><input type="text" value="${department.name}"></span></td>
+                                <td colspan="2"><span><input type="text" value="${application.phone}"></span></td>
                             </tr>
                             <tr>
                                 <td rowspan="4"><span>参加成员</span></td>
@@ -216,21 +219,6 @@
         }
     });
     $(function(){
-        //
-//        $('.saveBtn').ajaxbtn('declareProject.htm', function () {
-//            return {
-//                //id: $.trim($('input[name="id"]').val()),
-//                name: $.trim($('input[name="name"]').val()),
-//                subjectCategory: $.trim($('input[name="subjectCategory"]').val()),
-//                disciplineCategory: $.trim($('input[name="disciplineCategory"]').val()),
-//                topicBase: $.trim($('textarea[name="topicBase"]').val()),
-//                research: $.trim($('textarea[name="research"]').val()),
-//                funds: $.trim($('input[name="funds"]').val())
-//            }
-//        }, function () {
-//            return $('.forminfo').validationEngine('validate');
-//        });
-
         $('._searchBtn').on('click', function () {
             $('#searchForm').prop('action', $(this).attr('action')).submit();
         });

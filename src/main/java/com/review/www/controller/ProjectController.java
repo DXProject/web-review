@@ -9,6 +9,7 @@ import com.review.www.request.AddProjectAnnouncementReq;
 import com.review.www.request.DateParam;
 import com.review.www.response.ProjectListResp;
 import com.review.www.response.UserResp;
+import com.review.www.service.ProgramService;
 import com.review.www.service.ProjectService;
 import com.review.www.service.UserService;
 import com.review.www.vo.SearchProjectVo;
@@ -31,6 +32,8 @@ public class ProjectController extends WebBaseController {
     private ProjectService projectService;
     @Resource
     private UserService    userService;
+    @Resource
+    private ProgramService programService;
 
     /**
      * 发布新项目申请
@@ -42,8 +45,10 @@ public class ProjectController extends WebBaseController {
         ModelAndView mv = getSessionUserMV("project/addProjectAnnouncement");
         List<ClassOne> classOnes = projectService.getClassOneList();
         List<ClassTwo> classTwos = projectService.getClassTwoList();
+        List<ReviewProgram> reviewPrograms = programService.getAllReviewProgram();
         mv.addObject("classOnes", classOnes);
         mv.addObject("classTwos", classTwos);
+        mv.addObject("reviewPrograms", reviewPrograms);
         return mv;
     }
 

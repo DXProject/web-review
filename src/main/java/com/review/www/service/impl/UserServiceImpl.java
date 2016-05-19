@@ -144,7 +144,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             user.setType(type);
             user.setId(UUIDUtils.createId());
             user.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
-            user.setDeleted(false);
+            user.setIsDeleted(false);
             user.setCreationTime(new Date());
             userMapper.insert(user);
         }

@@ -41,35 +41,35 @@
 <script>
     $(function () {
         //头像
-        <%--var upload = WebUploader.create({--%>
-            <%--swf: '../js/webuploader/Uploader.swf',--%>
-            <%--server: '${path}/common/file/upload.htm',--%>
-            <%--//paste: document.body,--%>
-            <%--pick: '#upload-img-pic',--%>
-            <%--auto: true,--%>
-            <%--accept: {--%>
-                <%--title: 'Images',--%>
-                <%--extensions: 'gif,jpg,jpeg,bmp,png',--%>
-                <%--mimeTypes: 'image/*'--%>
-            <%--}--%>
-        <%--});--%>
-        <%--upload.on('uploadSuccess', function (file, data) {--%>
-            <%--$('input[name="avatar"]').val(data.result.path);--%>
-            <%--$('#upload-img-pic').find('img').prop('src', data.result.path);--%>
-        <%--});--%>
-        <%--upload.on('uploadError', function (file) {--%>
-            <%--$.zxxbox.remind("上传出错", null, {delay: 2000});--%>
-        <%--});--%>
-        <%--//--%>
-        <%--$('.saveBtn').ajaxbtn('doAddOrModifyInfo.htm', function () {--%>
-            <%--return {--%>
-                <%--id: $.trim($('input[name="id"]').val()),--%>
-                <%--avatar: $.trim($('input[name="avatar"]').val()),--%>
-                <%--phone: $.trim($('input[name="phone"]').val()),--%>
-                <%--name: $.trim($('input[name="name"]').val())--%>
-            <%--}--%>
-        <%--}, function () {--%>
-            <%--return $('.forminfo').validationEngine('validate');--%>
-        <%--});--%>
+        var upload = WebUploader.create({
+            swf: '../js/webuploader/Uploader.swf',
+            server: '${path}/common/file/upload.htm',
+            //paste: document.body,
+            pick: '#upload-img-pic',
+            auto: true,
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        });
+        upload.on('uploadSuccess', function (file, data) {
+            $('input[name="avatar"]').val(data.result.path);
+            $('#upload-img-pic').find('img').prop('src', data.result.path);
+        });
+        upload.on('uploadError', function (file) {
+            $.zxxbox.remind("上传出错", null, {delay: 2000});
+        });
+        //
+        $('.saveBtn').ajaxbtn('doAddOrModifyInfo.htm', function () {
+            return {
+                id: $.trim($('input[name="id"]').val()),
+                avatar: $.trim($('input[name="avatar"]').val()),
+                phone: $.trim($('input[name="phone"]').val()),
+                name: $.trim($('input[name="name"]').val())
+            }
+        }, function () {
+            return $('.forminfo').validationEngine('validate');
+        });
     });
 </script>

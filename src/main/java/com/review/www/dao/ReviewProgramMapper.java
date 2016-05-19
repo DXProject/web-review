@@ -27,4 +27,11 @@ public interface ReviewProgramMapper {
      * @return
      */
     List<ReviewProgram> searchReviewProgram(SearchBaseDataVo searchBaseDataVo, Pagination page);
+
+    /**
+     * selelct all
+     *
+     * @return
+     */
+    List<ReviewProgram> selectAll();
 }

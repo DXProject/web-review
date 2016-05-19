@@ -1,0 +1,96 @@
+*{
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.main-left{
+    width: 318px;
+    float: left;
+    border:1px solid #ccc;
+}
+.main-left-1{
+    width: 310px;
+    margin: 0px auto;
+    padding: 5px;
+}
+
+.news-title,.link-title{
+    padding: 10px 0px;
+    font-size: 16px;
+    font-family: 微软雅黑;
+    border-bottom: 1px solid #ccc;
+
+}
+.news-title a:hover{
+    text-decoration: none;
+
+}
+.news-content{
+    margin-top: 20px;
+    font-size: 12px;
+}
+.news-content a{
+    color:#333;
+}
+.news-content a:hover{
+    text-decoration: none;
+    color: #666;
+
+}
+.news-content span{
+    font-size: 12px;
+}
+.news-content ul li{
+    list-style: url(../images/li-icon.png);
+    padding: 5px 5px;
+    margin-left: 16px;
+}
+.main-right{
+    float: left;
+    width: 624px;
+    margin-left: 15px;
+    border: 1px solid #ccc;
+}
+
+.main-right-1{
+    width: 624px;
+    float: left;
+    padding: 5px 10px;
+}
+.introcontent{
+    margin-top: 15px;
+    height: 350px;
+}
+.introcontent ul{
+    list-style: none;
+    color: #000;
+    padding: 0px;
+    margin: 0px;
+    list-style: url(../images/li-icon.png);
+    margin-left: 16px;
+}
+.introcontent ul li{
+    padding: 2px;
+}
+.introcontent ul a{
+    color: #000;
+
+}
+.contact{
+    width: 100%;
+    float: left;
+    margin-top: 50px;
+    padding: 10px;
+    border:1px solid #ccc;
+}
+.contact-1{
+    float: left;
+    width: 300px;
+    margin-top: 15px;
+    margin-right: 10px;
+
+}
+.contact-1 ul{
+    list-style: none;
+}
