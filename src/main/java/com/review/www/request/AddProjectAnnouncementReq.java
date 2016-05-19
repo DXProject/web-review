@@ -122,4 +122,12 @@ public class AddProjectAnnouncementReq {
     public void setReviewProgram(String reviewProgram) {
         this.reviewProgram = reviewProgram;
     }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 }

@@ -31,7 +31,7 @@
         </li>
         <li class="line"><label>公告内容</label>
             <%--<textarea style="width:72%;height:250px" name="content"></textarea>--%>
-            <textarea style="width:80%;height:300px" name="content" id="content"
+            <textarea style="width:80%;height:300px" name="content" id="content_id"
                       class="ke"></textarea>
         </li>
         <li class="line"><label>申报时间</label>
@@ -80,14 +80,16 @@
 <script type="text/javascript" src="${path}/js/3rd/kindeditor/kindeditor-all-min.js"></script>
 <script type="text/javascript" src="${path}/js/3rd/kindeditor/lang/zh_CN.js"></script>
 <script>
+    //
     $(function () {
+        var KE = KindEditor.create('.ke');
         //
         $('.saveBtn').ajaxbtn('doAddProjectAnnouncement.htm', function () {
             return {
                 //id: $.trim($('input[name="id"]').val()),
                 title: $.trim($('input[name="title"]').val()),
                 type: $.trim($('select[name="type"]').val()),
-                content: $.trim($('textarea[name="content"]').val()),
+                content: $.trim($('#content_id').val()),
                 name: $.trim($('input[name="name"]').val()),
                 remark: $.trim($('input[name="remark"]').val()),
                 timeStart: $.trim($('input[name="timeStart"]').val()),
@@ -96,9 +98,8 @@
                 classTwo: $.trim($('select[name="classTwo"]').val())
             }
         }, function () {
+            KE.sync("content_id");//将富文本编辑器内容读入textarea
             return $('.forminfo').validationEngine('validate');
         });
-        //
-        KindEditor.create('.ke');
     });
 </script>
