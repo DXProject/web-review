@@ -69,7 +69,7 @@
 
             <div class="vocation">
                 <select name="reviewProgram" class="useselect validate[required]">
-                    <c:forEach var="t" items="${classTwos}">
+                    <c:forEach var="t" items="${reviewPrograms}">
                         <option value="${t.id}">${t.name}</option>
                     </c:forEach>
                 </select>
@@ -98,7 +98,8 @@
                 timeStart: $.trim($('input[name="timeStart"]').val()),
                 timeEnd: $.trim($('input[name="timeEnd"]').val()),
                 classOne: $.trim($('select[name="classOne"]').val()),
-                classTwo: $.trim($('select[name="classTwo"]').val())
+                classTwo: $.trim($('select[name="classTwo"]').val()),
+                reviewProgram: $.trim($('select[name="reviewProgram"]').val()),
             }
         }, function () {
             KE.sync("content_id");//将富文本编辑器内容读入textarea

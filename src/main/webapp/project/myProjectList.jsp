@@ -18,9 +18,6 @@
 <link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/left-tab.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/Modification.css">
-<style>
-
-</style>
 <body>
 <div class="wrap">
 
@@ -36,10 +33,10 @@
             </div>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="${path}/front/index.htm">首页</a></li>
-                <li role="presentation"><a href="${path}/front/project/announcementList.htm">通告通知</a></li>
-                <li role="presentation"><a href="#">历史文献</a></li>
-                <li role="presentation"><a href="#">常见问题</a></li>
-                <li role="presentation"><a href="#">关于我们</a></li>
+                <li role="presentation"><a href="news.html">通告通知</a></li>
+                <li role="presentation"><a href="document2015.html">历史文献</a></li>
+                <li role="presentation"><a href="problem.html">常见问题</a></li>
+                <li role="presentation"><a href="aboutus.html">关于我们</a></li>
             </ul>
 
         </div>
@@ -49,9 +46,13 @@
 
             <div class="left-tab">
                 <ul>
-                    <li class="apply"><a href="#">公告详情</a><span></span></li>
+                    <li class="apply"><a href="#">公告</a><span></span></li>
                     <li <c:if test="${type != 1 && type != 2}">class="active"</c:if>><a
                             href="announcementList.htm">所有公告</a></li>
+                    <li <c:if test="${type == 1}">class="active"</c:if>><a href="announcementList.htm?type=1">一般公告</a>
+                    </li>
+                    <li <c:if test="${type == 2}">class="active"</c:if>><a href="announcementList.htm?type=2">项目公告</a>
+                    </li>
                 </ul>
             </div>
             <div class="content">
@@ -59,36 +60,24 @@
                     <div class="news-title">
                         <a href="#">通知公告</a>
                     </div>
-                    <div class="">
-                        <div style="height:60px;width: 100%;text-align: center;"><label>
-                            <h3>${announcement.title}</h3></label></div>
-                        <div style="height:20px;width: 100%;text-align: center;"><label>作者: &nbsp;&nbsp;&nbsp;&nbsp;时间:
-                            <fmt:formatDate
-                                    value='${announcement.creationTime}' pattern='yyyy-MM-dd'/> </label></div>
-                        <p>
-                            ${announcement.content}
-                        </p>
-                        <c:if test="${announcement.type == 2}">
-                            <div>
-                                <a href="applyProject.htm?id=${announcement.id}">
-                                    <label><input type="button" style="background: #16aeed;"
-                                                  class="btn _applyBtn" value="申请该项目"></label>
-                                </a>
-                            </div>
-                        </c:if>
+                    <div class="introcontent">
+                        <ul style="list-style: url(../images/li-icon.png);">
+                            <c:forEach var="r" items="${list}">
+                                <li style="border-bottom: 1px dashed #999;height:30px;line-height: 30px;"><a
+                                        href="announcementInfo.htm?id=${r.id}">${r.title}</a><span
+                                        class="pull-right">[ <fmt:formatDate
+                                        value='${r.creationTime}' pattern='yyyy-MM-dd'/> ]</span>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </div>
+                    <div class="pagin">${page}</div>
 
                     <br/>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="footer">
-        <div class="copyright">
-            <span>主办单位：<a href="#">浙江水利水电学院</a>&nbsp;&nbsp;<a href="#">信息工程与艺术设计学院</a></span>
-            <span>联系电话：010-62510667&nbsp;电子信箱：xmsb2015@sinoss.net</span>
-            <span>京ICP备10054422号 技术支持：东旭工作室</span>
-        </div>
+
     </div>
 
 </div>
@@ -109,9 +98,28 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        //
-        $('._searchBtn').on('click', function () {
-            $('#searchForm').prop('action', $(this).attr('action')).submit();
+        $('.doLoginBtn').ajaxbtn('${path}/front/doLoginFront.htm', function () {
+            return {
+                number: $.trim($('input[name="number"]').val()),
+                password: $.trim($('input[name="password"]').val()),
+                identity: $.trim($('input[name="identity"]').val())
+            }
+        }, function () {
+            return $('.forminfo').validationEngine('validate');
+        }, function (r) {
+            if (r.code == 1) {
+                location.reload();
+            } else {
+                $.zxxbox.remind(r.message, function () {
+                    $("#password").val("");
+                }, {
+                    delay: 1000,
+                    onclose: function () {
+
+
+                    }
+                });
+            }
         });
     });
 </script>

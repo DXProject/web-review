@@ -103,7 +103,9 @@
                     <div class="news-content">
                         <ul>
                             <c:forEach var="r" items="${announcements}">
-                                <li><a href="${path}/front/project/announcementInfo.htm?id=${r.id}">${r.title}[<fmt:formatDate value='${r.creationTime}' pattern='yyyy-MM-dd'/>]</a></li>
+                                <li>
+                                    <a href="${path}/front/project/announcementInfo.htm?id=${r.id}">${r.title}[<fmt:formatDate
+                                            value='${r.creationTime}' pattern='yyyy-MM-dd'/>]</a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -125,7 +127,8 @@
                                                                               data-target="#myModal">登录/注册</a></span>
                                 </c:if>
                                 <c:if test="${user.userId!=null}">
-                                <span><img src="${path}/images/icon-3.gif"><a href="${path}/front/logout.htm">${user.name}/注销</a></span>
+                                    <span><img src="${path}/images/icon-3.gif"><a
+                                            href="${path}/front/logout.htm">${user.name}/注销</a></span>
                                 </c:if>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span

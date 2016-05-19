@@ -2,7 +2,6 @@ package com.review.www.service.impl;
 
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
-import com.jopool.jweb.mybatis.page.Pagination;
 import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.StringUtils;
 import com.jopool.jweb.utils.UUIDUtils;
@@ -49,7 +48,9 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
         announcement.setNumber(createNumber(Constants.NUMBER_ANNOUNCEMENT));
         announcement.setClassThreeId(classThree.getId());
         announcementMapper.insert(announcement);
-        classThreeMapper.insert(classThree);
+        if (null != classThree) {
+            classThreeMapper.insert(classThree);
+        }
     }
 
     @Override
@@ -134,12 +135,12 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
 
     @Override
     public List<Comment> getExpertByProjectId(String id, RowBounds page) {
-        return commentMapper.selectByProjectId(id,page);
+        return commentMapper.selectByProjectId(id, page);
     }
 
     @Override
     public List<Announcement> getAnnouncementListByType(int type, RowBounds page) {
-        return announcementMapper.selectAnnouncementListByType(type,page);
+        return announcementMapper.selectAnnouncementListByType(type, page);
     }
 
     @Override
@@ -149,6 +150,11 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
 
     @Override
     public ClassThree getClassThreeInfo(String classThreeId) {
-        return classThreeMapper.selectByPrimaryKey(classThreeId );
+        return classThreeMapper.selectByPrimaryKey(classThreeId);
+    }
+
+    @Override
+    public List<File> getFilesByProjectId(String id) {
+        return fileMapper.selectByProjectId(id);
     }
 }

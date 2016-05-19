@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +60,10 @@ public class ProjectController extends WebBaseController {
     public Result doAddProjectAnnouncement(AddProjectAnnouncementReq req) {
         DateParam dateParam = getDateParam(req.getTimeStart(), req.getTimeEnd());
         Announcement announcement = req.parseAnnouncement(getSessionUser().getUserId(), dateParam);
-        ClassThree classThree = req.parseThree(getSessionUser().getUserId(), dateParam);
+        ClassThree classThree = null;
+        if(announcement.getType() == 2){
+            classThree = req.parseThree(getSessionUser().getUserId(), dateParam);
+        }
         projectService.doAddProjectAnnouncement(announcement, classThree);
         return new Result(Code.SUCCESS);
     }
@@ -228,5 +235,29 @@ public class ProjectController extends WebBaseController {
         }
         ModelAndView mv = getPageMv("project/getExpertByProjectId", resps, page);
         return mv;
+    }
+
+    /**
+     * 下载文件
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("uploadFile.htm")
+    public void uploadFile(String id, HttpServletRequest request, HttpServletResponse response) {
+        validateParam(id);
+        String address = "";
+        List<File> files = projectService.getFilesByProjectId(id);
+        for (File file : files) {
+            address += file.getFileAddress() + ",";
+        }
+        address = address.substring(0,address.length()-1);
+        try {
+            downloadFiles(address,request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -57,6 +57,10 @@
                                    target="rightFrame" class="_editPwdBtn">详情</a>
                             </li>
                             <li>
+                                <a href="uploadFile.htm?id=${r.id}"
+                                   target="rightFrame" class="_distributionBtn">文件下载</a>
+                            </li>
+                            <li>
                                 <a href="getExpertByDisciplineCategoryId.htm?id=${r.disciplineCategory}&projectId=${r.id}"
                                    target="rightFrame" class="_distributionBtn">分配专家</a>
                             </li>

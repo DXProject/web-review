@@ -30,7 +30,7 @@ public enum UserTypeEnum {
     }
 
     public static UserTypeEnum valueOf(int value) {
-        UserTypeEnum result = ADMIN;
+        UserTypeEnum result = APPLICANT;
         for (UserTypeEnum e : UserTypeEnum.values()) {
             if (e.getValue() == value) {
                 result = e;

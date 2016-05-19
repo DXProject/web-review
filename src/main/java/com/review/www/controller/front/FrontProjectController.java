@@ -87,9 +87,8 @@ public class FrontProjectController extends WebBaseController {
             projectService.addFile(file);
         }
         project.setFile(ids.substring(0, ids.length() - 1));
-        ModelAndView mv = getSessionUserMV("front/index");
         projectService.declareProject(project);
-        return mv;
+        return new ModelAndView("redirect:index.htm");
     }
 
     /**

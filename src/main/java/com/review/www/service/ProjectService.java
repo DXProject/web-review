@@ -146,4 +146,12 @@ public interface ProjectService {
      * @return
      */
     ClassThree getClassThreeInfo(String classThreeId);
+
+    /**
+     * get file by projectId
+     *
+     * @param id
+     * @return
+     */
+    List<File> getFilesByProjectId(String id);
 }

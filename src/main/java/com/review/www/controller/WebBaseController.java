@@ -6,6 +6,7 @@ import com.review.www.constants.Constants;
 import com.review.www.exception.REVException;
 import com.review.www.helper.PaginationHelper;
 import com.review.www.request.DateParam;
+import com.review.www.utils.Zip;
 import com.review.www.vo.SessionUser;
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
@@ -17,10 +18,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.*;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by gexin on 15/3/20.
@@ -184,6 +189,59 @@ public class WebBaseController {
             dateParam.setTimeEnd(DateUtils.getEndDate(DateUtils.string2Date(timeEndStr, "yyyy-MM-dd")));
         }
         return dateParam;
+    }
+
+    public String downloadFiles(String tcLwIds, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        //tcLwIds="http://127.0.0.1:8080/files/20160518/U6YB4Fje.docx,http://127.0.0.1:8080/files/20160518/U6YB4Fkf.docx";
+        if(""==tcLwIds||null==tcLwIds){
+            System.out.println("下载的文件不存在");
+            return "失败!";
+        }
+        Zip zip = new Zip();
+        tcLwIds = overWriter(tcLwIds,request);
+        List<File> files = new ArrayList<File>();
+
+        String[] tcLwIdArray = tcLwIds.split(",");
+        for(String tcLwId : tcLwIdArray)
+        {
+            File file = new File(tcLwId);
+            files.add(file);
+        }
+
+        String fileName = UUID.randomUUID().toString() + ".zip";
+        //在服务器端创建打包下载的临时文件
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/files/";
+        String s =request.getSession().getServletContext().getRealPath("/files/");
+        String outFilePath = s+"/zip/";
+
+        zip.createFile(outFilePath,fileName);
+        File file = new File(outFilePath+fileName);
+        //文件输出流
+        FileOutputStream outStream = new FileOutputStream(file);
+        //压缩流
+        ZipOutputStream toClient = new ZipOutputStream(outStream);
+        zip.zipFile(files, toClient);
+        toClient.close();
+        outStream.close();
+        zip.downloadFile(file, response,true);
+        return null;
+    }
+    /**
+     * 将 http://127.0.0.1:8080/files/20160518/U6YB4Fje.docx
+     * 路径取/Users/zrl/Desktop/web-review/src/main/webapp/files/20160518/U6YB4Fje.docx
+     */
+    public String overWriter(String strs,HttpServletRequest request){
+        String s =request.getSession().getServletContext().getRealPath("/files/");
+        String[] strs1 = strs.split(",");
+        String returnStr = "";
+        for(int i=0;i<strs1.length;i++){
+            String[] sts = strs1[i].split("/");
+            returnStr+=s+"/"+sts[sts.length-2]+"/"+sts[sts.length-1]+",";
+        }
+        // System.out.println("returnStr:"+returnStr.substring(0,returnStr.length()-1));
+        return returnStr.substring(0,returnStr.length()-1);
     }
 
 }

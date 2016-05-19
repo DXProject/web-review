@@ -89,8 +89,8 @@
                             </tr>
                             <tr>
                                 <td><span><input type="text" value="${application.name}" disabled></span></td>
-                                <td><span><input type="text" value="${department.name}"></span></td>
-                                <td colspan="2"><span><input type="text" value="${application.phone}"></span></td>
+                                <td><span><input type="text" value="${department.name}" disabled></span></td>
+                                <td colspan="2"><span><input type="text" value="${application.phone}" disabled></span></td>
                             </tr>
                             <tr>
                                 <td rowspan="4"><span>参加成员</span></td>
