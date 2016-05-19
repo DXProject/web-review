@@ -87,9 +87,9 @@ public class FrontIndexController extends WebBaseController {
      * @return
      */
     @RequestMapping("logout.htm")
-    public String logout(HttpServletRequest request) {
+    public ModelAndView logout(HttpServletRequest request) {
         request.getSession().removeAttribute(Constants.SESSION_KEY_LOGIN_USER);
-        return "redirect:index.htm";
+        return new ModelAndView("redirect:index.htm");
     }
 
     /**

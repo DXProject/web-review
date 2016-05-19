@@ -120,8 +120,13 @@
                     <div class="content">
                         <div class="block-l">
                             <div class="left-1">
+                                <c:if test="${user.name==null}">
                                 <span><img src="${path}/images/icon-3.gif"><a href="##" data-toggle="modal"
                                                                               data-target="#myModal">登录/注册</a></span>
+                                </c:if>
+                                <c:if test="${user.name!=null}">
+                                <span><img src="${path}/images/icon-3.gif"><a href="${path}/front/logout.htm">${user.name}/注销</a></span>
+                                </c:if>
                             </div>
                             <span class="connect"></span><span class="connect"></span><span class="connect"></span><span
                                 class="connect"></span>
