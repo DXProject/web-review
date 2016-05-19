@@ -167,7 +167,7 @@ public class UserController extends WebBaseController {
     }
     @RequestMapping("userEditPage{type}/{id}.htm")
     public ModelAndView userAddPage(@PathVariable int type,@PathVariable String id){
-        System.out.println("userEditPage");
+        //System.out.println("userEditPage");
         ModelAndView model = new ModelAndView("/user/userEdit").addObject("type",type);
         List<BaseConstant> list1 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_TITLE);
         List<BaseConstant> list2 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEGREE);
@@ -198,14 +198,14 @@ public class UserController extends WebBaseController {
     @RequestMapping("doUserEditPage{type}.htm")
     @ResponseBody
     public Result doUserEditPage(@PathVariable int type ,User user){
-        System.out.println("doUserEditPage");
+        //System.out.println("doUserEditPage");
         userService.editUserManage(type,user);
         return new Result(1,"成功!");
     }
     @RequestMapping("userDelPage{type}/{id}.htm")
     @ResponseBody
     public Result userDelPage(@PathVariable int type,@PathVariable String id){
-        System.out.println("userDelPage");
+        //System.out.println("userDelPage");
         userService.delUserManage(type,id);
         return new Result(1,"成功!");
     }
