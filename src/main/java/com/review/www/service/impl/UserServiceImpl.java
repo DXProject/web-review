@@ -283,7 +283,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             return null;
         }
         User user = new User();
+        user.setId(expert.getId());
         user.setNumber(expert.getNumber());
+        user.setName(expert.getName());
         user.setPassword(expert.getPassword());
         return user;
     }

@@ -223,7 +223,7 @@
             return {
                 number: $.trim($('input[name="number"]').val()),
                 password: $.trim($('input[name="password"]').val()),
-                identity: $.trim($('input[name="identity"]').val())
+                identity: $.trim($('input:radio[name="identity"]:checked').val())
             }
         }, function () {
             return $('.forminfo').validationEngine('validate');

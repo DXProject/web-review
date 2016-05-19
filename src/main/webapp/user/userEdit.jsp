@@ -39,6 +39,11 @@
                 <input name="sex" type="radio" value="0" <c:if test="${user.sex==0}">checked</c:if>/>&nbsp;男 &nbsp;
                 <input name="sex" type="radio" value="1" <c:if test="${user.sex==1}">checked</c:if>/>&nbsp;女</li>
         </c:if>
+        <c:if test="${type==3}">
+            <div style="display:none">
+                <input name="sex" type="radio" value="${user.sex}" checked/>
+            </div>
+        </c:if>
         <li><label>邮箱</label>
             <input name="email" type="text" class="short-input" value="${user.email}"/></li>
         <c:if test="${type!=3}">
