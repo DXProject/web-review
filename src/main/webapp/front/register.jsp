@@ -25,10 +25,10 @@
             </div>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="${path}/front/index.htm">首页</a></li>
-                <li role="presentation"><a href="news.html">通告通知</a></li>
-                <li role="presentation"><a href="document2015.html">历史文献</a></li>
-                <li role="presentation"><a href="problem.html">常见问题</a></li>
-                <li role="presentation"><a href="aboutus.html">关于我们</a></li>
+                <li role="presentation"><a href="${path}/front/project/announcementList.htm">通告通知</a></li>
+                <li role="presentation"><a href="#">历史文献</a></li>
+                <li role="presentation"><a href="#">常见问题</a></li>
+                <li role="presentation"><a href="#">关于我们</a></li>
             </ul>
         </div>
     </div>

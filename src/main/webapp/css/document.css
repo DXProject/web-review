@@ -3,6 +3,26 @@
 	margin: 0px;
 }
 .document{
-	float: left;
+	width: 98%;
 	margin-left: 10px;
+}
+/*.apply a{
+	background: none!important;
+}*/
+.files{
+	float: none;
+	display:table-row;
+	border-bottom: 1px solid #ccc;
+	line-height: 30px;
+}
+.files a span{
+	margin:8px;
+}
+.doctitle{
+	border-bottom: 1px solid #ccc;
+	line-height: 30px;
+	font-weight: bold;
+}
+.blue{
+	color: #337ab7!important;
 }

@@ -212,13 +212,14 @@
                 AND type = #{type,jdbcType=TINYINT}
             </if>
         </where>
+        ORDER BY creation_time DESC
     </select>
     <select id="selectIndexAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from announcement
         order by creation_time desc
-        limit 5
+        limit 6
     </select>
     <select id="selectAnnouncementListByType" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -229,5 +230,6 @@
                 type = #{type,jdbcType=BIT}
             </if>
         </where>
+        ORDER BY creation_time DESC
     </select>
 </mapper>

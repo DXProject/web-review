@@ -154,4 +154,12 @@ public interface ProjectService {
      * @return
      */
     List<File> getFilesByProjectId(String id);
+
+    /**
+     * get project by userId
+     *
+     * @param id
+     * @return
+     */
+    List<Project> getProjectByUserId(String id, RowBounds page);
 }

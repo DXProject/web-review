@@ -58,9 +58,7 @@
 						<span>
 							<h4><a>填报注意：</a></h4>
 							<p>1.按照要求仔细填写科研项目申请书。</p>
-							<p>2.所有申请书必须按规定时间报送，项目申报时间为<fmt:formatDate
-                                    value='${classThree.startTime}' pattern='yyyy-MM-dd'/>至<fmt:formatDate
-                                    value='${classThree.endTime}' pattern='yyyy-MM-dd'/>。</p>
+							<p>2.所有申请书必须按规定时间报送，项目申报时间为2015年6月1日至2015年8月1日。</p>
 							<p>3.所有项目书按照所要求的格式填写，可上传相关附件。</p>
 						</span>
                 </div>

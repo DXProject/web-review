@@ -28,4 +28,12 @@ public interface ProjectMapper {
      * @return
      */
     List<Project> searchProject(SearchProjectVo searchProjectVo, RowBounds page);
+
+    /**
+     * select by userId
+     *
+     * @param userId
+     * @return
+     */
+    List<Project> selectByUserId(String userId, RowBounds page);
 }

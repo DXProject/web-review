@@ -33,10 +33,10 @@
             </div>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="${path}/front/index.htm">首页</a></li>
-                <li role="presentation"><a href="news.html">通告通知</a></li>
-                <li role="presentation"><a href="document2015.html">历史文献</a></li>
-                <li role="presentation"><a href="problem.html">常见问题</a></li>
-                <li role="presentation"><a href="aboutus.html">关于我们</a></li>
+                <li role="presentation"><a href="${path}/front/project/announcementList.htm">通告通知</a></li>
+                <li role="presentation"><a href="#">历史文献</a></li>
+                <li role="presentation"><a href="#">常见问题</a></li>
+                <li role="presentation"><a href="#">关于我们</a></li>
             </ul>
 
         </div>
@@ -79,7 +79,13 @@
         </div>
 
     </div>
-
+    <div class="footer">
+        <div class="copyright">
+            <span>主办单位：<a href="#">浙江水利水电学院</a>&nbsp;&nbsp;<a href="#">信息工程与艺术设计学院</a></span>
+            <span>联系电话：010-62510667&nbsp;电子信箱：xmsb2015@sinoss.net</span>
+            <span>京ICP备10054422号 技术支持：东旭工作室</span>
+        </div>
+    </div>
 </div>
 </body>
 </html>
@@ -98,28 +104,5 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('.doLoginBtn').ajaxbtn('${path}/front/doLoginFront.htm', function () {
-            return {
-                number: $.trim($('input[name="number"]').val()),
-                password: $.trim($('input[name="password"]').val()),
-                identity: $.trim($('input[name="identity"]').val())
-            }
-        }, function () {
-            return $('.forminfo').validationEngine('validate');
-        }, function (r) {
-            if (r.code == 1) {
-                location.reload();
-            } else {
-                $.zxxbox.remind(r.message, function () {
-                    $("#password").val("");
-                }, {
-                    delay: 1000,
-                    onclose: function () {
-
-
-                    }
-                });
-            }
-        });
     });
 </script>

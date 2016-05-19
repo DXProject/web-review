@@ -9,6 +9,7 @@ import com.review.www.request.AddProjectAnnouncementReq;
 import com.review.www.request.DateParam;
 import com.review.www.response.ProjectListResp;
 import com.review.www.response.UserResp;
+import com.review.www.service.BaseDataService;
 import com.review.www.service.ProgramService;
 import com.review.www.service.ProjectService;
 import com.review.www.service.UserService;
@@ -33,11 +34,13 @@ import java.util.List;
 @RequestMapping("/project")
 public class ProjectController extends WebBaseController {
     @Resource
-    private ProjectService projectService;
+    private ProjectService  projectService;
     @Resource
-    private UserService    userService;
+    private UserService     userService;
     @Resource
-    private ProgramService programService;
+    private ProgramService  programService;
+    @Resource
+    private BaseDataService baseDataService;
 
     /**
      * 发布新项目申请
@@ -61,7 +64,7 @@ public class ProjectController extends WebBaseController {
         DateParam dateParam = getDateParam(req.getTimeStart(), req.getTimeEnd());
         Announcement announcement = req.parseAnnouncement(getSessionUser().getUserId(), dateParam);
         ClassThree classThree = null;
-        if(announcement.getType() == 2){
+        if (announcement.getType() == 2) {
             classThree = req.parseThree(getSessionUser().getUserId(), dateParam);
         }
         projectService.doAddProjectAnnouncement(announcement, classThree);
@@ -251,13 +254,33 @@ public class ProjectController extends WebBaseController {
         for (File file : files) {
             address += file.getFileAddress() + ",";
         }
-        address = address.substring(0,address.length()-1);
+        address = address.substring(0, address.length() - 1);
         try {
-            downloadFiles(address,request,response);
+            downloadFiles(address, request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 获取我的项目
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping("getMyProjectList.htm")
+    public ModelAndView getMyProjectList(Pagination page) {
+        User user = userService.getById(getSessionUser().getUserId());
+        List<Project> projects = null;
+        if (null != user) {
+            projects = projectService.getProjectByUserId(user.getId(), page.page());
+        }
+        ModelAndView mv = getPageMv("project/getMyProjectList", projects, page);
+        BaseConstant department = baseDataService.getBaseConstantById(user.getDepartment());
+        mv.addObject("user", user);
+        mv.addObject("department", department);
+        return mv;
     }
 }

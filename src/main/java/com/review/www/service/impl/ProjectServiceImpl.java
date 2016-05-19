@@ -157,4 +157,9 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     public List<File> getFilesByProjectId(String id) {
         return fileMapper.selectByProjectId(id);
     }
+
+    @Override
+    public List<Project> getProjectByUserId(String id, RowBounds page) {
+        return projectMapper.selectByUserId(id, page);
+    }
 }

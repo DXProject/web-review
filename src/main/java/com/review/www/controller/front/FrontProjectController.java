@@ -54,7 +54,7 @@ public class FrontProjectController extends WebBaseController {
         }
         mv.addObject("disciplineCategory", disciplineCategory);
         mv.addObject("subjectCategory", subjectCategory);
-        mv.addObject("classThree", announcement.getClassThreeId());
+        mv.addObject("classThree", classThree);
         mv.addObject("reviewProgram", classThree.getReviewprogramId());
         mv.addObject("application", application);
         return mv;
@@ -88,7 +88,7 @@ public class FrontProjectController extends WebBaseController {
         }
         project.setFile(ids.substring(0, ids.length() - 1));
         projectService.declareProject(project);
-        return new ModelAndView("redirect:index.htm");
+        return new ModelAndView("redirect:announcementList.htm");
     }
 
     /**

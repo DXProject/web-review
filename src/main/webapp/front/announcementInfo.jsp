@@ -55,7 +55,7 @@
                 </ul>
             </div>
             <div class="content">
-                <div class="document">
+                <div class="document" style="min-height: 450px;">
                     <div class="news-title">
                         <a href="#">通知公告</a>
                     </div>

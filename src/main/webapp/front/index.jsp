@@ -17,7 +17,12 @@
 <link rel="stylesheet" type="text/css" href="${path}/css/index.css">
 <body>
 <div class="wrap">
-
+    <div class="alert alert-warning" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert">
+            &times;
+        </a>
+        <strong>警告！</strong>请登录进行操作。
+    </div>
 
     <div class="header">
         <div class="container">
@@ -30,10 +35,10 @@
             </div>
             <ul class="nav nav-pills pull-right">
                 <li role="presentation"><a href="${path}/front/index.htm">首页</a></li>
-                <li role="presentation"><a href="">通告通知</a></li>
-                <li role="presentation"><a href="">历史文献</a></li>
-                <li role="presentation"><a href="${path}/frontStaticHtml/problem.html">常见问题</a></li>
-                <li role="presentation"><a href="${path}/frontStaticHtml/aboutus.html">关于我们</a></li>
+                <li role="presentation"><a href="${path}/front/project/announcementList.htm">通告通知</a></li>
+                <li role="presentation"><a href="#">历史文献</a></li>
+                <li role="presentation"><a href="#">常见问题</a></li>
+                <li role="presentation"><a href="#">关于我们</a></li>
             </ul>
 
         </div>
@@ -122,6 +127,7 @@
                     <div class="content">
                         <div class="block-l">
                             <div class="left-1">
+                                <input type="hidden" name="user" value="${user.userId}">
                                 <c:if test="${user.userId==null}">
                                 <span><img src="${path}/images/icon-3.gif"><a href="##" data-toggle="modal"
                                                                               data-target="#myModal">登录/注册</a></span>
@@ -148,7 +154,12 @@
                                 class="connect"></span>
 
                             <div class="right-2">
-                                <span><img src="${path}/images/icon-5.gif"><a href="">关于我们</a></span>
+                                <c:if test="${user.userId!=null}"><span><img src="${path}/images/icon-5.gif"><a
+                                        href="${path}/project/getMyProjectList.htm" class="_myProject">我的项目</a>
+                                </span></c:if>
+                                <c:if test="${user.userId==null}"><span><img src="${path}/images/icon-5.gif"><a
+                                        href="javascript:;" class="">关于我们</a>
+                                </span></c:if>
                             </div>
 
                         </div>
@@ -161,9 +172,10 @@
         <div class="copyright">
             <span>主办单位：<a href="#">浙江水利水电学院</a>&nbsp;&nbsp;<a href="#">信息工程与艺术设计学院</a></span>
             <span>联系电话：010-62510667&nbsp;电子信箱：xmsb2015@sinoss.net</span>
-            <span>京ICP备10054422号 技术支持：东旭工作室</span>
+            <span>浙ICP备10054422号 技术支持：东旭工作室</span>
         </div>
     </div>
+
 </div>
 
 
@@ -245,5 +257,13 @@
                 });
             }
         });
+        // $('._myProject').on('click', function () {
+        // var user = $.trim($('input[name="user"]').val());
+        // if (null == user) {
+        // alert("qingdenglu");
+        // } else {
+        // console.log("sdad");
+        // }
+        // });
     });
 </script>
