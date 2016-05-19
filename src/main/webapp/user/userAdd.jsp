@@ -39,6 +39,11 @@
             <input name="sex" type="radio" value="0" checked/>&nbsp;男 &nbsp;
             <input name="sex" type="radio" value="1"/>&nbsp;女</li>
         </c:if>
+        <c:if test="${type==3}">
+            <div style="display:none">
+            <input name="sex" type="radio" value="0" checked/>
+            </div>
+        </c:if>
         <li><label>邮箱</label>
             <input name="email" type="text" class="short-input"
                    value=""/></li>
