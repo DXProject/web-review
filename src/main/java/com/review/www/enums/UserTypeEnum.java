@@ -5,9 +5,9 @@ package com.review.www.enums;
  */
 public enum UserTypeEnum {
     /**
-     * 1：运营，2：项目申请者，3：二级学院管理员
+     * APPLICANT(1, "项目申请者"),  SECONDARY_COLLEGE(2, "二级学院管理员"),EXPERT(3,"专家"),ADMIN(4, "科研室管理人员") ;
      */
-    ADMIN(1, "运营"), APPLICANT(2, "项目申请者"), SECONDARY_COLLEGE(3, "二级学院管理员");
+    APPLICANT(1, "项目申请者"),  SECONDARY_COLLEGE(2, "二级学院管理员"),EXPERT(3,"专家"),ADMIN(4, "科研室管理人员");
 
     private int value;
     private String name;

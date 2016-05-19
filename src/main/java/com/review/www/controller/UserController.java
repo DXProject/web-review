@@ -7,6 +7,7 @@ import com.review.www.constants.CodeMessage;
 import com.review.www.constants.Constants;
 import com.review.www.entity.BaseConstant;
 import com.review.www.entity.User;
+import com.review.www.enums.UserType;
 import com.review.www.request.LoginReq;
 import com.review.www.response.UserResp;
 import com.review.www.service.BaseDataService;
@@ -77,24 +78,24 @@ public class UserController extends WebBaseController {
     }
     /**
      * 用户管理
-     * 1-项目申报者
-     * 2-二级学院管理人员
-     * 3-专家
-     * 4-科研室管理人员
+     * APPLICANT(1, "项目申请者"),
+     * SECONDARY_COLLEGE(2, "二级学院管理员"),
+     * EXPERT(3,"专家"),
+     * ADMIN(4, "科研室管理人员") ;
      */
     @RequestMapping("userPage{type}.htm")
     public ModelAndView userPage(@PathVariable int type){
         ModelAndView model = new ModelAndView("/user/userList").addObject("type",type);
-        if(type==1){
+        if(type== UserType.APPLICANT){
             model.addObject("title","项目申报者");
         }
-        else if(type==2){
+        else if(type==UserType.SECONDARY_COLLEGE){
             model.addObject("title","二级学院管理人员");
         }
-        else if(type==3){
+        else if(type==UserType.EXPERT){
             model.addObject("title","专家");
         }
-        else if(type==4){
+        else if(type==UserType.ADMIN){
             model.addObject("title","科研室管理人员");
         }
         List<UserResp> userResps = userService.getByType(type);
@@ -104,16 +105,16 @@ public class UserController extends WebBaseController {
     @RequestMapping("searchUser{type}.htm")
     public ModelAndView searchUser(@PathVariable int type, String keyword){
         ModelAndView model = new ModelAndView("/user/userList").addObject("type",type);
-        if(type==1){
+        if(type== UserType.APPLICANT){
             model.addObject("title","项目申报者");
         }
-        else if(type==2){
+        else if(type==UserType.SECONDARY_COLLEGE){
             model.addObject("title","二级学院管理人员");
         }
-        else if(type==3){
+        else if(type==UserType.EXPERT){
             model.addObject("title","专家");
         }
-        else if(type==4){
+        else if(type==UserType.ADMIN){
             model.addObject("title","科研室管理人员");
         }
         List<UserResp> userResps = userService.getByNumberOrName(type,keyword);
@@ -134,16 +135,16 @@ public class UserController extends WebBaseController {
         model.addObject("list2",list2);
         model.addObject("list3",list3);
         model.addObject("list4",list4);
-        if(type==1){
+        if(type== UserType.APPLICANT){
             model.addObject("title","项目申报者");
         }
-        else if(type==2){
+        else if(type==UserType.SECONDARY_COLLEGE){
             model.addObject("title","二级学院管理人员");
         }
-        else if(type==3){
+        else if(type==UserType.EXPERT){
             model.addObject("title","专家");
         }
-        else if(type==4){
+        else if(type==UserType.ADMIN){
             model.addObject("title","科研室管理人员");
         }
         return model;
@@ -153,7 +154,7 @@ public class UserController extends WebBaseController {
     public Result doUserAddPage(@PathVariable int type,User user){
         System.out.println("doUserAddPage");
         User respUser;
-        if(type==3){
+        if(type==UserType.EXPERT){
             respUser = userService.getExpertByNumberAndType(user.getNumber(),type);
         }else {
             respUser = userService.getByNumberAndType(user.getNumber(),type);
@@ -178,16 +179,16 @@ public class UserController extends WebBaseController {
         model.addObject("list4",list4);
         UserResp userResp = userService.getByTypeAndId(type,id);
         model.addObject("user",userResp);
-        if(type==3){
+        if(type==UserType.EXPERT){
             model.addObject("title","专家");
         }else{
-            if(type==1){
+            if(type== UserType.APPLICANT){
                 model.addObject("title","项目申报者");
             }
-            else if(type==2){
+            else if(type==UserType.SECONDARY_COLLEGE){
                 model.addObject("title","二级学院管理人员");
             }
-            else if(type==4){
+            else if(type==UserType.ADMIN){
                 model.addObject("title","科研室管理人员");
             }
         }

@@ -57,9 +57,9 @@ public class FrontIndexController extends WebBaseController {
         //identity: 1-项目申请者 2-砖家
         User user;
         if (Integer.parseInt(identity) == 2) {
-            user = userService.getExpertByNumberAndType(number, 3);//查询砖家是否存在
+            user = userService.getExpertByNumberAndType(number, UserType.EXPERT);//查询砖家是否存在
         } else {
-            user = userService.getByNumberAndType(number, 1);//项目申报者
+            user = userService.getByNumberAndType(number, UserType.APPLICANT);//项目申报者
         }
         if (null == user) {
             return new Result(2, "教工号或密码错误");
