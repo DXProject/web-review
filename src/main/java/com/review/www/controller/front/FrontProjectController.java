@@ -69,18 +69,9 @@ public class FrontProjectController extends WebBaseController {
     @RequestMapping("declareProject.htm")
     public ModelAndView declareProject(DeclareProjectReq req, String paths) {
         validateParam(getSessionUser().getUserId());
-
         Project project = req.parseProject(getSessionUser().getUserId());
         User user = userService.getById(project.getCreator());
         project.setDepartment(user.getDepartment());
-        ModelAndView mv = getSessionUserMV("front/index");
-//        if (projectService.declareProject(project) == new Result(Code.SUCCESS)) {
-//            mv = getSessionUserMV("project/applyProject");
-//            return mv;
-//        } else {
-//            mv = getSessionUserMV("project/applyProject");
-//            return mv;
-//        }
         //文件存路径
         String ids = "";
         String[] strs = paths.split(",");
@@ -96,6 +87,8 @@ public class FrontProjectController extends WebBaseController {
             projectService.addFile(file);
         }
         project.setFile(ids.substring(0, ids.length() - 1));
+        ModelAndView mv = getSessionUserMV("front/index");
+        projectService.declareProject(project);
         return mv;
     }
 
