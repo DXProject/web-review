@@ -186,8 +186,6 @@ public class CommonFileController extends WebBaseController {
     }
     /**
      * 文件下载(多文件下载)
-     */
-    /**
      *  批量打包下载文件生成zip文件下载
      */
     @RequestMapping("downloadZip")

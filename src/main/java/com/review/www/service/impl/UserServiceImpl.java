@@ -59,7 +59,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
     }
 
     @Override
-    public Result changePassword(String number, String password, Byte type) {
+    public Result changePassword(String number, String password, int type) {
         User userExist = selfService.getByNumberAndType(number, type);
         if (null == userExist) {
             return new Result(Code.ERROR, CodeMessage.PASSPORT_NOT_EXIST);
@@ -93,9 +93,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
                 resp.setEmail(user.getEmail());
                 resp.setCreator(user.getCreator());
                 resp.setCreationTime(user.getCreationTime());
-                resp.setBackupOne(user.getBackupOne());
-                resp.setBackupTwo(user.getBackupTwo());
-                resp.setBackupThree(user.getBackupThree());
                 resps.add(resp);
             }
         } else {
@@ -118,9 +115,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
                 resp.setDepartmentId(user.getDepartment());
                 resp.setCreator(user.getCreator());
                 resp.setCreationTime(user.getCreationTime());
-                resp.setBackupOne(user.getBackupOne());
-                resp.setBackupTwo(user.getBackupTwo());
-                resp.setBackupThree(user.getBackupThree());
                 resps.add(resp);
             }
         }
@@ -130,7 +124,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
     @Override
     public int addUserManage(int type, User user) {
         if (user.getPassword().isEmpty()) {
-            user.setPassword("12345");
+            user.setPassword(PasswordHash.createHash("12345", UUIDUtils.createId()));
         }
         if (type == 3) {
             Expert expert = new Expert();
@@ -147,9 +141,10 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             expert.setSchool(user.getDepartment());
             expertMapper.insert(expert);
         } else {
+            user.setType(type);
             user.setId(UUIDUtils.createId());
             user.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
-            user.setIsDeleted(false);
+            user.setDeleted(false);
             user.setCreationTime(new Date());
             userMapper.insert(user);
         }
@@ -212,9 +207,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             resp.setEmail(expert.getEmail());
             resp.setCreator(expert.getCreator());
             resp.setCreationTime(expert.getCreationTime());
-            resp.setBackupOne(expert.getBackupOne());
-            resp.setBackupTwo(expert.getBackupTwo());
-            resp.setBackupThree(expert.getBackupThree());
         } else {
             User user = userMapper.selectByPrimaryKey(id);
             resp.setId(user.getId());
@@ -233,9 +225,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             resp.setDepartmentId(user.getDepartment());
             resp.setCreator(user.getCreator());
             resp.setCreationTime(user.getCreationTime());
-            resp.setBackupOne(user.getBackupOne());
-            resp.setBackupTwo(user.getBackupTwo());
-            resp.setBackupThree(user.getBackupThree());
         }
         return resp;
     }
@@ -259,9 +248,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
                 resp.setEmail(user.getEmail());
                 resp.setCreator(user.getCreator());
                 resp.setCreationTime(user.getCreationTime());
-                resp.setBackupOne(user.getBackupOne());
-                resp.setBackupTwo(user.getBackupTwo());
-                resp.setBackupThree(user.getBackupThree());
                 resps.add(resp);
             }
         } else {
@@ -284,9 +270,6 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
                 resp.setDepartmentId(user.getDepartment());
                 resp.setCreator(user.getCreator());
                 resp.setCreationTime(user.getCreationTime());
-                resp.setBackupOne(user.getBackupOne());
-                resp.setBackupTwo(user.getBackupTwo());
-                resp.setBackupThree(user.getBackupThree());
                 resps.add(resp);
             }
         }

@@ -19,9 +19,9 @@ public class User {
 
     private String name;
 
-    private Boolean sex;
+    private int sex;
 
-    private Byte type;
+    private int type;
 
     private String password;
 
@@ -31,7 +31,7 @@ public class User {
 
     private String birthday;
 
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     private String creator;
 
@@ -107,21 +107,8 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public Boolean getSex() {
-        return sex;
-    }
 
-    public void setSex(Boolean sex) {
-        this.sex = sex;
-    }
 
-    public Byte getType() {
-        return type;
-    }
-
-    public void setType(Byte type) {
-        this.type = type;
-    }
 
     public String getPassword() {
         return password;
@@ -153,14 +140,6 @@ public class User {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday == null ? null : birthday.trim();
-    }
-
-    public Boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
     }
 
     public String getCreator() {
@@ -201,5 +180,28 @@ public class User {
 
     public void setBackupThree(String backupThree) {
         this.backupThree = backupThree == null ? null : backupThree.trim();
+    }
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

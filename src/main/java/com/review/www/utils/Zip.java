@@ -25,7 +25,7 @@ public class Zip {
         if(!f.exists()){
             f.mkdirs();
         }
-        // fileName表示你创建的文件名；为txt类型；
+        // fileName表示你创建的文件名；
         File file = new File(f,fileName);
         if(!file.exists()){
             try {

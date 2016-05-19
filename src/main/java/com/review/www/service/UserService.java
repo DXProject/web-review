@@ -47,7 +47,7 @@ public interface UserService {
      * @param newPwd
      * @param type
      */
-    Result changePassword(String number, String newPwd, Byte type);
+    Result changePassword(String number, String newPwd, int type);
 
     /**
      * getByType

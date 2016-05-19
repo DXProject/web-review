@@ -22,9 +22,9 @@ public class UserResp {
 
     private String name;
 
-    private Boolean sex;
+    private int sex;
 
-    private Byte type;
+    private int type;
 
     private String password;
 
@@ -34,17 +34,11 @@ public class UserResp {
 
     private String birthday;
 
-    private Boolean isDeleted;
+    private boolean isDeleted;
 
     private String creator;
 
     private Date creationTime;
-
-    private String backupOne;
-
-    private String backupTwo;
-
-    private String backupThree;
 
     public String getId() {
         return id;
@@ -110,21 +104,6 @@ public class UserResp {
         this.name = name;
     }
 
-    public Boolean getSex() {
-        return sex;
-    }
-
-    public void setSex(Boolean sex) {
-        this.sex = sex;
-    }
-
-    public Byte getType() {
-        return type;
-    }
-
-    public void setType(Byte type) {
-        this.type = type;
-    }
 
     public String getPassword() {
         return password;
@@ -158,14 +137,6 @@ public class UserResp {
         this.birthday = birthday;
     }
 
-    public Boolean getDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
-    }
-
     public String getCreator() {
         return creator;
     }
@@ -182,28 +153,27 @@ public class UserResp {
         this.creationTime = creationTime;
     }
 
-    public String getBackupOne() {
-        return backupOne;
+    public int getSex() {
+        return sex;
     }
 
-    public void setBackupOne(String backupOne) {
-        this.backupOne = backupOne;
+    public void setSex(int sex) {
+        this.sex = sex;
     }
 
-    public String getBackupTwo() {
-        return backupTwo;
+    public int getType() {
+        return type;
     }
 
-    public void setBackupTwo(String backupTwo) {
-        this.backupTwo = backupTwo;
+    public void setType(int type) {
+        this.type = type;
     }
 
-    public String getBackupThree() {
-        return backupThree;
+    public boolean isDeleted() {
+        return isDeleted;
     }
 
-    public void setBackupThree(String backupThree) {
-        this.backupThree = backupThree;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
-
 }
