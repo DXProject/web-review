@@ -213,4 +213,11 @@
       </if>
     </where>
   </select>
+  <select id="selectIndexAnnouncement" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from announcement
+    order by creation_time desc
+    limit 5
+  </select>
 </mapper>

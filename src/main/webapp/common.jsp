@@ -16,8 +16,9 @@
 <c:set var="BASE_CONSTANT_DISCIPLINE_CATEGORY" value="<%=Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY%>"/>
 <c:set var="BASE_CONSTANT_SUBJECT_CATEGORY" value="<%=Constants.BASE_CONSTANT_SUBJECT_CATEGORY%>"/>
 <%--annountmentType--%>
-<c:set var="NORMAL_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.NORMAL_ANNOUNCEMENT.getValue()%>"/>
-<c:set var="PROJECT_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.PROJECT_ANNOUNCEMENT.getValue()%>"/>
+<c:set var="ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.values()%>"/>
+<c:set var="NORMAL_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.NORMAL_ANNOUNCEMENT%>"/>
+<c:set var="PROJECT_ANNOUNCEMENT" value="<%=AnnouncementTypeEnum.PROJECT_ANNOUNCEMENT%>"/>
 <%--reviewProgram--%>
 <c:set var="REVIEW_PROGRAM" value="<%=ReviewProgramTypeEnum.values()%>"/>
 <c:set var="REVIEW_PROGRAM_TYPE_ONE" value="<%=ReviewProgramTypeEnum.TYPE_ONE%>"/>

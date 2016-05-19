@@ -91,8 +91,33 @@ public interface ProjectService {
      * @return
      */
     Result removeProject(String id);
+
     /**
      * add file
      */
     void addFile(File file);
+
+    /**
+     * get index announmentList
+     *
+     * @return
+     */
+    List<Announcement> getIndexAnnouncementList();
+
+    /**
+     * distributionExpert
+     *
+     * @param id
+     * @param split
+     * @return
+     */
+    Result distributionExpert(String userId, String id, String[] split);
+
+    /**
+     * get expert by projectId
+     *
+     * @param id
+     * @return
+     */
+    List<Comment> getExpertByProjectId(String id, RowBounds page);
 }

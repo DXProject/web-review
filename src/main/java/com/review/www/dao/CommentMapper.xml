@@ -196,4 +196,11 @@
       backup_three = #{backupThree,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+  <!--custom-->
+  <select id="selectByProjectId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where project_id = #{projectId,jdbcType=CHAR}
+  </select>
 </mapper>

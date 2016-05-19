@@ -57,6 +57,14 @@
                                    target="rightFrame" class="_editPwdBtn">详情</a>
                             </li>
                             <li>
+                                <a href="getExpertByDisciplineCategoryId.htm?id=${r.disciplineCategory}&projectId=${r.id}"
+                                   target="rightFrame" class="_distributionBtn">分配专家</a>
+                            </li>
+                            <li>
+                                <a href="getExpertByProjectId.htm?id=${r.id}"
+                                   target="rightFrame" class="_editPwdBtn">已有专家</a>
+                            </li>
+                            <li>
                                 <a href="javascript:;"
                                    target="rightFrame" class="_removeBtn">删除</a>
                             </li>

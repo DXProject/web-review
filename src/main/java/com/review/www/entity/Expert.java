@@ -21,6 +21,8 @@ public class Expert {
 
     private String email;
 
+    private String disciplineCategory;
+
     private String post;
 
     private String school;
@@ -105,6 +107,14 @@ public class Expert {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public String getDisciplineCategory() {
+        return disciplineCategory;
+    }
+
+    public void setDisciplineCategory(String disciplineCategory) {
+        this.disciplineCategory = disciplineCategory == null ? null : disciplineCategory.trim();
     }
 
     public String getPost() {

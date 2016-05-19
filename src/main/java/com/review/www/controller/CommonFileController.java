@@ -138,6 +138,7 @@ public class CommonFileController extends WebBaseController {
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/files/";
         return new Result(Code.SUCCESS, Result.createJsonMap("path", basePath + saveContextPath + File.separator + newFileName));
     }
+
     /**
      * 多文件上传
      *
@@ -148,10 +149,10 @@ public class CommonFileController extends WebBaseController {
     @RequestMapping("uploads.htm")
     public
     @ResponseBody
-    Result uploads(HttpServletRequest request, HttpServletResponse response, @RequestParam("files")MultipartFile[] files, @RequestParam(defaultValue = "true") boolean isFullPath) {
+    Result uploads(HttpServletRequest request, HttpServletResponse response, @RequestParam("files") MultipartFile[] files, @RequestParam(defaultValue = "true") boolean isFullPath) {
         String[] strs = new String[10];
         //判断file数组不能为空并且长度大于0
-        if(files!=null&&files.length>0) {
+        if (files != null && files.length > 0) {
             //循环获取file数组中得文件
             for (int i = 0; i < files.length; i++) {
                 MultipartFile file = files[i];
@@ -185,7 +186,7 @@ public class CommonFileController extends WebBaseController {
                 String filePath = saveContextPath + File.separator + newFileName;
                 if (isFullPath) {
                     filePath = basePath + filePath;
-                    strs[i]=filePath;
+                    strs[i] = filePath;
                 }
             }
         }

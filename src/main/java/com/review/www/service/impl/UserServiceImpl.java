@@ -19,6 +19,7 @@ import com.review.www.request.LoginReq;
 import com.review.www.response.LoginResp;
 import com.review.www.response.UserResp;
 import com.review.www.service.UserService;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,13 +32,13 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl implements UserService, SelfBeanAware<UserService> {
-    private UserService selfService;
+    private UserService  selfService;
     @Resource
     private ExpertMapper expertMapper;
     @Resource
-    private UserMapper  userMapper;
+    private UserMapper   userMapper;
     @Resource
-    private Cache       cacheBean;
+    private Cache        cacheBean;
 
     @Override
     public Result addUser(User user) {
@@ -49,7 +50,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
 
     @Override
     public User getByNumberAndType(String number, int type) {
-        return userMapper.selectByNumberAndType(number,type);
+        return userMapper.selectByNumberAndType(number, type);
     }
 
     @Override
@@ -76,9 +77,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
 
     public List<UserResp> getByType(int type) {
         List<UserResp> resps = new ArrayList<UserResp>();
-        if(type==3){
+        if (type == 3) {
             List<Expert> experts = expertMapper.selectListAll();
-            for(Expert user : experts){
+            for (Expert user : experts) {
                 UserResp resp = new UserResp();
                 resp.setId(user.getId());
                 resp.setDepartmentId(user.getSchool());
@@ -97,8 +98,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
                 resp.setBackupThree(user.getBackupThree());
                 resps.add(resp);
             }
-        }
-        else {
+        } else {
             List<User> users = userMapper.selectByType(type);
             for (User user : users) {
                 UserResp resp = new UserResp();
@@ -129,10 +129,10 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
 
     @Override
     public int addUserManage(int type, User user) {
-        if(user.getPassword().isEmpty()){
+        if (user.getPassword().isEmpty()) {
             user.setPassword("12345");
         }
-        if(type==3){
+        if (type == 3) {
             Expert expert = new Expert();
             expert.setId(UUIDUtils.createId());
             expert.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
@@ -146,8 +146,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             expert.setDegree(user.getDegree());
             expert.setSchool(user.getDepartment());
             expertMapper.insert(expert);
-        }
-        else{
+        } else {
             user.setId(UUIDUtils.createId());
             user.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
             user.setIsDeleted(false);
@@ -159,13 +158,13 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
 
     @Override
     public int editUserManage(int type, User user) {
-        if(type==3){
+        if (type == 3) {
             Expert expert = new Expert();
             expert.setId(user.getId());
             expert.setNumber(user.getNumber());
             expert.setAvatar(user.getAvatar());
             expert.setName(user.getName());
-            if(!user.getPassword().isEmpty()){
+            if (!user.getPassword().isEmpty()) {
                 expert.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
             }
             expert.setPhone(user.getPhone());
@@ -176,9 +175,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             expert.setDegree(user.getDegree());
             expert.setSchool(user.getDepartment());
             expertMapper.updateByPrimaryKeySelective(expert);
-        }
-        else{
-            if(!user.getPassword().isEmpty()){
+        } else {
+            if (!user.getPassword().isEmpty()) {
                 user.setPassword(PasswordHash.createHash(user.getPassword(), UUIDUtils.createId()));
             }
             user.setCreationTime(new Date());
@@ -189,10 +187,9 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
 
     @Override
     public int delUserManage(int type, String id) {
-        if(type==3){
+        if (type == 3) {
             expertMapper.deleteByPrimaryKey(id);
-        }
-        else{
+        } else {
             userMapper.deleteById(id);
         }
         return 0;
@@ -201,7 +198,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
     @Override
     public UserResp getByTypeAndId(int type, String id) {
         UserResp resp = new UserResp();
-        if(type==3){
+        if (type == 3) {
             Expert expert = expertMapper.selectByPrimaryKey(id);
             resp.setId(expert.getId());
             resp.setDepartmentId(expert.getSchool());
@@ -218,8 +215,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             resp.setBackupOne(expert.getBackupOne());
             resp.setBackupTwo(expert.getBackupTwo());
             resp.setBackupThree(expert.getBackupThree());
-        }
-        else {
+        } else {
             User user = userMapper.selectByPrimaryKey(id);
             resp.setId(user.getId());
             resp.setNumber(user.getNumber());
@@ -245,11 +241,11 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
     }
 
     @Override
-    public List<UserResp> getByNumberOrName(int type,String keyword) {
+    public List<UserResp> getByNumberOrName(int type, String keyword) {
         List<UserResp> resps = new ArrayList<UserResp>();
-        if(type==3){
+        if (type == 3) {
             List<Expert> experts = expertMapper.selectListByNumberOrName(keyword);
-            for(Expert user : experts){
+            for (Expert user : experts) {
                 UserResp resp = new UserResp();
                 resp.setId(user.getId());
                 resp.setDepartmentId(user.getSchool());
@@ -268,8 +264,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
                 resp.setBackupThree(user.getBackupThree());
                 resps.add(resp);
             }
-        }
-        else {
+        } else {
             List<User> users = userMapper.selectListByNumberOrName(keyword);
             for (User user : users) {
                 UserResp resp = new UserResp();
@@ -300,14 +295,24 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
 
     @Override
     public User getExpertByNumberAndType(String number, int type) {
-        Expert expert = expertMapper.selectByNumberAndType(number,type);
-        if(expert==null){
+        Expert expert = expertMapper.selectByNumberAndType(number, type);
+        if (expert == null) {
             return null;
         }
         User user = new User();
         user.setNumber(expert.getNumber());
         user.setPassword(expert.getPassword());
         return user;
+    }
+
+    @Override
+    public List<Expert> getExpertByDisciplineCategoryId(String id, RowBounds page) {
+        return expertMapper.selectByDisciplineCategoryId(id, page);
+    }
+
+    @Override
+    public Expert getExpertById(String expertId) {
+        return expertMapper.selectByPrimaryKey(expertId);
     }
 
 }
