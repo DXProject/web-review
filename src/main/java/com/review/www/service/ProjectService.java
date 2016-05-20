@@ -162,4 +162,12 @@ public interface ProjectService {
      * @return
      */
     List<Project> getProjectByUserId(String id, RowBounds page);
+
+    /**
+     * get by id
+     *
+     * @param id
+     * @return
+     */
+    Project getById(String id);
 }

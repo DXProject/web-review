@@ -10,7 +10,7 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <title>高校教科研项目网上评审</title>
+    <title>水院教科研项目网上评审</title>
 </head>
 <link rel="stylesheet" type="text/css" href="${path}/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">

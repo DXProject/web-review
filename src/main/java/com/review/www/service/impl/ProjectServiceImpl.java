@@ -162,4 +162,9 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     public List<Project> getProjectByUserId(String id, RowBounds page) {
         return projectMapper.selectByUserId(id, page);
     }
+
+    @Override
+    public Project getById(String id) {
+        return projectMapper.selectByPrimaryKey(id);
+    }
 }

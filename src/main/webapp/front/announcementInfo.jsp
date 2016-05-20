@@ -70,7 +70,7 @@
                         </p>
                         <c:if test="${announcement.type == 2}">
                             <div>
-                                <a href="applyProject.htm?id=${announcement.id}">
+                                <a href="${path}/project/applyProject.htm?id=${announcement.id}">
                                     <label><input type="button" style="background: #16aeed;"
                                                   class="btn _applyBtn" value="申请该项目"></label>
                                 </a>

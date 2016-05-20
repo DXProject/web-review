@@ -17,7 +17,7 @@
 <%@include file="../common.jsp" %>
 <link rel="stylesheet" type="text/css" href="${path}/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${path}/uploadfiles/css/default.css">
-<link href="${path}/uploadfiles/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link href="${path}/uploadfiles/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="${path}/css/web-nav.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/left-tab.css">
 <link rel="stylesheet" type="text/css" href="${path}/css/Applicants.css">
@@ -79,7 +79,8 @@
                             </tr>
                             <tr>
                                 <td class="title-2"><span>项目名称</span></td>
-                                <td colspan="4"><span><input type="text" name="name"></span></td>
+                                <td colspan="4"><span><input type="text" name="name" value="${project.name}"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td rowspan="2"><span>负责人</span></td>
@@ -90,7 +91,8 @@
                             <tr>
                                 <td><span><input type="text" value="${application.name}" disabled></span></td>
                                 <td><span><input type="text" value="${department.name}" disabled></span></td>
-                                <td colspan="2"><span><input type="text" value="${application.phone}" disabled></span></td>
+                                <td colspan="2"><span><input type="text" value="${application.phone}" disabled></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td rowspan="4"><span>参加成员</span></td>
@@ -117,7 +119,8 @@
                                 <td colspan="4" class="textleft">
                                     <c:forEach var="s" items="${subjectCategory}">
                                         <label>
-                                            <input type="radio" name="subjectCategory" value="${s.id}">${s.name}
+                                            <input type="radio" name="subjectCategory"
+                                                   value="${project.subjectCategory}">${s.name}
                                         </label>
                                     </c:forEach>
                                 </td>
@@ -127,7 +130,8 @@
                                 <td colspan="4" class="textleft">
                                     <c:forEach var="d" items="${disciplineCategory}">
                                         <label>
-                                            <input type="radio" name="disciplineCategory" value="${d.id}">${d.name}
+                                            <input type="radio" name="disciplineCategory"
+                                                   value="${project.disciplineCategory}">${d.name}
                                         </label>
                                     </c:forEach>
                                 </td>
@@ -136,7 +140,8 @@
                                 <td class="title-1-1  "><span>选题依据</span></td>
                                 <td colspan="5">
 									<span>
-										<textarea placeholder="（包括项目的学术价值、应用价值、现状分析）" name="topicBase"></textarea>
+										<textarea placeholder="（包括项目的学术价值、应用价值、现状分析）"
+                                                  name="topicBase">${project.topicBase}</textarea>
 									</span>
                                 </td>
                             </tr>
@@ -152,33 +157,36 @@
                                 <td class="title-1-1"><span>研究内容</span></td>
                                 <td colspan="5">
 									<span>
-										<textarea name="research"></textarea>
+										<textarea name="research">${project.research}</textarea>
 									</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="title-2  "><span>所需经费</span></td>
-                                <td colspan="4"><span><input type="text" name="funds"></span></td>
+                                <td colspan="4"><span><input type="text" name="funds" value="${project.funds}"></span></td>
 
                             </tr>
                             <tr class="paths">
                                 <td class="title-2  "><span>上传项目</span></td>
                                 <td colspan="4">
 
-                                        <form enctype="multipart/form-data">
+                                    <form enctype="multipart/form-data">
 
-                                            <div class="form-group">
-                                                <input id="files" name="file" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
-                                            </div>
+                                        <div class="form-group">
+                                            <input id="files" name="file" type="file" multiple class="file"
+                                                   data-overwrite-initial="false" data-min-file-count="2">
+                                        </div>
 
-                                        </form>
+                                    </form>
                                 </td>
                             </tr>
                         </table>
 
                         <div class="appbtn">
-                            <label><input type="submit" class="btn saveBtn" value="保存" action="declareProject.htm"></label>
-                            <label><input type="button" class="btn _searchBtn" value="提交" action="declareProject.htm"></label>
+                            <label><input type="submit" class="btn saveBtn" value="保存"
+                                          action="declareProject.htm"></label>
+                            <label><input type="button" class="btn _searchBtn" value="提交"
+                                          action="declareProject.htm"></label>
                         </div>
                     </form>
                 </div>
@@ -201,24 +209,23 @@
     //多文件上传
     $("#files").fileinput({
         uploadUrl: '${path}/common/file/upload.htm', // you must set a valid URL here else you will get an error
-        allowedFileExtensions : ['doc','xls','ppt','docx','xlsx','pptx','pdf','txt'],
+        allowedFileExtensions: ['doc', 'xls', 'ppt', 'docx', 'xlsx', 'pptx', 'pdf', 'txt'],
         overwriteInitial: false,
         showUpload: true, //是否显示上传按钮
         enctype: 'multipart/form-data',
         //allowedFileTypes: ['image', 'video', 'flash'],
-        slugCallback: function(filename) {
+        slugCallback: function (filename) {
             return filename.replace('(', '_').replace(']', '_');
         },
         ajaxSettings: {
             //这里是重写文件上传成功后，前台处理后台返回json数据
-            success: function(data)
-            {
-               $(".paths").append("<input type=\"hidden\" name=\"paths\" value=\""+data.result.path+"\" />");
-             //   console.log(data.result.path);
+            success: function (data) {
+                $(".paths").append("<input type=\"hidden\" name=\"paths\" value=\"" + data.result.path + "\" />");
+                //   console.log(data.result.path);
             }
         }
     });
-    $(function(){
+    $(function () {
         $('._searchBtn').on('click', function () {
             $('#searchForm').prop('action', $(this).attr('action')).submit();
         });

@@ -4,9 +4,12 @@ import com.jopool.jweb.entity.Page;
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.enums.Code;
 import com.jopool.jweb.mybatis.page.Pagination;
+import com.jopool.jweb.utils.UUIDUtils;
+import com.review.www.constants.Constants;
 import com.review.www.entity.*;
 import com.review.www.request.AddProjectAnnouncementReq;
 import com.review.www.request.DateParam;
+import com.review.www.request.DeclareProjectReq;
 import com.review.www.response.ProjectListResp;
 import com.review.www.response.UserResp;
 import com.review.www.service.BaseDataService;
@@ -25,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -265,6 +269,63 @@ public class ProjectController extends WebBaseController {
     }
 
     /**
+     * 项目申报
+     *
+     * @return
+     */
+    @RequestMapping("applyProject.htm")
+    public ModelAndView applyProject(String id) {
+        validateParam(id, getSessionUser().getUserId());
+        ModelAndView mv = getSessionUserMV("project/applyProject");
+        Announcement announcement = projectService.getAnnouncementInfo(id);
+        ClassThree classThree = projectService.getClassThreeInfo(announcement.getClassThreeId());
+        List<BaseConstant> disciplineCategory = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY);
+        List<BaseConstant> subjectCategory = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_SUBJECT_CATEGORY);
+        User application = userService.getById(getSessionUser().getUserId());
+        if (null != application) {
+            BaseConstant department = baseDataService.getBaseConstantById(application.getDepartment());
+            mv.addObject("department", department);
+        }
+        mv.addObject("disciplineCategory", disciplineCategory);
+        mv.addObject("subjectCategory", subjectCategory);
+        mv.addObject("classThree", classThree);
+        mv.addObject("reviewProgram", classThree.getReviewprogramId());
+        mv.addObject("application", application);
+        return mv;
+    }
+
+    /**
+     * 项目提交
+     *
+     * @param req
+     * @return
+     */
+    @RequestMapping("declareProject.htm")
+    public ModelAndView declareProject(DeclareProjectReq req, String paths) {
+        validateParam(getSessionUser().getUserId());
+        Project project = req.parseProject(getSessionUser().getUserId());
+        User user = userService.getById(project.getCreator());
+        project.setDepartment(user.getDepartment());
+        //文件存路径
+        String ids = "";
+        String[] strs = paths.split(",");
+        for (String str : strs) {
+            File file = new File();
+            file.setId(UUIDUtils.createId());
+            file.setFileAddress(str);
+            file.setProjectId(project.getId());
+            file.setIsDeleted(false);
+            file.setCreationTime(new Date());
+            file.setCreator(file.getId());
+            ids += file.getId() + ",";
+            projectService.addFile(file);
+        }
+        project.setFile(ids.substring(0, ids.length() - 1));
+        projectService.declareProject(project);
+        return new ModelAndView("redirect:getMyProjectList.htm");
+    }
+
+    /**
      * 获取我的项目
      *
      * @param
@@ -281,6 +342,31 @@ public class ProjectController extends WebBaseController {
         BaseConstant department = baseDataService.getBaseConstantById(user.getDepartment());
         mv.addObject("user", user);
         mv.addObject("department", department);
+        return mv;
+    }
+
+    /**
+     * 获取我的项目详情
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping("getMyProjectInfo.htm")
+    public ModelAndView getMyProjectInfo(String id) {
+        Project project = projectService.getById(id);
+        User user = userService.getById(getSessionUser().getUserId());
+        ModelAndView mv = getSessionUserMV("project/getMyProjectListInfo");
+        BaseConstant department = baseDataService.getBaseConstantById(user.getDepartment());
+        List<BaseConstant> disciplineCategory = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY);
+        List<BaseConstant> subjectCategory = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_SUBJECT_CATEGORY);
+        mv.addObject("project",project);
+        mv.addObject("application", user);
+        mv.addObject("department", department);
+        mv.addObject("disciplineCategory", disciplineCategory);
+        mv.addObject("subjectCategory", subjectCategory);
+        //mv.addObject("classThree", classThree);
+        //mv.addObject("reviewProgram", classThree.getReviewprogramId());
+        //mv.addObject("application", application);
         return mv;
     }
 }
