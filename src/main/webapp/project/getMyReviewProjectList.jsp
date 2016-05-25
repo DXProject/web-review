@@ -69,7 +69,7 @@
                             <td>状态</td>
                             <td><fmt:formatDate
                                     value='${r.creationTime}' pattern='yyyy-MM-dd'/></td>
-                            <td><a href="getMyProjectInfo.htm?id=${r.id}" class="blue">查看项目</a></td>
+                            <td><a href="getProjectInfo.htm?id=${r.id}" class="blue">查看项目</a></td>
                         </tr>
                     </c:forEach>
                 </table>

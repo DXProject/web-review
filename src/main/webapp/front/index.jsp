@@ -61,21 +61,21 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="${path}/images/banner_1.jpg" alt="...">
+                                <a href="#"><img src="${path}/images/banner_1.jpg" alt="..."></a>
 
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="${path}/images/banner_2.jpg" alt="...">
+                                <a href="#"><img src="${path}/images/banner_2.jpg" alt="..."></a>
 
                                 <div class="carousel-caption">
                                     ...
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="${path}/images/banner_1.jpg" alt="...">
+                                <a href="#"><img src="${path}/images/banner_3.png" alt="..."></a>
 
                                 <div class="carousel-caption">
                                     ...
