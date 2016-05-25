@@ -8,6 +8,7 @@ import com.jopool.jweb.utils.UUIDUtils;
 import com.review.www.constants.Constants;
 import com.review.www.dao.*;
 import com.review.www.entity.*;
+import com.review.www.enums.ProjectStatus;
 import com.review.www.service.ProjectService;
 import com.review.www.vo.SearchProjectVo;
 import org.apache.ibatis.session.RowBounds;
@@ -66,6 +67,7 @@ public class ProjectServiceImpl extends BaseServiceImpl implements ProjectServic
     @Override
     public Result declareProject(Project project) {
         project.setNumber(createNumber(Constants.NUMBER_PROJECT));
+        project.setStatus(ProjectStatus.WAITING_FOR_REVIEW);
         projectMapper.insert(project);
         return new Result(Code.SUCCESS);
     }

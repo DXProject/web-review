@@ -201,6 +201,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService, Sel
             resp.setTitleId(expert.getTitle());
             resp.setNumber(expert.getNumber());
             resp.setAvatar(expert.getAvatar());
+            resp.setDisciplineCategory(expert.getDisciplineCategory());
             resp.setName(expert.getName());
             resp.setPassword(expert.getPassword());
             resp.setPhone(expert.getPhone());

@@ -27,7 +27,7 @@
         </form>
         <input type="hidden" name="projectId" value="${projectId}">
         <li style="float: right;"><label>&nbsp;</label>
-            <input name="" type="button" class="scbtn _doAddBtn" value="确认组团"/>
+            <input name="" type="button" class="scbtn _doAddBtn" value="确认分配"/>
         </li>
     </ul>
 

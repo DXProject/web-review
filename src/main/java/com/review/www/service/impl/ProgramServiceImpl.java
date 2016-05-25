@@ -7,14 +7,17 @@ import com.jopool.jweb.spring.SelfBeanAware;
 import com.jopool.jweb.utils.StringUtils;
 import com.jopool.jweb.utils.UUIDUtils;
 import com.review.www.constants.Constants;
+import com.review.www.dao.CommentMapper;
 import com.review.www.dao.ReviewProgramMapper;
 import com.review.www.dao.ReviewProgramRulesMapper;
 import com.review.www.dao.RulesMapper;
+import com.review.www.entity.Comment;
 import com.review.www.entity.ReviewProgram;
 import com.review.www.entity.ReviewProgramRules;
 import com.review.www.entity.Rules;
 import com.review.www.service.ProgramService;
 import com.review.www.vo.SearchBaseDataVo;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,6 +36,8 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
     private ReviewProgramMapper      reviewProgramMapper;
     @Resource
     private ReviewProgramRulesMapper reviewProgramRulesMapper;
+    @Resource
+    private CommentMapper            commentMapper;
 
     @Override
     public void setSelfBean(ProgramService object) {
@@ -95,22 +100,22 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
 
     @Override
     public List<Rules> searchRules(SearchBaseDataVo searchBaseDataVo, Pagination page) {
-        return rulesMapper.searchRules(searchBaseDataVo,page);
+        return rulesMapper.searchRules(searchBaseDataVo, page);
     }
 
     @Override
     public Result getRulesInfo(String id) {
-        return new Result(Code.SUCCESS,rulesMapper.selectByPrimaryKey(id));
+        return new Result(Code.SUCCESS, rulesMapper.selectByPrimaryKey(id));
     }
 
     @Override
     public List<ReviewProgram> searchReviewProgram(SearchBaseDataVo searchBaseDataVo, Pagination page) {
-        return reviewProgramMapper.searchReviewProgram(searchBaseDataVo,page);
+        return reviewProgramMapper.searchReviewProgram(searchBaseDataVo, page);
     }
 
     @Override
     public List<ReviewProgramRules> searchReviewProgramRules(SearchBaseDataVo searchBaseDataVo, Pagination page) {
-        return reviewProgramRulesMapper.search(searchBaseDataVo,page);
+        return reviewProgramRulesMapper.search(searchBaseDataVo, page);
     }
 
     @Override
@@ -118,8 +123,8 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
         if (rulesIds.length <= 0) {
             return new Result(Code.ERROR, "请选择评审细则");
         }
-        for(String rulesId : rulesIds){
-            if(StringUtils.isEmpty(rulesId)){
+        for (String rulesId : rulesIds) {
+            if (StringUtils.isEmpty(rulesId)) {
                 continue;
             }
             ReviewProgramRules rpr = new ReviewProgramRules();
@@ -142,6 +147,11 @@ public class ProgramServiceImpl extends BaseServiceImpl implements ProgramServic
     @Override
     public List<ReviewProgram> getAllReviewProgram() {
         return reviewProgramMapper.selectAll();
+    }
+
+    @Override
+    public List<Comment> getCommentsByExpertId(String id, RowBounds page) {
+        return commentMapper.selectByExpertId(id, page);
     }
 
     private void addReviewProgramRules(ReviewProgram reviewProgram, List<Rules> rules) {

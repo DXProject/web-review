@@ -6,39 +6,24 @@ import java.util.Date;
  * Created by zrl on 16/5/2.
  */
 public class UserResp {
-    private String id;
-
-    private String departmentId;
-
-    private String degreeId;
-
-    private String titleId;
-
-    private String eductionId;
-
-    private String number;
-
-    private String avatar;
-
-    private String name;
-
-    private int sex;
-
-    private int type;
-
-    private String password;
-
-    private String phone;
-
-    private String email;
-
-    private String birthday;
-
+    private String  id;
+    private String  departmentId;
+    private String  disciplineCategory;
+    private String  degreeId;
+    private String  titleId;
+    private String  eductionId;
+    private String  number;
+    private String  avatar;
+    private String  name;
+    private int     sex;
+    private int     type;
+    private String  password;
+    private String  phone;
+    private String  email;
+    private String  birthday;
     private boolean isDeleted;
-
-    private String creator;
-
-    private Date creationTime;
+    private String  creator;
+    private Date    creationTime;
 
     public String getId() {
         return id;
@@ -54,6 +39,14 @@ public class UserResp {
 
     public void setDepartmentId(String departmentId) {
         this.departmentId = departmentId;
+    }
+
+    public String getDisciplineCategory() {
+        return disciplineCategory;
+    }
+
+    public void setDisciplineCategory(String disciplineCategory) {
+        this.disciplineCategory = disciplineCategory;
     }
 
     public String getDegreeId() {

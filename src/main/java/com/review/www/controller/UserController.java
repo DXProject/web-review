@@ -141,10 +141,12 @@ public class UserController extends WebBaseController {
         List<BaseConstant> list2 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEGREE);
         List<BaseConstant> list3 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_EDUCATION);
         List<BaseConstant> list4 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DEPARTMENT);
+        List<BaseConstant> list5 = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY);
         model.addObject("list1",list1);
         model.addObject("list2",list2);
         model.addObject("list3",list3);
         model.addObject("list4",list4);
+        model.addObject("list5",list5);
         UserResp userResp = userService.getByTypeAndId(type,id);
         model.addObject("user",userResp);
         model = new UserRepeat().compareType(type,model);

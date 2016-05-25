@@ -3,6 +3,7 @@
 <%@ taglib uri="/WEB-INF/tld/fmt.tld" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/tld/fn.tld" prefix="fn" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<%@include file="../common.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -109,8 +110,9 @@
                         <ul>
                             <c:forEach var="r" items="${announcements}">
                                 <li>
-                                    <a href="${path}/front/project/announcementInfo.htm?id=${r.id}">${r.title}[<fmt:formatDate
-                                            value='${r.creationTime}' pattern='yyyy-MM-dd'/>]</a></li>
+                                    <a href="${path}/front/project/announcementInfo.htm?id=${r.id}">${r.title}<span
+                                            class="pull-right">[<fmt:formatDate
+                                            value='${r.creationTime}' pattern='yyyy-MM-dd'/>]</span></a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -154,9 +156,18 @@
                                 class="connect"></span>
 
                             <div class="right-2">
-                                <c:if test="${user.userId!=null}"><span><img src="${path}/images/icon-5.gif"><a
-                                        href="${path}/project/getMyProjectList.htm" class="_myProject">我的项目</a>
-                                </span></c:if>
+                                <c:if test="${user.userId!=null}">
+                                    <c:if test="${user.type == USERTYPE_APPLICANT}">
+                                    <span><img src="${path}/images/icon-5.gif">
+                                        <a href="${path}/project/getMyProjectList.htm" class="_myProject">我的项目</a>
+                                    </span>
+                                    </c:if>
+                                    <c:if test="${user.type==0}">
+                                    <span><img src="${path}/images/icon-5.gif">
+                                        <a href="${path}/project/getMyReviewProjectList.htm" class="_myProject">我的评审</a>
+                                    </span>
+                                    </c:if>
+                                </c:if>
                                 <c:if test="${user.userId==null}"><span><img src="${path}/images/icon-5.gif"><a
                                         href="javascript:;" class="">关于我们</a>
                                 </span></c:if>
@@ -199,10 +210,10 @@
                                                                                                     id="password"
                                                                                                     name="password"
                                                                                                     class="form-control pull-right validate[required]"></label>
-    <span class="radio">用户类型：
-    <label><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
-    <label><input type="radio" name="identity" value="2"/> 评审专家</label>
-    </span>
+                            <span class="radio">用户类型：
+                            <label><input type="radio" name="identity" value="1" checked/> 项目申请人</label>
+                            <label><input type="radio" name="identity" value="2"/> 评审专家</label>
+                            </span>
                         </div>
 
                     </form>

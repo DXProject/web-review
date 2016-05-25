@@ -26,4 +26,13 @@ public interface CommentMapper {
      * @return
      */
     List<Comment> selectByProjectId(String projectId, RowBounds page);
+
+    /**
+     * select by expertId
+     *
+     * @param expertId
+     * @param page
+     * @return
+     */
+    List<Comment> selectByExpertId(String expertId, RowBounds page);
 }

@@ -346,6 +346,39 @@ public class ProjectController extends WebBaseController {
     }
 
     /**
+     * 获取我的评审项目
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping("getMyReviewProjectList.htm")
+    public ModelAndView getMyReviewProjectList(Pagination page) {
+        Expert expert = userService.getExpertById(getSessionUser().getUserId());
+        List<ProjectListResp> resps = new ArrayList<ProjectListResp>();
+        List<Comment> comments = null;
+        if (null != expert) {
+            comments = programService.getCommentsByExpertId(expert.getId(), page.page());
+        }
+        for (Comment comment : comments) {
+            ProjectListResp resp = new ProjectListResp();
+            Project project = projectService.getById(comment.getProjectId());
+            if(null == project){
+                continue;
+            }
+            resp.setId(project.getId());
+            resp.setName(project.getName());
+            User user = userService.getById(project.getUserId());
+            resp.setCreator(user.getName());
+            resp.setStatus(project.getStatus());
+            resp.setCreationTime(project.getCreationTime());
+            resps.add(resp);
+        }
+        ModelAndView mv = getPageMv("project/getMyReviewProjectList", resps, page);
+        mv.addObject("expert", expert);
+        return mv;
+    }
+
+    /**
      * 获取我的项目详情
      *
      * @param
@@ -356,10 +389,10 @@ public class ProjectController extends WebBaseController {
         Project project = projectService.getById(id);
         User user = userService.getById(getSessionUser().getUserId());
         ModelAndView mv = getSessionUserMV("project/getMyProjectListInfo");
-        BaseConstant department = baseDataService.getBaseConstantById(user.getDepartment());
+        BaseConstant department = baseDataService.getBaseConstantById(project.getDepartment());
         List<BaseConstant> disciplineCategory = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_DISCIPLINE_CATEGORY);
         List<BaseConstant> subjectCategory = baseDataService.getBaseConstantByKey(Constants.BASE_CONSTANT_SUBJECT_CATEGORY);
-        mv.addObject("project",project);
+        mv.addObject("project", project);
         mv.addObject("application", user);
         mv.addObject("department", department);
         mv.addObject("disciplineCategory", disciplineCategory);

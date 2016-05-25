@@ -2,10 +2,12 @@ package com.review.www.service;
 
 import com.jopool.jweb.entity.Result;
 import com.jopool.jweb.mybatis.page.Pagination;
+import com.review.www.entity.Comment;
 import com.review.www.entity.ReviewProgram;
 import com.review.www.entity.ReviewProgramRules;
 import com.review.www.entity.Rules;
 import com.review.www.vo.SearchBaseDataVo;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -128,4 +130,13 @@ public interface ProgramService {
      * @return
      */
     List<ReviewProgram> getAllReviewProgram();
+
+    /**
+     * get comments by expertId
+     *
+     * @param id
+     * @param page
+     * @return
+     */
+    List<Comment> getCommentsByExpertId(String id, RowBounds page);
 }

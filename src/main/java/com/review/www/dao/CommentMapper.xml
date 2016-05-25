@@ -203,4 +203,10 @@
     from comment
     where project_id = #{projectId,jdbcType=CHAR}
   </select>
+  <select id="selectByExpertId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where  expert_id = #{expertId,jdbcType=CHAR}
+  </select>
 </mapper>

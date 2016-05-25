@@ -20,7 +20,8 @@
     <ul class="forminfo short validationEngineContainer">
         <li class="line"><label>头像</label>
             <input name="id" value="${user.id}" type="hidden"/>
-            <input name="avatar" id="avatar" type="hidden" class="short-input validate[required]" value="${user.avatar}"/>
+            <input name="avatar" id="avatar" type="hidden" class="short-input validate[required]"
+                   value="${user.avatar}"/>
 
             <div class="upload-img" id="upload-img-pic"><img
                     src="${user.avatar == null?'../images/upload-image.png':user.avatar}" class=""/></div>
@@ -37,7 +38,8 @@
         <c:if test="${type!=3}">
             <li><label>性别</label>
                 <input name="sex" type="radio" value="0" <c:if test="${user.sex==0}">checked</c:if>/>&nbsp;男 &nbsp;
-                <input name="sex" type="radio" value="1" <c:if test="${user.sex==1}">checked</c:if>/>&nbsp;女</li>
+                <input name="sex" type="radio" value="1" <c:if test="${user.sex==1}">checked</c:if>/>&nbsp;女
+            </li>
         </c:if>
         <c:if test="${type==3}">
             <div style="display:none">
@@ -51,6 +53,7 @@
                 <input name="birthday" type="text" class="short-input" value="${user.birthday}"/></li>
         </c:if>
         <li><label>职位:</label>
+
             <div class="vocation">
                 <select name="title" class="useselect validate[required]">
                     <c:forEach var="t" items="${list1}">
@@ -75,29 +78,46 @@
                 <div class="vocation">
                     <select name="eduction" class="useselect validate[required]">
                         <c:forEach var="t" items="${list3}" varStatus="status">
-                            <option value="${t.id}" <c:if test="${user.eductionId==t.id}">selected</c:if>>${t.name}</option>
+                            <option value="${t.id}"
+                                    <c:if test="${user.eductionId==t.id}">selected</c:if>>${t.name}</option>
                         </c:forEach>
                     </select>
                 </div>
             </li>
         </c:if>
-        <li><label>部门学院:</label>
+        <c:if test="${type!=3}">
+            <li><label>部门学院:</label>
 
-            <div class="vocation">
-                <select name="department" class="useselect validate[required]">
-                    <c:forEach var="t" items="${list4}">
-                        <option value="${t.id}" <c:if test="${user.departmentId==t.id}">selected</c:if>>${t.name}</option>
-                    </c:forEach>
-                </select>
-            </div>
-        </li>
+                <div class="vocation">
+                    <select name="department" class="useselect validate[required]">
+                        <c:forEach var="t" items="${list4}">
+                            <option value="${t.id}"
+                                    <c:if test="${user.departmentId==t.id}">selected</c:if>>${t.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </li>
+        </c:if>
+        <c:if test="${type==3}">
+            <li><label>部门学院:</label>
+
+                <div class="vocation">
+                    <select name="department" class="useselect validate[required]">
+                        <c:forEach var="t" items="${list5}">
+                            <option value="${t.id}"
+                                    <c:if test="${user.disciplineCategory==t.id}">selected</c:if>>${t.name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </li>
+        </c:if>
         <c:if test="${null == user.password}">
-        <li><label>密码</label><input name="password" type="password" class="short-input"
-                                                 value="" placeholder="默认密码:12345"/></li>
+            <li><label>密码</label><input name="password" type="password" class="short-input"
+                                        value="" placeholder="默认密码:12345"/></li>
         </c:if>
         <c:if test="${null != user.password}">
             <li><label>修改密码</label><input name="password" type="password" class="short-input"
-                                                       value="" placeholder="不填写则为原密码"/></li>
+                                          value="" placeholder="不填写则为原密码"/></li>
         </c:if>
         <li class="line"><label>&nbsp;</label><input type="button" class="btn saveBtn" value="确认添加"/></li>
 
@@ -129,9 +149,9 @@
             $.zxxbox.remind("上传出错", null, {delay: 2000});
         });
         //
-        $('.saveBtn').ajaxbtn('${path}/user/doUserEditPage${type}.htm',function () {
+        $('.saveBtn').ajaxbtn('${path}/user/doUserEditPage${type}.htm', function () {
             return {
-                id : $.trim($('input[name="id"]').val()),
+                id: $.trim($('input[name="id"]').val()),
                 avatar: $.trim($('input[name="avatar"]').val()),
                 phone: $.trim($('input[name="phone"]').val()),
                 sex: $.trim($('input:radio[name="sex"]:checked').val()),
