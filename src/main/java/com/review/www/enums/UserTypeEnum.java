@@ -7,9 +7,9 @@ public enum UserTypeEnum {
     /**
      * APPLICANT(1, "项目申请者"),  SECONDARY_COLLEGE(2, "二级学院管理员"),EXPERT(3,"专家"),ADMIN(4, "科研室管理人员") ;
      */
-    APPLICANT(1, "项目申请者"),  SECONDARY_COLLEGE(2, "二级学院管理员"),EXPERT(3,"专家"),ADMIN(4, "科研室管理人员");
+    APPLICANT(1, "项目申请者"), SECONDARY_COLLEGE(2, "二级学院管理员"), EXPERT(3, "专家"), ADMIN(4, "科研室管理人员");
 
-    private int value;
+    private int    value;
     private String name;
 
     private UserTypeEnum(int value, String name) {

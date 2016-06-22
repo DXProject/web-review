@@ -172,18 +172,18 @@
                         <div class="appbtn">
                             <label><a href="uploadFile.htm?id=${project.id}">
                                 <input type="button" value="文件下载"></a></label>
-                            <c:if test="${reviewProgramType==1}">
+                            <c:if test="${reviewProgramType==2}">
                                 <label><input type="button" value="评审" data-toggle="modal"
                                               data-target="#levelchoose"></label>
                             </c:if>
                             <c:if test="${reviewProgramType==2}">
                                 <label><input type="button" value="评审" data-toggle="modal" data-target="#mark"></label>
                             </c:if>
-                            <c:if test="${reviewProgramType==3}">
+                            <c:if test="${reviewProgramType==2}">
                                 <label><input type="button" value="评审" data-toggle="modal"
                                               data-target="#access"></label>
                             </c:if>
-                            <c:if test="${reviewProgramType==4}">
+                            <c:if test="${reviewProgramType==2}">
                                 <label><input type="button" value="评审" data-toggle="modal" data-target="#xize"></label>
                             </c:if>
                         </div>
